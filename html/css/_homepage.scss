@@ -1505,8 +1505,64 @@ a {
     }
   }
 }
+.video-section .video-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  // margin-top: -50px;
+  // margin-bottom: -50px;
+  height: 500px;
+}
+.video-section .video-container img {
+    width: 100%;
+}
+.video-section .video-container .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  background: transparent;
+}
+.video-section .video-container .play-button img {
+  width: 100%;
+}
+.video-section .video-container .video {
+  display: none;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.video-thum {
+  position: relative;
+}
+.video-thum:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
 
-
+.gallary-photo {
+  margin-top: 70px;
+  .each-gallry {
+    img {
+      width: 100%;
+    }
+  }
+}
 /* First image - tall */
 // .ibox:nth-child(1) {
 //   grid-row: span 2;

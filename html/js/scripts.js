@@ -44,6 +44,16 @@ jQuery(document).ready(function($){
         dots: true,
         infinite: true,
         speed: 800,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+		arrows: false,
+    });
+	 //Banner slider
+	 $('#gallarySlider').slick({
+        dots: true,
+        infinite: true,
+        speed: 800,
         autoplay: false,
         slidesToShow: 1,
         slidesToScroll: 1,
