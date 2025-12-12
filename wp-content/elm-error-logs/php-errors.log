@@ -1,0 +1,8 @@
+[01-Dec-2024 07:19:55 UTC] BFU: Processing "calendar.png" part 1 of 1 as /var/www/html/greencard/wp-content/bfu-temp/1-e82a9879feb6f4a897bd902e2b617a9f6a60354c.part. 0 B processed so far.
+[01-Dec-2024 07:19:55 UTC] BFU: Completing "calendar.png" upload with a 606.000 B final size.
+[01-Dec-2024 07:22:22 UTC] PHP Warning:  Undefined array key "gcc_sp_btn_url_1" in /var/www/html/greencard/wp-content/themes/greencard/elementor/widget/customer/steps.php on line 323
+[01-Dec-2024 07:22:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/greencard/wp-content/themes/greencard/elementor/widget/customer/steps.php on line 323
+[01-Dec-2024 08:15:58 UTC] PHP Parse error:  syntax error, unexpected fully qualified name "\Elementor\Plugin" in /var/www/html/greencard/wp-content/themes/greencard/elementor/main.php on line 96
+[01-Dec-2024 08:17:19 UTC] PHP Deprecated:  printf(): Passing null to parameter #1 ($format) of type string is deprecated in /var/www/html/greencard/wp-content/plugins/weforms/includes/integrations/mailpoet/component/template.php on line 61
+[01-Dec-2024 08:22:19 UTC] PHP Warning:  Undefined array key "original_name" in /var/www/html/greencard/wp-content/plugins/weforms/includes/class-form.php on line 405
+[01-Dec-2024 08:22:57 UTC] PHP Warning:  Undefined array key "original_name" in /var/www/html/greencard/wp-content/plugins/weforms/includes/class-form.php on line 405
