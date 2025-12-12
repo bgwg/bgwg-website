@@ -1,0 +1,14 @@
+@import "fonts.css";
+@import "brands.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css";
+@import "variable";
+@import "bootstrap.min.css";
+@import "sidenav.min.css";
+@import "header";
+@import "homepage";
+@import "footer";
+
+
+body {
+    font-family: $primaryFont;
+}
