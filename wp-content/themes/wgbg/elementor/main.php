@@ -49,13 +49,24 @@ class MEPPluginElementor {
 	private function include_widgets_files() {
 		// Home Widgets
 		require_once( __DIR__ . '/widget/banner.php' );		
-        require_once( __DIR__ . '/widget/slider.php' );		
-        require_once( __DIR__ . '/widget/how-works.php' );	
+		require_once( __DIR__ . '/widget/experimental-engine.php' );
+		require_once( __DIR__ . '/widget/brand-choose.php'); 
+		require_once( __DIR__ . '/widget/featured-digital-slider.php'); 
+		require_once( __DIR__ . '/widget/engine-motion.php'); 
+		require_once( __DIR__ . '/widget/the-people.php'); 
+		require_once( __DIR__ . '/widget/form-ready-power.php'); 
+		require_once( __DIR__ . '/widget/cta-footer.php'); 
+		require_once( __DIR__ . '/widget/slider.php' );		
+		require_once( __DIR__ . '/widget/how-works.php' );	
 		require_once( __DIR__ . '/widget/fast-transfer.php' );	
 		require_once( __DIR__ . '/widget/quick.php' );	
 		require_once( __DIR__ . '/widget/faq.php' );
 		require_once( __DIR__ . '/widget/page.php' );
 		
+		// About us Page Widgets
+		require_once( __DIR__ . '/widget/about-us/about-banner.php' );
+		require_once( __DIR__ . '/widget/about-us/what-drives.php' );
+
 		// Marchat Page Widgets
 		require_once( __DIR__ . '/widget/marchant/banner.php' );
 		require_once( __DIR__ . '/widget/marchant/content.php' );
@@ -76,12 +87,24 @@ class MEPPluginElementor {
 		
 		// Register Home Widgets		
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCBanner() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCSlider() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCHw() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCCardTiles() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCBrandChoose() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFeaturedDigitalSlider() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCEngineMotion() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCThePeople() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFormReadyPower() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCCtaFooter() );
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCSlider() );
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCHw() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFt() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCQk() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFaq() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCPage() );
+
+		// Register About us Page Widget
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCAboutBanner() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCWhatDrives() );
+
 
 		// Register Marchats Page Widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCMBanner() );

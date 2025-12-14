@@ -49,6 +49,14 @@ jQuery(document).ready(function($){
         slidesToScroll: 1,
 		arrows: false,
     });
+    $('#gallarySlider').slick({
+        dots: true,
+        infinite: true,
+        speed: 800,
+        autoplay: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    });
     // List slider 
     $('.featured-digital-slider').slick({
         dots: false,

@@ -49,6 +49,14 @@ jQuery(document).ready(function($){
         slidesToScroll: 1,
 		arrows: false,
     });
+    $('#gallarySlider').slick({
+        dots: true,
+        infinite: true,
+        speed: 800,
+        autoplay: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    });
     // List slider 
     $('.featured-digital-slider').slick({
         dots: false,
@@ -61,6 +69,30 @@ jQuery(document).ready(function($){
         variableWidth: false,
         focusOnSelect: false,
         centerMode: false,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                slidesToShow: 2,
+                }
+            }
+        ]
+    });
+    // List slider 
+    $('.features-slider').slick({
+        dots: true,
+        arrows: true,
+        infinite: true,
+        speed: 300,
+        autoplay: false,
+        slidesToShow: 3,
+        accessibility: true,
+        variableWidth: false,
+        focusOnSelect: false,
+        centerMode: false,
+        customPaging: function(slick,index) {
+            return '<a>' + (index + 1) + '</a>';
+        },
         responsive: [
             {
                 breakpoint: 991,
