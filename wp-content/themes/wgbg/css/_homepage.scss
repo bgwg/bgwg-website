@@ -83,7 +83,6 @@ a {
       }
       &.subpages {
         h1 { 
-
           background: linear-gradient(90.85deg, #FF6F61 30%, #FFB400 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -100,10 +99,13 @@ a {
           color: $white; 
           font-size: 75px;
           margin-bottom: 0;
+          @media (max-width: 767px) {
+            font-size: 38px;
+          }
           span {
-          background: $primaryGradient;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+            background: $primaryGradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
           }
         }
       }
@@ -829,6 +831,11 @@ a {
           border-radius: 50%;
         }
       }
+      &.list-unstyled {
+        @media (max-width: 580px) {
+          flex-direction: column;
+        } 
+      }
     }
   }
 }
@@ -844,6 +851,9 @@ a {
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 10px 5%;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
   .icon-card {
     display: flex;
     align-items: center;
@@ -851,6 +861,9 @@ a {
     gap: 25px;
     width: calc(50% - 35px);
     margin-bottom: 25px;
+    @media (max-width: 767px) {
+      width: 100%; 
+    }
     .icon-box {
       width: 80px;
       height: 80px;
@@ -922,6 +935,9 @@ a {
     &:nth-child(5) {
       grid-column: 3;
       grid-row: 3;
+      @media (max-width: 767px) {
+        height: 85%;
+      }
     }
     @media (max-width: 768px) {
       grid-column: 1 !important;
