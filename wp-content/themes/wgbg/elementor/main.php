@@ -56,6 +56,9 @@ class MEPPluginElementor {
 		require_once( __DIR__ . '/widget/the-people.php'); 
 		require_once( __DIR__ . '/widget/form-ready-power.php'); 
 		require_once( __DIR__ . '/widget/cta-footer.php'); 
+		require_once( __DIR__ . '/widget/contact-banner.php'); 
+		require_once( __DIR__ . '/widget/contact-us.php'); 
+		require_once( __DIR__ . '/widget/our-work.php'); 
 		require_once( __DIR__ . '/widget/slider.php' );		
 		require_once( __DIR__ . '/widget/how-works.php' );	
 		require_once( __DIR__ . '/widget/fast-transfer.php' );	
@@ -100,6 +103,9 @@ class MEPPluginElementor {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCQk() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFaq() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCPage() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCContactBanner() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCContactUs() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCOurWork() );
 
 		// Register About us Page Widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCAboutBanner() );

@@ -209,19 +209,19 @@ if ( have_posts() ) :
 		</div>
 	<?php endif; ?>
 
-	<<?php $large_images = get_post_meta(get_the_ID(), '_cs_large_image', true);
-	if (!empty($large_images) && is_array($large_images)): ?>
-		<section class="gallary-photo">
-			<div id="gallarySlider" class="gallary-slider">
-				<?php foreach ($large_images as $img): ?>
-					<div class="each-gallry">
-						<img src="<?php echo esc_url($img); ?>" alt="">
-					</div>
-				<?php endforeach; ?> 
-			</div>
-		</section> 
+	<?php $large_images = array_filter( array_map( 'trim', preg_split( '/\r?\n/', (string) $large_image ) ) );
+		if ( ! empty( $large_images ) ) :
+	?>
+	<section class="gallary-photo">
+    <div id="gallarySlider" class="gallary-slider">
+    	<?php foreach ( $large_images as $img_url ) : ?>  
+			<div class="each-gallry">
+        <img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+      </div>
+			<?php endforeach; ?>
+    </div>
+  </section>
 	<?php endif; ?>
-
 
 <?php
 	$prev_link = get_previous_post_link( '%link', '&larr; Prev Case' );

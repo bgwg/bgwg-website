@@ -14,7 +14,19 @@ Version: 1.0.0
     margin-bottom: 0;
     margin-top: -20px;
 }
-
+div#our-service-p p {
+    font-size: 20px;
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+    color: #0d0d0d;
+    font-weight: 300;
+}
+div#our-service-p p span {
+    background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 li#menu-item-13 a {
     text-transform: inherit;
     background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
@@ -59,10 +71,14 @@ li#menu-item-19 a img {
 }
 
 .wpuf-label {
-    display: none !important;
+    margin-bottom: 0 !important;
 }
-
-li.wpuf-el .wpuf-fields input, li.wpuf-el .wpuf-fields select, li.wpuf-el .wpuf-fields textarea {
+ul.wpuf-form li {
+    margin-left: 0 !important;;
+    margin-bottom: 5px !important;;
+    padding: 5px !important;;
+}
+/* li.wpuf-el .wpuf-fields input, li.wpuf-el .wpuf-fields select, li.wpuf-el .wpuf-fields textarea {
     color: #1E1E1E !important;
     border-radius: 10px !important;
     border: 1px solid rgba(29, 185, 84, 0.21) !important;
@@ -75,10 +91,24 @@ li.wpuf-el .wpuf-fields input, li.wpuf-el .wpuf-fields select, li.wpuf-el .wpuf-
     box-shadow: none !important;
     height: inherit !important;
     width: 100% !important;
+} */
+li.wpuf-el .wpuf-fields input, li.wpuf-el .wpuf-fields select, li.wpuf-el .wpuf-fields textarea  {
+    color: #1E1E1E !important;
+    border-radius: 10px !important;
+    border: 0px solid !important;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.5019607843) !important;
+    background: transparent !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    line-height: 26px !important;
+    padding: 5px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    height: inherit !important;
+    width: 100% !important;
 }
-
-
-li.wpuf-submit input.weforms_submit_btn{
+/* li.wpuf-submit input.weforms_submit_btn{
     color: #fff !important;
     background: #1DB954 !important;
     border-color: #1DB954 !important;
@@ -88,6 +118,19 @@ li.wpuf-submit input.weforms_submit_btn{
     box-shadow: none !important;
     padding: 15px 40px !important;
 
+} */
+li.wpuf-submit input.weforms_submit_btn {
+background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%) !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    min-width: 200px !important;
+    border: 0px solid !important;
+    padding: 16px 5px !important;
+    border-radius: 8px !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    line-height: 1.4 !important;
 }
 
 .signup-form.page-content {
