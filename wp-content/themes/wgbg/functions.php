@@ -90,6 +90,7 @@ add_action('init', 'gc_register_case_study_cpt');
  * Add Meta Boxes
  */
 function gc_case_study_add_meta_boxes() {
+    add_meta_box('gc_case_study_card', __('Case Study Card','greencard'), 'gc_case_study_card_meta_box_callback', 'case_study','normal','high');
     add_meta_box('gc_case_study_hero', __('Case Study Hero','greencard'), 'gc_case_study_hero_meta_box_callback', 'case_study','normal','high');
     add_meta_box('gc_case_study_details', __('Case Study Details (Year & Technology)','greencard'), 'gc_case_study_details_meta_box_callback', 'case_study','normal','high');
     add_meta_box('gc_case_study_objective', __('Objective Section','greencard'), 'gc_case_study_objective_meta_box_callback','case_study','normal','default');
@@ -106,26 +107,20 @@ function gc_case_study_get_meta($post_id, $key, $default='') {
     return $value === '' ? $default : $value;
 }
 
+
 /**
  * Hero Meta Box
  */
 function gc_case_study_hero_meta_box_callback($post) {
     wp_nonce_field('gc_case_study_save_meta','gc_case_study_meta_nonce');
 
-    $card_bg_image  = gc_case_study_get_meta($post->ID,'_cs_card_bg_image');
+    // $card_bg_image  = gc_case_study_get_meta($post->ID,'_cs_card_bg_image');
     $banner_image   = gc_case_study_get_meta($post->ID,'_cs_banner_image');
     $main_image     = gc_case_study_get_meta($post->ID,'_cs_main_image');
     $heading_prefix = gc_case_study_get_meta($post->ID,'_cs_heading_prefix');
     $heading_main   = gc_case_study_get_meta($post->ID,'_cs_heading_main');
     $intro_text     = gc_case_study_get_meta($post->ID,'_cs_intro_text');
     ?>
-
-    <p>
-        <label>Card Background Image</label><br>
-        <img id="gc_card_bg_preview" src="<?php echo esc_url($card_bg_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
-        <input type="hidden" name="gc_cs_card_bg_image" id="gc_cs_card_bg_image" value="<?php echo esc_attr($card_bg_image); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_card_bg_image" data-preview="gc_card_bg_preview">Upload / Select Image</button>
-    </p>
 
     <p>
         <label>Banner Image</label><br>
@@ -151,6 +146,23 @@ function gc_case_study_hero_meta_box_callback($post) {
     <textarea class="widefat" name="gc_cs_intro_text" rows="4"><?php echo esc_textarea($intro_text); ?></textarea>
     <?php
 }
+/**
+ * case study page card Meta Box
+ */
+function gc_case_study_card_meta_box_callback($post) {
+    wp_nonce_field('gc_case_study_save_meta','gc_case_study_meta_nonce');
+
+    $card_bg_image  = gc_case_study_get_meta($post->ID,'_cs_card_bg_image'); 
+    ?>
+
+    <p>
+        <label>Card Background Image</label><br>
+        <img id="gc_card_bg_preview" src="<?php echo esc_url($card_bg_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_card_bg_image" id="gc_cs_card_bg_image" value="<?php echo esc_attr($card_bg_image); ?>" />
+        <button class="button gc-upload-btn" data-target="gc_cs_card_bg_image" data-preview="gc_card_bg_preview">Upload / Select Image</button>
+    </p>
+    <?php
+}
 
 /**
  * Details Meta Box
@@ -172,7 +184,7 @@ function gc_case_study_details_meta_box_callback($post) {
  */
 function gc_case_study_objective_meta_box_callback($post){
     $subtitle = gc_case_study_get_meta($post->ID,'_cs_objective_subtitle');
-    $heading  = gc_case_study_get_meta($post->ID,'_cs_objective_heading');
+    // $heading  = gc_case_study_get_meta($post->ID,'_cs_objective_heading');
     $intro    = gc_case_study_get_meta($post->ID,'_cs_objective_intro');
     $list     = gc_case_study_get_meta($post->ID,'_cs_objective_list');
     $image    = gc_case_study_get_meta($post->ID,'_cs_objective_image');
@@ -180,8 +192,8 @@ function gc_case_study_objective_meta_box_callback($post){
     <p><label>Objective Subtitle</label></p>
     <input type="text" class="widefat" name="gc_cs_objective_subtitle" value="<?php echo esc_attr($subtitle); ?>" />
 
-    <p><label>Objective Heading</label></p>
-    <input type="text" class="widefat" name="gc_cs_objective_heading" value="<?php echo esc_attr($heading); ?>" />
+    <!-- <p><label>Objective Heading</label></p> -->
+    <!-- <input type="text" class="widefat" name="gc_cs_objective_heading" value="<?php echo esc_attr($heading); ?>" /> -->
 
     <p><label>Objective Intro</label></p>
     <textarea class="widefat" name="gc_cs_objective_intro" rows="4"><?php echo esc_textarea($intro); ?></textarea>
@@ -224,8 +236,30 @@ function gc_case_study_execution_meta_box_callback($post){
     <p><label>Four Box Heading</label></p>
     <input type="text" class="widefat" name="gc_cs_four_box_heading" value="<?php echo esc_attr($four_head); ?>" />
 
-    <p><label>Four Box Items (one per line)</label></p>
-    <textarea class="widefat" name="gc_cs_four_box_items" rows="4"><?php echo esc_textarea($four_items); ?></textarea>
+    <!-- <p><label>Four Box Items (one per line)</label></p>
+    <textarea class="widefat" name="gc_cs_four_box_items" rows="4"><?php //echo esc_textarea($four_items); ?></textarea> -->
+    <?php
+    $four_items = gc_case_study_get_meta($post->ID, '_cs_four_box_items', []);
+    if (!is_array($four_items)) {
+        $four_items = ['', '', '', ''];
+    }
+    ?>
+
+    <p><strong>Four Boxes Content</strong></p>
+
+    <?php for ($i = 0; $i < 4; $i++): ?>
+        <p>
+            <label>Box <?php echo $i + 1; ?></label>
+            <textarea
+                class="widefat"
+                name="gc_cs_four_box_items[]"
+                rows="3"
+                placeholder="<b>text copy</b> this is our main idea."><?php
+                    echo esc_textarea($four_items[$i] ?? '');
+            ?></textarea>
+        </p>
+    <?php endfor; ?>
+
     <?php
 }
 
@@ -315,13 +349,28 @@ function gc_case_study_save_meta($post_id){
         'gc_cs_large_image'       => '_cs_large_image',
     ];
 
-    foreach($fields as $field=>$meta_key){
-        if(isset($_POST[$field])){
-            $value = $_POST[$field];
-            if(is_array($value)) $value = array_map('sanitize_text_field',$value);
-            else $value = wp_kses_post($value);
-            update_post_meta($post_id, $meta_key, $value);
+    foreach ($fields as $field => $meta_key) {
+        if (!isset($_POST[$field])) {
+            continue;
         }
+
+        $value = $_POST[$field];
+
+        // Array fields (four boxes, gallery, lists)
+        if (is_array($value)) {
+            $value = array_map('wp_kses_post', $value);
+        }
+        // URL fields
+        elseif (strpos($field, 'image') !== false || strpos($field, 'url') !== false) {
+            $value = esc_url_raw($value);
+        }
+        // Text / HTML fields
+        else {
+            $value = wp_kses_post($value);
+        }
+
+        update_post_meta($post_id, $meta_key, $value);
     }
+
 }
 add_action('save_post_case_study','gc_case_study_save_meta');

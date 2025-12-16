@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
         dots: true,
         infinite: true,
         speed: 800,
-        autoplay: false,
+        autoplay: true,
         slidesToShow: 1,
         slidesToScroll: 1,
     });

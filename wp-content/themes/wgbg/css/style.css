@@ -1925,6 +1925,11 @@ a {
   border-bottom: 1px solid #e6e6e6;
 }
 
+@media (max-width: 767px) {
+  .details-col {
+    margin: 0 0 25px 0;
+  }
+}
 .details-col .year-title {
   font-weight: 300;
   font-size: 17px;
@@ -1940,6 +1945,11 @@ a {
   color: #171717;
   font-weight: 500;
   margin: 0;
+}
+@media (max-width: 767px) {
+  .details-col.text-right {
+    text-align: left;
+  }
 }
 
 .objective-img-box {
@@ -2025,6 +2035,17 @@ a {
   border-radius: 10px;
   background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
   padding: 15px;
+  min-width: 24%;
+}
+@media (max-width: 767px) {
+  .single-box {
+    width: 48%;
+  }
+}
+@media (max-width: 480px) {
+  .single-box {
+    width: 100%;
+  }
 }
 
 .solution-box {
@@ -2032,6 +2053,16 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+}
+@media (max-width: 767px) {
+  .solution-box {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 480px) {
+  .solution-box {
+    flex-direction: column;
+  }
 }
 .solution-box .single-box span {
   font-size: 75px;
@@ -2050,6 +2081,11 @@ a {
   font-weight: 500;
   line-height: 40px;
   padding: 80px 0 10px;
+}
+@media (max-width: 992px) {
+  .solution-box .single-box p {
+    font-size: 30px;
+  }
 }
 
 .four-boxs {
@@ -2130,8 +2166,24 @@ video-section .video-container {
 .gallary-photo {
   margin-top: 70px;
 }
+.gallary-photo .each-gallry {
+  height: 550px;
+}
 .gallary-photo .each-gallry img {
   width: 100%;
+}
+.gallary-photo .slick-dots {
+  bottom: 12px;
+}
+.gallary-photo .slick-dots li button {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1490196078);
+}
+.gallary-photo .slick-dots li button:before {
+  font-size: 0;
+}
+.gallary-photo .slick-dots li.slick-active button {
+  background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
 }
 
 .video-section .video-container {
@@ -2216,9 +2268,20 @@ video-section .video-container {
   transform: rotate(180deg);
 }
 
-/* First image - tall */
-/* Fourth image - regular */
-/* Fifth image - tall */
+@media (max-width: 767px) {
+  .case_study-template-default .work-inner-details {
+    padding-top: 2rem;
+  }
+  .case_study-template-default .work-inner-details .content-copy {
+    width: 100%;
+  }
+  .case_study-template-default .work-inner-details .work-photo {
+    position: absolute;
+    right: 10px;
+    bottom: -25px;
+    width: 40%;
+  }
+}
 .footer {
   background: url(../images/footer.png);
   background-repeat: no-repeat;

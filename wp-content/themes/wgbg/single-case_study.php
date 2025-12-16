@@ -115,7 +115,8 @@ if ( have_posts() ) :
 
 				<div class="objective-area">
 					<h3><?php echo esc_html( $objective_sub ); ?></h3>
-					<h2><?php echo wp_kses_post( $objective_head ); ?></h2>
+					<!-- <h2><?php //echo wp_kses_post( $objective_head ); ?></h2> -->
+					<h2>A <span>New Challenge</span> For US</h2>
 					<?php if ( $objective_intro ) : ?>
 						<p><?php echo wp_kses_post( nl2br( $objective_intro ) ); ?></p>
 					<?php endif; ?>
@@ -146,7 +147,8 @@ if ( have_posts() ) :
 				<div class="container">
 					<div class="objective-area">
 						<h3><?php echo esc_html( $exec_sub ); ?></h3>
-						<h2><?php echo wp_kses_post( $exec_head ); ?></h2>
+						<h2>Our <span>Solution</span></h2>
+						<!-- <h2><?php //echo wp_kses_post( $exec_head ); ?></h2> -->
 						<?php if ( $exec_text ) : ?>
 							<p><?php echo wp_kses_post( nl2br( $exec_text ) ); ?></p>
 						<?php endif; ?>
@@ -166,22 +168,35 @@ if ( have_posts() ) :
 						?>
 					</div>
 					<div class="objective-area">
-						<h2><?php echo wp_kses_post( $four_head ); ?></h2>
+						<h2>How We <span>Exceeded Expectations</span></h2>
+						<!-- <h2><?php //echo wp_kses_post( $four_head ); ?></h2> -->
 					</div>
-					<div class="four-boxs">
-						<?php foreach ( $four_box_items as $four_item ) : ?>
-							<div class="each-four">
-								<p><?php echo wp_kses_post( $four_item ); ?></p>
-							</div>
-						<?php endforeach; ?>
-					</div>
+						<?php
+						$four_boxes = get_post_meta(get_the_ID(), '_cs_four_box_items', true);
+
+						if (!is_array($four_boxes)) {
+								$four_boxes = [];
+						}
+						?>
+
+						<div class="four-boxs">
+								<?php foreach ($four_boxes as $four_item) : ?>
+										<?php if (!empty(trim($four_item))) : ?>
+												<div class="each-four">
+													<p><?php echo wp_kses_post($four_item); ?></p>
+												</div>
+										<?php endif; ?>
+								<?php endforeach; ?>
+						</div>
+
 				</div>
 			</div>
 
 			<div class="the-outcome">
 				<div class="container">
 					<div class="objective-area">
-						<h2><?php echo wp_kses_post( $outcome_head ); ?></h2>
+						<h2>The <span>Outcome</span></h2>
+						<!-- <h2><?php //echo wp_kses_post( $outcome_head ); ?></h2> -->
 						<?php if ( $outcome_text ) : ?>
 							<p><?php echo wp_kses_post( nl2br( $outcome_text ) ); ?></p>
 						<?php endif; ?>
@@ -214,8 +229,10 @@ if ( have_posts() ) :
 		<section class="gallary-photo">
 			<div id="gallarySlider" class="gallary-slider">
 				<?php foreach ($large_images as $img): ?>
-					<div class="each-gallry">
-						<img src="<?php echo esc_url($img); ?>" alt="">
+					<div class="gallary-slider">
+						<div class="each-gallry">
+							<img src="<?php echo esc_url($img); ?>" alt="">
+						</div>
 					</div>
 				<?php endforeach; ?> 
 			</div>
