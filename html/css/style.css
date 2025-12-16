@@ -1462,14 +1462,47 @@ a {
   grid-row: 3;
 }
 .grid-wrapper .ibox:nth-child(5) {
+  background: url(../images/ibox-bg.png) center;
   grid-column: 3;
   grid-row: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 768px) {
   .grid-wrapper .ibox {
     grid-column: 1 !important;
     grid-row: auto !important;
   }
+}
+.grid-wrapper .ibox .ibox-inner h2 {
+  color: #fff;
+  font-weight: 300;
+  font-size: 28px;
+  margin: 0;
+}
+.grid-wrapper .ibox .ibox-inner h3 {
+  text-transform: uppercase;
+  font-size: 60px;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: 700;
+  background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.grid-wrapper .ibox .ibox-inner p {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+  background: linear-gradient(90.85deg, #FF6F61 0%, #FFB400 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .features-case {

@@ -25,7 +25,7 @@ class GCWhatDrives extends Widget_Base {
 		return [ 'green-card-elementor-support' ];
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 
 		/* =====================
 		 * HEADER
@@ -42,7 +42,7 @@ class GCWhatDrives extends Widget_Base {
 			[
 				'label'   => __( 'Heading', 'mage-eventpress' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => 'What <span>Drives Us.</span>',
+				'default' => 'What<span> Drives Us.</span>',
 			]
 		);
 
@@ -64,8 +64,8 @@ class GCWhatDrives extends Widget_Base {
 		$icon_repeater->add_control(
 			'icon_image',
 			[
-				'label'   => __( 'Icon Image', 'mage-eventpress' ),
-				'type'    => Controls_Manager::MEDIA,
+				'label' => __( 'Icon Image', 'mage-eventpress' ),
+				'type'  => Controls_Manager::MEDIA,
 			]
 		);
 
@@ -84,7 +84,6 @@ class GCWhatDrives extends Widget_Base {
 				'label'   => __( 'Description', 'mage-eventpress' ),
 				'type'    => Controls_Manager::TEXTAREA,
 				'rows'    => 3,
-				'default' => 'Every idea has to earn wow.',
 			]
 		);
 
@@ -93,12 +92,6 @@ class GCWhatDrives extends Widget_Base {
 			[
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $icon_repeater->get_controls(),
-				'default'     => [
-					[ 'title' => 'Creativity with purpose' ],
-					[ 'title' => 'Data with heart.' ],
-					[ 'title' => 'Flawless execution.' ],
-					[ 'title' => 'Collaboration over ego.' ],
-				],
 				'title_field' => '{{{ title }}}',
 			]
 		);
@@ -112,7 +105,7 @@ class GCWhatDrives extends Widget_Base {
 		$this->start_controls_section(
 			'image_grid_section',
 			[
-				'label' => __( 'Image Grid', 'mage-eventpress' ),
+				'label' => __( 'Grid Images', 'mage-eventpress' ),
 			]
 		);
 
@@ -127,20 +120,52 @@ class GCWhatDrives extends Widget_Base {
 		);
 
 		$this->add_control(
-      'grid_images',
-      [
-        'type'    => Controls_Manager::REPEATER,
-        'fields'  => $image_repeater->get_controls(),
-        'default' => [
-          [],
-          [],
-          [],
-          [],
-          [],
-        ],
-      ]
-    );
+			'grid_images',
+			[
+				'type'   => Controls_Manager::REPEATER,
+				'fields'=> $image_repeater->get_controls(),
+			]
+		);
 
+		$this->end_controls_section();
+
+
+		/* =====================
+		 * GRID TEXT BOX (NEW)
+		 * ===================== */
+		$this->start_controls_section(
+			'grid_text_box',
+			[
+				'label' => __( 'Grid Text Box', 'mage-eventpress' ),
+			]
+		);
+
+		$this->add_control(
+			'grid_text_title',
+			[
+				'label'   => __( 'Title', 'mage-eventpress' ),
+				'type'    => Controls_Manager::TEXT,
+				'default' => "We don't chase trends",
+			]
+		);
+
+		$this->add_control(
+			'grid_text_subtitle',
+			[
+				'label'   => __( 'Subtitle', 'mage-eventpress' ),
+				'type'    => Controls_Manager::TEXT,
+				'default' => 'We Build',
+			]
+		);
+
+		$this->add_control(
+			'grid_text_description',
+			[
+				'label'   => __( 'Description', 'mage-eventpress' ),
+				'type'    => Controls_Manager::TEXTAREA,
+				'default' => 'moments that last.',
+			]
+		);
 
 		$this->end_controls_section();
 	}
@@ -183,6 +208,15 @@ class GCWhatDrives extends Widget_Base {
 							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>
+
+					<!-- Text Box -->
+					<div class="ibox">
+						<div class="ibox-inner">
+							<h2><?php echo esc_html( $s['grid_text_title'] ); ?></h2>
+							<h3><?php echo esc_html( $s['grid_text_subtitle'] ); ?></h3>
+							<p><?php echo esc_html( $s['grid_text_description'] ); ?></p>
+						</div>
+					</div>
 				</div>
 
 			</div>
