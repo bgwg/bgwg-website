@@ -286,14 +286,9 @@ if ( have_posts() ) :
 			<div class="container">
 				<div class="cta-footer-inner">
 					<div class="cta-content">
-						<h3><span>Stay connected</span> to the Engine.</h3>
-						<p>Follow BGWG for a behind-the-scenes look at how experiences are made. <b>Reels. Stories. Insights.</b></p>
-						<ul>
-							<li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
-							<li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-							<li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
-							<li><a href=""><i class="fa-regular fa-envelope"></i></a></li>
-						</ul>
+						<h3>Need help with a project?<span> LET’S TALK!</span></h3>
+						<p>Every great project begins with a conversation. Share your vision with us, and together we’ll turn your ideas into something remarkable.</b></p>
+						<a href="/book-a-call/" class="btn btn-primary" style="padding-left: 15px; padding-right: 15px;">Let's Discuss Your Project</a>
 					</div>
 				</div>
 			</div>
