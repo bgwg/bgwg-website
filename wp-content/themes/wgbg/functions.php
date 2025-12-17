@@ -188,6 +188,8 @@ function gc_case_study_objective_meta_box_callback($post){
     $intro    = gc_case_study_get_meta($post->ID,'_cs_objective_intro');
     $list     = gc_case_study_get_meta($post->ID,'_cs_objective_list');
     $image    = gc_case_study_get_meta($post->ID,'_cs_objective_image');
+    $extra_text = gc_case_study_get_meta($post->ID,'_cs_objective_extra_text');
+
     ?>
     <p><label>Objective Subtitle</label></p>
     <input type="text" class="widefat" name="gc_cs_objective_subtitle" value="<?php echo esc_attr($subtitle); ?>" />
@@ -200,6 +202,9 @@ function gc_case_study_objective_meta_box_callback($post){
 
     <p><label>Objective List (one per line)</label></p>
     <textarea class="widefat" name="gc_cs_objective_list" rows="5"><?php echo esc_textarea($list); ?></textarea>
+
+    <p><label>Objective Extra Text</label></p>
+    <textarea class="widefat" name="gc_cs_objective_extra_text" rows="5"><?php echo esc_textarea($extra_text); ?></textarea>
 
     <p>
         <label>Objective Image</label><br>
@@ -347,6 +352,7 @@ function gc_case_study_save_meta($post_id){
         'gc_cs_video_url'         => '_cs_video_url',
         'gc_cs_video_thumbnail'   => '_cs_video_thumbnail',
         'gc_cs_large_image'       => '_cs_large_image',
+        'gc_cs_objective_extra_text' => '_cs_objective_extra_text',
     ];
 
     foreach ($fields as $field => $meta_key) {

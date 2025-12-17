@@ -199,7 +199,7 @@ if ( have_posts() ) :
 								<img class="thumbnails" id="thumbnail" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 							</div>
 							<button class="play-button" id="playButton">
-								<img src="http://localhost/bgwg-website/wp-content/uploads/2025/12/play-icon.png" alt="">
+								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/play-icon.png" alt="">
 							</button>
 							<video class="video" id="video" src="<?php echo esc_url( $video_url ); ?>"></video>
 						</div> 

@@ -31,6 +31,8 @@ if ( have_posts() ) :
 		$video_url      = get_post_meta( $post_id, '_cs_video_url', true );
 		$video_thumb    = get_post_meta( $post_id, '_cs_video_thumbnail', true );
 		$large_image    = get_post_meta( $post_id, '_cs_large_image', true );
+		// $objective_bottom = get_post_meta( $post_id, '_cs_objective_bottom', true );
+		$objective_extra_text = get_post_meta( $post_id, '_cs_objective_extra_text', true );
 
 		$template_dir = get_template_directory_uri();
 
@@ -131,7 +133,10 @@ if ( have_posts() ) :
 										<li><?php echo esc_html( $item ); ?></li>
 									<?php endforeach; ?>
 								</ul>
-							<?php endif; ?>
+								<?php endif; ?>
+								<?php if ( ! empty( $objective_extra_text ) ) : ?>
+										<p><?php echo wp_kses_post( nl2br( $objective_extra_text ) ); ?></p>
+								<?php endif; ?>
 							<?php the_content(); ?>
 						</div>
 					</div>
@@ -205,7 +210,7 @@ if ( have_posts() ) :
 			</div>
 
 	<?php if ( $video_url && $video_thumb ) : ?>
-		<div class="video-section">
+		<div class="video-section testes">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
@@ -213,8 +218,8 @@ if ( have_posts() ) :
 							<div class="video-thum">
 								<img class="thumbnails" id="thumbnail" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
 							</div>
-							<button class="play-button" id="playButton">
-								<img src="http://localhost/bgwg-website/wp-content/uploads/2025/12/play-icon.png" alt="">
+							<button class="play-button" id="playButton"> 
+								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/play-icon.png" alt="">
 							</button>
 							<video class="video" id="video" src="<?php echo esc_url( $video_url ); ?>"></video>
 						</div> 
@@ -224,7 +229,7 @@ if ( have_posts() ) :
 		</div>
 	<?php endif; ?>
 
-	<<?php $large_images = get_post_meta(get_the_ID(), '_cs_large_image', true);
+	<?php $large_images = get_post_meta(get_the_ID(), '_cs_large_image', true);
 	if (!empty($large_images) && is_array($large_images)): ?>
 		<section class="gallary-photo">
 			<div id="gallarySlider" class="gallary-slider">

@@ -1203,7 +1203,7 @@ a {
     position: absolute;
     right: 60px;
     bottom: 0;
-    width: 40%;
+    width: 35%;
     img {
       width: 100%;
     }
@@ -1222,6 +1222,7 @@ a {
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
+        display: inline-block;
       }
     }
     p {
@@ -1558,6 +1559,7 @@ a {
 .objective-area {
   text-align: center;
   padding: 30px 0;
+  position: relative;
   h3 {
     font-size: 26px;
     font-weight: 700;
@@ -1590,6 +1592,7 @@ a {
   }
 }
 .objective-copy {
+  position: relative;
   ul {
     padding: 0;
     list-style: none;
@@ -1623,10 +1626,20 @@ a {
   }
 }
 .our-solutions {
-  background: #FDFDFD;
+  background: linear-gradient(360deg, rgba(0, 0, 0, 0) 94.52%, rgba(0, 0, 0, 0.2) 138.11%);
   margin: 50px 0;
   box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
   padding: 15px 0;
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 92.91%, rgba(0, 0, 0, 0.2) 139.75%);
+  }
 }
 
 .single-box {
@@ -1634,6 +1647,11 @@ a {
   background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
   padding: 15px;
   min-width: 24%;
+  min-height: 330px;
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media (max-width: 767px) {
     width: 48%;
   }
@@ -1646,6 +1664,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+  position: relative;
   @media (max-width: 767px) {
     flex-wrap: wrap;
   }
@@ -1670,7 +1689,7 @@ a {
       margin: 0;
       font-weight: 500;
       line-height: 40px;
-      padding: 80px 0 10px;
+      padding: 10px 0 10px;
       @media (max-width: 992px) {
         font-size: 30px;
       }
@@ -1684,10 +1703,14 @@ a {
   flex-wrap: wrap;
   gap: 10px;
   padding-bottom: 35px;
+  position: relative;
   .each-four { 
     background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.05) 1.22%, rgba(255, 46, 209, 0.05) 99.95%);
     width: calc(50% - 5px);
     border-radius: 8px;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
     p {
       margin: 0;
       padding: 25px;
@@ -1698,7 +1721,7 @@ a {
   }
 }
 
-video-section .video-container {
+.video-section .video-container {
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -1706,6 +1729,9 @@ video-section .video-container {
   // margin-top: -50px;
   // margin-bottom: -50px;
   height: 500px;
+  @media (max-width: 767px) {
+    height: 190px;
+  }
 }
 .video-section .video-container img {
     width: 100%;
@@ -1724,6 +1750,10 @@ video-section .video-container {
   cursor: pointer;
   transition: background 0.3s ease;
   background: transparent;
+  @media (max-width: 767px) {
+    width: 60px;
+    height: 60px;
+  }
 }
 .video-section .video-container .play-button img {
   width: 100%;
@@ -1751,8 +1781,15 @@ video-section .video-container {
   margin-top: 70px;
   .each-gallry {
     height: 550px;
+    @media (max-width: 767px) {
+      height: 220px;
+    }
     img {
       width: 100%;
+      @media (max-width: 767px) {
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   .slick-dots {
@@ -1773,33 +1810,33 @@ video-section .video-container {
     }
   }
 }
-.video-section .video-container {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  height: 500px;
-}
+// .video-section .video-container {
+//   width: 100%;
+//   position: relative;
+//   overflow: hidden;
+//   border-radius: 20px;
+//   height: 500px;
+// }
 
-.video-section .video-container img {
-  width: 100%;
-}
+// .video-section .video-container img {
+//   width: 100%;
+// }
 
-.video-section .video-container .play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  color: white;
-  font-size: 2.5rem;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  background: transparent;
-}
+// .video-section .video-container .play-button {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   border: none;
+//   color: white;
+//   font-size: 2.5rem;
+//   width: 120px;
+//   height: 120px;
+//   border-radius: 50%;
+//   cursor: pointer;
+//   transition: background 0.3s ease;
+//   background: transparent;
+// }
 
 .video-section .video-container .play-button img {
   width: 100%;
