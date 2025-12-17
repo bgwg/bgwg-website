@@ -1707,6 +1707,11 @@ a {
   margin-left: 0;
   padding-bottom: 12rem;
 }
+.work-inner-details .content-copy .banner-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
 .work-inner-details .content-copy h1 {
   font-size: 36px;
   font-weight: 700;

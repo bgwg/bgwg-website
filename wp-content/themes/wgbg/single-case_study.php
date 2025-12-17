@@ -10,6 +10,7 @@ if ( have_posts() ) :
 		$card_bg_image	= get_post_meta( $post_id, '_cs_card_bg_image', true );
 		$banner_image   = get_post_meta( $post_id, '_cs_banner_image', true );
 		$main_image     = get_post_meta( $post_id, '_cs_main_image', true );
+		$banner_logo    = get_post_meta( $post_id, '_cs_banner_logo', true );
 		$heading_prefix = get_post_meta( $post_id, '_cs_heading_prefix', true );
 		$heading_main   = get_post_meta( $post_id, '_cs_heading_main', true );
 		$intro_text     = get_post_meta( $post_id, '_cs_intro_text', true );
@@ -68,6 +69,9 @@ if ( have_posts() ) :
 									</div>
 
 									<div class="content-copy">
+										<div class="banner-logo">
+											<img src="<?php echo esc_url( $banner_logo ); ?>" alt="">
+										</div>
 										<h1>
 											<?php if ( $heading_prefix ) : ?>
 												<span><?php echo esc_html( $heading_prefix ); ?></span>

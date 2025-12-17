@@ -115,12 +115,20 @@ function gc_case_study_hero_meta_box_callback($post) {
     wp_nonce_field('gc_case_study_save_meta','gc_case_study_meta_nonce');
 
     // $card_bg_image  = gc_case_study_get_meta($post->ID,'_cs_card_bg_image');
+    $banner_logo    = gc_case_study_get_meta($post->ID,'_cs_banner_logo');
     $banner_image   = gc_case_study_get_meta($post->ID,'_cs_banner_image');
     $main_image     = gc_case_study_get_meta($post->ID,'_cs_main_image');
     $heading_prefix = gc_case_study_get_meta($post->ID,'_cs_heading_prefix');
     $heading_main   = gc_case_study_get_meta($post->ID,'_cs_heading_main');
     $intro_text     = gc_case_study_get_meta($post->ID,'_cs_intro_text');
     ?>
+
+    <p>
+        <label>Banner Logo</label><br>
+        <img id="gc_banner_logo" src="<?php echo esc_url($banner_logo); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_banner_logo" id="gc_cs_banner_logo" value="<?php echo esc_attr($banner_logo); ?>" />
+        <button class="button gc-upload-btn" data-target="gc_cs_banner_logo" data-preview="gc_banner_logo">Upload / Select Image</button>
+    </p>
 
     <p>
         <label>Banner Image</label><br>
@@ -184,7 +192,6 @@ function gc_case_study_details_meta_box_callback($post) {
  */
 function gc_case_study_objective_meta_box_callback($post){
     $subtitle = gc_case_study_get_meta($post->ID,'_cs_objective_subtitle');
-    // $heading  = gc_case_study_get_meta($post->ID,'_cs_objective_heading');
     $intro    = gc_case_study_get_meta($post->ID,'_cs_objective_intro');
     $list     = gc_case_study_get_meta($post->ID,'_cs_objective_list');
     $image    = gc_case_study_get_meta($post->ID,'_cs_objective_image');
@@ -330,6 +337,7 @@ function gc_case_study_save_meta($post_id){
     $fields = [
         'gc_cs_card_bg_image' => '_cs_card_bg_image',
         'gc_cs_banner_image'  => '_cs_banner_image',
+        'gc_cs_banner_logo'   => '_cs_banner_logo',
         'gc_cs_main_image'    => '_cs_main_image',
         'gc_cs_heading_prefix'=> '_cs_heading_prefix',
         'gc_cs_heading_main'  => '_cs_heading_main',
