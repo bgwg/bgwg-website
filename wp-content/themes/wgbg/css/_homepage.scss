@@ -4,7 +4,7 @@ a {
   transition: all 0.3s;
 }
 .mb-4 {
-  margin-bottom: 2rem !important;
+  margin-bottom: 2rem !important; 
 }
 .btn-primary {
   background: $primaryGradient;
@@ -14,7 +14,7 @@ a {
   min-width: 200px;
   border: 0px solid;
   padding: 12px 5px;
-  border-radius: 8px;
+  border-radius: 8px; 
 }
 .btn-info {
   background: $primaryGradient;
@@ -103,6 +103,7 @@ a {
             font-size: 38px;
           }
           span {
+            display: inline-block;
             background: $primaryGradient;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -407,6 +408,7 @@ a {
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
+        display: inline-block;
       }
       @media (max-width: 992px) {
         font-size: 34px;
@@ -445,10 +447,10 @@ a {
 }
 .experiental-engine {
   &-solutions {
-    background: $white;
+    background-color: $white;
   }
   padding: 4rem 0;
-  background: url(../images/exbg.png);
+  background-image: url(../images/exbg.png);
   background-position: bottom center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -798,6 +800,7 @@ a {
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
+        display: inline-block;
       } 
     }
     p {
@@ -1013,8 +1016,9 @@ a {
       h3 {
         text-transform: uppercase;
         font-size: 60px;
-        line-height: 1.2;
-        margin: 0;
+        margin: -7px 0 0;
+        font-size: 30px;
+        line-height: 1.3;
         letter-spacing: 2px;
         font-weight: 700;
         background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
@@ -1207,6 +1211,8 @@ a {
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
+        display: inline-block;
+        line-height: 1.4;
       }
     }
     p {
@@ -1518,6 +1524,8 @@ a {
       -webkit-text-fill-color: transparent;
       background-clip: text;
       color: transparent;
+      display: inline-block;
+      line-height: 62px;
     }
   }
   p {
@@ -1593,7 +1601,7 @@ a {
   .single-box {
     span {
       font-size: 75px;
-      line-height: 60px;
+      line-height: 90px;
       display: block;
       background: $primaryGradient;
       -webkit-background-clip: text;

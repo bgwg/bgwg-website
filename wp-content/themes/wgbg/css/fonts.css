@@ -1,174 +1,178 @@
+
+/* @font-face {
+  font-family: 'Whyte'; 
+  src: local('Whyte'), url('../fonts/font/Whyte-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+} */
 @font-face {
-  font-family: 'Milliard Book';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Book'), url('../fonts/milliard/Rene Bieder  Milliard Book.woff') format('woff');
-  }
-  
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Bold.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Book Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Book Italic'), url('../fonts/milliard/Rene Bieder  Milliard Book Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Black.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Hairline';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Hairline'), url('../fonts/milliard/Rene Bieder  Milliard Hairline.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-BlackItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Hairline Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Hairline Italic'), url('../fonts/milliard/Rene Bieder  Milliard Hairline Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-BoldItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Thin';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Thin'), url('../fonts/milliard/Rene Bieder  Milliard Thin.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte Book';
+    src: url('../fonts/whyte/Whyte-Book.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Thin Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Thin Italic'), url('../fonts/milliard/Rene Bieder  Milliard Thin Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte Book';
+    src: url('../fonts/whyte/Whyte-BookItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-BookItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard ExtraLight';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard ExtraLight'), url('../fonts/milliard/Rene Bieder  Milliard ExtraLight.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-ExtraLight.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard ExtraLight Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard ExtraLight Italic'), url('../fonts/milliard/Rene Bieder  Milliard ExtraLight Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-ExtraLightItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Light';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Light'), url('../fonts/milliard/Rene Bieder  Milliard Light.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Heavy.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Light Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Light Italic'), url('../fonts/milliard/Rene Bieder  Milliard Light Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-HeavyItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-HeavyItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Medium';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Medium'), url('../fonts/milliard/Rene Bieder  Milliard Medium.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Italic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Medium Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Medium Italic'), url('../fonts/milliard/Rene Bieder  Milliard Medium Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Light.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard SemiBold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard SemiBold'), url('../fonts/milliard/Rene Bieder  Milliard SemiBold.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-LightItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard SemiBold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard SemiBold Italic'), url('../fonts/milliard/Rene Bieder  Milliard SemiBold Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Medium.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Bold'), url('../fonts/milliard/Rene Bieder  Milliard Bold.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte Super';
+    src: url('../fonts/whyte/Whyte-Super.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Super.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Bold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Bold Italic'), url('../fonts/milliard/Rene Bieder  Milliard Bold Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte Super';
+    src: url('../fonts/whyte/Whyte-SuperItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-SuperItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard ExtraBold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard ExtraBold'), url('../fonts/milliard/Rene Bieder  Milliard ExtraBold.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Regular.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard ExtraBold Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard ExtraBold Italic'), url('../fonts/milliard/Rene Bieder  Milliard ExtraBold Italic.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-Thin.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Heavy';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Heavy'), url('../fonts/milliard/Rene Bieder  Milliard Heavy.woff') format('woff');
-  }
-  
+@font-face {
+    font-family: 'Whyte';
+    src: url('../fonts/whyte/Whyte-ThinItalic.woff2') format('woff2'),
+        url('../fonts/whyte/Whyte-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Milliard Heavy Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Heavy Italic'), url('../fonts/milliard/Rene Bieder  Milliard Heavy Italic.woff') format('woff');
-  }
-  
-
-  @font-face {
-  font-family: 'Milliard Black';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Black'), url('../fonts/milliard/Rene Bieder  Milliard Black.woff') format('woff');
-  }
-  
-
-  @font-face {
-  font-family: 'Milliard Black Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Milliard Black Italic'), url('../fonts/milliard/Rene Bieder  Milliard Black Italic.woff') format('woff');
-  }

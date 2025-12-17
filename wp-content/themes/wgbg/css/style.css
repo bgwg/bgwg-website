@@ -573,6 +573,7 @@ a {
   }
 }
 .banner__content-main.subpages h3 span {
+  display: inline-block;
   background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -607,7 +608,7 @@ a {
   text-transform: uppercase;
   font-size: 80px;
   line-height: 65px;
-  font-family: "Inter", sans-serif;
+  font-family: "Whyte";
   font-weight: 600;
   margin: 0;
 }
@@ -652,7 +653,7 @@ a {
   }
 }
 .banner__content-description {
-  font-family: "Inter", sans-serif;
+  font-family: "Whyte";
   font-style: normal;
   font-weight: 300;
   font-size: 22px;
@@ -893,6 +894,7 @@ a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  display: inline-block;
 }
 @media (max-width: 992px) {
   .section-header .title h2 {
@@ -933,13 +935,13 @@ a {
 
 .experiental-engine {
   padding: 4rem 0;
-  background: url(../images/exbg.png);
+  background-image: url(../images/exbg.png);
   background-position: bottom center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .experiental-engine-solutions {
-  background: #fff;
+  background-color: #fff;
 }
 .experiental-engine .card-tile {
   position: relative;
@@ -1342,6 +1344,7 @@ a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  display: inline-block;
 }
 .cta-footer-inner .cta-content p {
   color: #fff;
@@ -1504,8 +1507,9 @@ a {
 .grid-wrapper .ibox .ibox-inner h3 {
   text-transform: uppercase;
   font-size: 60px;
-  line-height: 1.2;
-  margin: 0;
+  margin: -7px 0 0;
+  font-size: 30px;
+  line-height: 1.3;
   letter-spacing: 2px;
   font-weight: 700;
   background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
@@ -1696,6 +1700,8 @@ a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  display: inline-block;
+  line-height: 1.4;
 }
 .work-inner .content-copy p {
   font-size: 20px;
@@ -2013,6 +2019,8 @@ a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  display: inline-block;
+  line-height: 62px;
 }
 .objective-area p {
   font-size: 18px;
@@ -2094,7 +2102,7 @@ a {
 }
 .solution-box .single-box span {
   font-size: 75px;
-  line-height: 60px;
+  line-height: 90px;
   display: block;
   background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
   -webkit-background-clip: text;
@@ -2371,5 +2379,6 @@ video-section .video-container {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Whyte";
+  font-size: 14px;
 }/*# sourceMappingURL=style.css.map */

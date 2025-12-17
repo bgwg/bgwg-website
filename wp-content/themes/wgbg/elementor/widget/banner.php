@@ -157,7 +157,7 @@ class GCBanner extends Widget_Base {
                                         <h1 class="banner__content-title">
                                             <?php echo $title_1; ?>
                                         </h1>
-                                        <h2><?php  echo $title_1; ?></h2>
+                                        <h2><?php  echo $title_2; ?></h2>
                                         <p class="banner__content-description">
                                             <?php echo $details_text;  ?>
                                         </p>
