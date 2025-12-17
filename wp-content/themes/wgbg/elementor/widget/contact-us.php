@@ -126,7 +126,7 @@ class GCContactUs extends Widget_Base {
 
 			<div class="row">
 
-				<div class="col-md-5">
+				<div class="col-md-5 col-sm-5">
 					<div class="contact-copy">
 						<p><?php echo esc_html( $s['small_title'] ); ?></p>
 						<h2><?php echo esc_html( $s['heading_one'] ); ?></h2>
@@ -152,7 +152,7 @@ class GCContactUs extends Widget_Base {
 					</div>
 				</div>
 
-				<div class="col-md-7">
+				<div class="col-md-7 col-sm-7">
 					<div class="contact-form-inner">
 						<h3>Let's Talk</h3>
 
