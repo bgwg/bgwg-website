@@ -499,7 +499,7 @@ a {
   border: 0px solid #FFB400;
   position: relative;
   border-radius: 12px;
-  padding: 14px 5px 10px;
+  padding: 14px 30px 10px;
   line-height: 24px;
 }
 .btn-success span {
@@ -2352,6 +2352,44 @@ video-section .video-container {
     width: 40%;
   }
 }
+#clear-scale-new .experiental-engine {
+  background-image: none;
+  background-color: #fff;
+  padding-bottom: 0;
+}
+
+#clear-scale-new .section-header {
+  width: 100%;
+  max-width: inherit;
+}
+
+#clear-scale-new .section-header .title h2 {
+  color: #1E1E1E;
+}
+
+#clear-scale-new .section-header .title h2 span {
+  background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+#clear-scale-new .section-header .title p {
+  color: #1E1E1E;
+  max-width: 75%;
+  margin: 12px auto;
+}
+
+#clear-scale-new .experiental-engine .card-tile p {
+  background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.3;
+}
+
 .footer {
   background: url(../images/footer.png);
   background-repeat: no-repeat;
