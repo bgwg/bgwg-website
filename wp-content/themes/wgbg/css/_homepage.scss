@@ -13,7 +13,8 @@ a {
   font-weight: 500;
   min-width: 200px;
   border: 0px solid;
-  padding: 12px 5px;
+  padding: 14px 5px 10px;
+  line-height: 24px;
   border-radius: 8px; 
 }
 .btn-info {
@@ -23,7 +24,8 @@ a {
   font-weight: 500;
   min-width: 200px;
   border: 0px solid;
-  padding: 12px 5px;
+  padding: 14px 5px 10px;
+  line-height: 24px;
   border-radius: 8px;
 }
 .btn-success { 
@@ -35,7 +37,8 @@ a {
   border: 0px solid #FFB400;
   position: relative;
   border-radius: 12px;
-  padding: 12px 5px;
+  padding: 14px 5px 10px;
+  line-height: 24px;
   span {
     position: relative;
     z-index: 9;
@@ -137,8 +140,8 @@ a {
     &-title { 
       color: $white;
       text-transform: uppercase;
-      font-size: 80px; 
-      line-height: 65px;
+      font-size: 75px; 
+      line-height: 80px;
       font-family: $primaryFont;
       font-weight: 600;
       margin: 0;
@@ -169,6 +172,7 @@ a {
       background-clip: text;
       color: transparent;
       font-size: 75px;
+      margin: 0;
       @media (max-width: 992px) {
         font-size: 38px;
       }
@@ -184,7 +188,7 @@ a {
       font-size: 22px;
       line-height: 34px;
       color: #fff;
-      max-width: 75%;
+      max-width: 65%;
       margin: 40px auto 50px;
       @media (max-width: 992px) {
         font-size: 18px;
@@ -203,11 +207,11 @@ a {
 
     }
     &-description2 {
-      color: #FDFDFD;
-      font-size: 28px;
+      color: #fdfdfdbd;
+      font-size: 25px;
       font-weight: 100;
       line-height: 34px;
-      width: 86%;
+      width: 85%;
       margin: auto;
       @media (max-width: 992px) {
         font-size: 16px;
@@ -362,7 +366,7 @@ a {
 // Section Header 
 .section-header {
   text-align: center;
-  max-width: 65%;
+  max-width: 75%;
   margin: auto;
   padding-bottom: 20px;
   &.width-full {
@@ -419,10 +423,10 @@ a {
       }
     }
     p {
-      font-size: 17px;
+      font-size: 18px;
       color: #fff;
-      font-weight: 300;
-      margin: 12px 0 0;
+      font-weight: 200;
+      margin: 12px 15px 0;
       @media (max-width: 992px) {
         font-size: 15px;
       }
@@ -449,7 +453,7 @@ a {
   &-solutions {
     background-color: $white;
   }
-  padding: 4rem 0;
+  padding: 6rem 0;
   background-image: url(../images/exbg.png);
   background-position: bottom center;
   background-size: cover;
@@ -495,7 +499,7 @@ a {
   }
 }
 .brand-choose {
-  padding: 4rem 0;
+  padding: 6rem 0;
   background: url(../images/exbg2.png);
   background-position: top center;
   background-size: cover;
@@ -547,9 +551,23 @@ a {
     margin-top: 40px;
   }
 }
-
+.engine-motion {
+  padding: 6rem 0;
+  background: linear-gradient(360deg, rgba(13, 13, 13, 0) 96.52%, rgba(13, 13, 13, 0.2) 123.16%);
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0) 96.15%, rgba(13, 13, 13, 0.2) 123.8%);
+  }
+}
 
 .vertical-slider {
+  padding-top: 3rem;
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -639,6 +657,7 @@ a {
   }
 }
 .the-people {
+  padding: 6rem 0;
   &-content {
     margin: 20px 0;
     .first-row {
@@ -664,7 +683,7 @@ a {
         }
       }
       .people-copy {
-        width: 35%;
+        width: 37%;
         padding: 0 0 60px 25px;
         @media (max-width: 767px) {
           width: 100%;
@@ -680,6 +699,7 @@ a {
             background-clip: text;
             color: transparent;
             font-weight: 700;
+            display: inline-block;
           }
           @media (max-width: 1100px) {
             font-size: 45px;
@@ -716,6 +736,18 @@ a {
 } 
 
 .ready-power {
+  padding: 6rem 0 0;
+  background: linear-gradient(360deg, rgba(13, 13, 13, 0) 96.52%, rgba(13, 13, 13, 0.2) 123.16%);
+  position: relative;
+  // &:before {
+  //   position: absolute;
+  //   content: "";
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   height: 100%;
+  //   background: linear-gradient(180deg, rgba(13, 13, 13, 0) 96.15%, rgba(13, 13, 13, 0.2) 123.8%);
+  // }
   .ready-left-img {
     width: 100%;
     img {
@@ -1329,6 +1361,9 @@ a {
 
 
   .featured-digital-item {
+    img {
+      height: 65px;
+    }
     .card-contents {
       display: flex;
       align-items: center;
