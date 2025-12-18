@@ -30,10 +30,11 @@ div#our-service-p p span {
 li#menu-item-13 a {
     text-transform: inherit;
     background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
-    padding: 14px 25px !important;
+    padding: 14px 25px 10px !important;
     display: inline-flex !important;
     gap: 10px;
     border-radius: 12px;
+    margin-top: -12px;
 }
 li#menu-item-13 a:before {
     width: 100%;
@@ -59,11 +60,15 @@ li#menu-item-13 a:after {
     bottom: 0;
 }
 li#menu-item-13 a img {
-    width: 20px;
-    height: auto;
+    width: 22px;
+    height: 20px;
+    object-fit: contain;
 }
 li#menu-item-13 a span {
     color: #fff;
+    line-height: 1;
+    padding-top: 5px;
+    padding-bottom: 0;
 }
 li#menu-item-19 a img {
     width: 19px;

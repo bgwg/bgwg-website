@@ -78,35 +78,20 @@ class GCPage extends Widget_Base {
         $title_2                    = $settings['gcbc_title_text_2'];    
         $gcbc_details_text          = $settings['gcbc_details_text'];   
 		?>	
-    <div class="banner book-demo-banner">
-        <div class="banner__slider">
-            <div class="banner__content">
-                <div class="container">
-                  <div class="bredcarm">
-                    <ul class="list-unstyled">
-                    <li><a href="<?php echo get_site_url(); ?>"><?php echo get_bloginfo('name');  ?></a></li>
-                    <li><a class="active" href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
-                    </ul>
-                  </div>
-                  <div class="banner-content-inner">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="section-header">
-                          <div class="title">
-                            <h2><?php echo $title_1; ?> <span><?php echo $title_2; ?></span></h2>
-                          </div>
-                        </div>
-                      </div>
-                        <div class="col-sm-12">
-                          <div class="signup-form page-content">
-                          <?php echo $gcbc_details_text; ?>
-                          </div>                          
-                        </div>
-                    </div>
-                  </div>
-                </div>
+    <div class="page-template"> 
+      <div class="menu-height-bg" style="background: #000; min-height: 90px;"></div>
+      <div class="container">
+        <div class="page-content-inner">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-content">
+              <?php echo $gcbc_details_text; ?>
+              </div>                          
             </div>
+          </div> 
         </div>
+      </div>
+      <!-- <div class="footer-height-adjust" style="min-height: 180px; background: #fff;"></div> -->
     </div>
 		<?php
 	}

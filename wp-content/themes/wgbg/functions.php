@@ -6,8 +6,7 @@
 // Enqueue scripts and styles
 function gc_scripts() {
     // Styles
-    wp_enqueue_style('flag-icon.min.css','https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css', [], '0.8.2');
-    wp_enqueue_style('bootstrap-select.min','https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css', [], '1.6.2');
+    wp_enqueue_style('flag-icon.min.css', get_template_directory_uri() . '/css/flag-icon.min.css', [], '01');
     wp_enqueue_style('font-awesome.min.css', get_template_directory_uri() . '/css/font-awesome.min.css', [], '01');
     wp_enqueue_style('bootstrap.min.css', get_template_directory_uri() . '/css/bootstrap.min.css', [], '01');
     wp_enqueue_style('sidenav.min.css', get_template_directory_uri() . '/css/sidenav.min.css', [], '01');
@@ -16,14 +15,14 @@ function gc_scripts() {
     wp_enqueue_style('style.css', get_template_directory_uri() . '/css/style.css', [], '01');
     wp_enqueue_style('main-style.css', get_template_directory_uri() . '/style.css', [], time());
 
-    // Scripts
+    // Scripts 
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js', false, null);
+    wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.min.2.2.4.js', [], '2.2.4', true );
     wp_enqueue_script('jquery');
-    wp_enqueue_script('bootstrap.min.js', get_template_directory_uri() . '/js/bootstrap.min.js', ['jquery'], '01', true);
-    wp_enqueue_script('sidenav.js', get_template_directory_uri() . '/js/sidenav.js', ['jquery'], '01', true);
-    wp_enqueue_script('slick.min.js', get_template_directory_uri() . '/js/slick.min.js', ['jquery'], '01', true);
-    wp_enqueue_script('scripts.js', get_template_directory_uri() . '/js/scripts.js', ['jquery'], time(), true);
+    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', ['jquery'], '1.0', true);
+    wp_enqueue_script('sidenav', get_template_directory_uri() . '/js/sidenav.js', ['jquery'], '1.0', true);
+    wp_enqueue_script('slick', get_template_directory_uri() . '/js/slick.min.js', ['jquery'], '1.0', true);
+    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js', ['jquery'], time(), true);
 }
 add_action('wp_enqueue_scripts', 'gc_scripts');
 
@@ -48,7 +47,9 @@ function gc_init() {
     load_theme_textdomain('greencard', get_template_directory());
 
     // Elementor integration
-    require_once(__DIR__ . '/elementor/main.php');
+    if (file_exists(__DIR__ . '/elementor/main.php')) {
+        require_once(__DIR__ . '/elementor/main.php');
+    }
 }
 
 /**
@@ -73,13 +74,19 @@ function gc_register_case_study_cpt() {
     $args = [
         'labels' => $labels,
         'public' => true,
-        'has_archive' => true,
+        'publicly_queryable' => true,
         'show_ui' => true,
         'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_admin_bar' => true,
         'show_in_rest' => true,
-        'supports' => ['title','editor','thumbnail'],
-        'rewrite' => ['slug' => 'case-study'],
+        'has_archive' => true,
         'menu_position' => 20,
+        'menu_icon' => 'dashicons-portfolio',
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+        'rewrite' => ['slug' => 'case-study', 'with_front' => false],
     ];
 
     register_post_type('case_study', $args);
@@ -90,12 +97,59 @@ add_action('init', 'gc_register_case_study_cpt');
  * Add Meta Boxes
  */
 function gc_case_study_add_meta_boxes() {
-    add_meta_box('gc_case_study_card', __('Case Study Card','greencard'), 'gc_case_study_card_meta_box_callback', 'case_study','normal','high');
-    add_meta_box('gc_case_study_hero', __('Case Study Hero','greencard'), 'gc_case_study_hero_meta_box_callback', 'case_study','normal','high');
-    add_meta_box('gc_case_study_details', __('Case Study Details (Year & Technology)','greencard'), 'gc_case_study_details_meta_box_callback', 'case_study','normal','high');
-    add_meta_box('gc_case_study_objective', __('Objective Section','greencard'), 'gc_case_study_objective_meta_box_callback','case_study','normal','default');
-    add_meta_box('gc_case_study_execution', __('Execution Section','greencard'), 'gc_case_study_execution_meta_box_callback','case_study','normal','default');
-    add_meta_box('gc_case_study_outcome', __('Outcome Section','greencard'), 'gc_case_study_outcome_meta_box_callback','case_study','normal','default');
+    add_meta_box(
+        'gc_case_study_card',
+        __('Case Study Card','greencard'),
+        'gc_case_study_card_meta_box_callback',
+        'case_study',
+        'normal',
+        'high'
+    );
+    
+    add_meta_box(
+        'gc_case_study_hero',
+        __('Case Study Hero','greencard'),
+        'gc_case_study_hero_meta_box_callback',
+        'case_study',
+        'normal',
+        'high'
+    );
+    
+    add_meta_box(
+        'gc_case_study_details',
+        __('Case Study Details (Year & Technology)','greencard'),
+        'gc_case_study_details_meta_box_callback',
+        'case_study',
+        'normal',
+        'high'
+    );
+    
+    add_meta_box(
+        'gc_case_study_objective',
+        __('Objective Section','greencard'),
+        'gc_case_study_objective_meta_box_callback',
+        'case_study',
+        'normal',
+        'default'
+    );
+    
+    add_meta_box(
+        'gc_case_study_execution',
+        __('Execution Section','greencard'),
+        'gc_case_study_execution_meta_box_callback',
+        'case_study',
+        'normal',
+        'default'
+    );
+    
+    add_meta_box(
+        'gc_case_study_outcome',
+        __('Outcome Section','greencard'),
+        'gc_case_study_outcome_meta_box_callback',
+        'case_study',
+        'normal',
+        'default'
+    );
 }
 add_action('add_meta_boxes', 'gc_case_study_add_meta_boxes');
 
@@ -107,53 +161,6 @@ function gc_case_study_get_meta($post_id, $key, $default='') {
     return $value === '' ? $default : $value;
 }
 
-
-/**
- * Hero Meta Box
- */
-function gc_case_study_hero_meta_box_callback($post) {
-    wp_nonce_field('gc_case_study_save_meta','gc_case_study_meta_nonce');
-
-    // $card_bg_image  = gc_case_study_get_meta($post->ID,'_cs_card_bg_image');
-    $banner_logo    = gc_case_study_get_meta($post->ID,'_cs_banner_logo');
-    $banner_image   = gc_case_study_get_meta($post->ID,'_cs_banner_image');
-    $main_image     = gc_case_study_get_meta($post->ID,'_cs_main_image');
-    $heading_prefix = gc_case_study_get_meta($post->ID,'_cs_heading_prefix');
-    $heading_main   = gc_case_study_get_meta($post->ID,'_cs_heading_main');
-    $intro_text     = gc_case_study_get_meta($post->ID,'_cs_intro_text');
-    ?>
-
-    <p>
-        <label>Banner Logo</label><br>
-        <img id="gc_banner_logo" src="<?php echo esc_url($banner_logo); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
-        <input type="hidden" name="gc_cs_banner_logo" id="gc_cs_banner_logo" value="<?php echo esc_attr($banner_logo); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_banner_logo" data-preview="gc_banner_logo">Upload / Select Image</button>
-    </p>
-
-    <p>
-        <label>Banner Image</label><br>
-        <img id="gc_banner_preview" src="<?php echo esc_url($banner_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
-        <input type="hidden" name="gc_cs_banner_image" id="gc_cs_banner_image" value="<?php echo esc_attr($banner_image); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_banner_image" data-preview="gc_banner_preview">Upload / Select Image</button>
-    </p>
-
-    <p>
-        <label>Main Image</label><br>
-        <img id="gc_main_image_preview" src="<?php echo esc_url($main_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
-        <input type="hidden" name="gc_cs_main_image" id="gc_cs_main_image" value="<?php echo esc_attr($main_image); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_main_image" data-preview="gc_main_image_preview">Upload / Select Image</button>
-    </p>
-
-    <p><label>Heading Prefix</label></p>
-    <input type="text" class="widefat" name="gc_cs_heading_prefix" value="<?php echo esc_attr($heading_prefix); ?>" />
-
-    <p><label>Main Heading</label></p>
-    <input type="text" class="widefat" name="gc_cs_heading_main" value="<?php echo esc_attr($heading_main); ?>" />
-
-    <p><label>Intro Text</label></p>
-    <textarea class="widefat" name="gc_cs_intro_text" rows="4"><?php echo esc_textarea($intro_text); ?></textarea>
-    <?php
-}
 /**
  * case study page card Meta Box
  */
@@ -167,8 +174,52 @@ function gc_case_study_card_meta_box_callback($post) {
         <label>Card Background Image</label><br>
         <img id="gc_card_bg_preview" src="<?php echo esc_url($card_bg_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
         <input type="hidden" name="gc_cs_card_bg_image" id="gc_cs_card_bg_image" value="<?php echo esc_attr($card_bg_image); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_card_bg_image" data-preview="gc_card_bg_preview">Upload / Select Image</button>
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_card_bg_image" data-preview="gc_card_bg_preview">Upload / Select Image</button>
     </p>
+    <?php
+}
+
+/**
+ * Hero Meta Box
+ */
+function gc_case_study_hero_meta_box_callback($post) {
+    $banner_logo    = gc_case_study_get_meta($post->ID,'_cs_banner_logo');
+    $banner_image   = gc_case_study_get_meta($post->ID,'_cs_banner_image');
+    $main_image     = gc_case_study_get_meta($post->ID,'_cs_main_image');
+    $heading_prefix = gc_case_study_get_meta($post->ID,'_cs_heading_prefix');
+    $heading_main   = gc_case_study_get_meta($post->ID,'_cs_heading_main');
+    $intro_text     = gc_case_study_get_meta($post->ID,'_cs_intro_text');
+    ?>
+
+    <p>
+        <label>Banner Logo</label><br>
+        <img id="gc_banner_logo" src="<?php echo esc_url($banner_logo); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_banner_logo" id="gc_cs_banner_logo" value="<?php echo esc_attr($banner_logo); ?>" />
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_banner_logo" data-preview="gc_banner_logo">Upload / Select Image</button>
+    </p>
+
+    <p>
+        <label>Banner Image</label><br>
+        <img id="gc_banner_preview" src="<?php echo esc_url($banner_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_banner_image" id="gc_cs_banner_image" value="<?php echo esc_attr($banner_image); ?>" />
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_banner_image" data-preview="gc_banner_preview">Upload / Select Image</button>
+    </p>
+
+    <p>
+        <label>Main Image</label><br>
+        <img id="gc_main_image_preview" src="<?php echo esc_url($main_image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_main_image" id="gc_cs_main_image" value="<?php echo esc_attr($main_image); ?>" />
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_main_image" data-preview="gc_main_image_preview">Upload / Select Image</button>
+    </p>
+
+    <p><label>Heading Prefix</label></p>
+    <input type="text" class="widefat" name="gc_cs_heading_prefix" value="<?php echo esc_attr($heading_prefix); ?>" />
+
+    <p><label>Main Heading</label></p>
+    <input type="text" class="widefat" name="gc_cs_heading_main" value="<?php echo esc_attr($heading_main); ?>" />
+
+    <p><label>Intro Text</label></p>
+    <textarea class="widefat" name="gc_cs_intro_text" rows="4"><?php echo esc_textarea($intro_text); ?></textarea>
     <?php
 }
 
@@ -201,9 +252,6 @@ function gc_case_study_objective_meta_box_callback($post){
     <p><label>Objective Subtitle</label></p>
     <input type="text" class="widefat" name="gc_cs_objective_subtitle" value="<?php echo esc_attr($subtitle); ?>" />
 
-    <!-- <p><label>Objective Heading</label></p> -->
-    <!-- <input type="text" class="widefat" name="gc_cs_objective_heading" value="<?php echo esc_attr($heading); ?>" /> -->
-
     <p><label>Objective Intro</label></p>
     <textarea class="widefat" name="gc_cs_objective_intro" rows="4"><?php echo esc_textarea($intro); ?></textarea>
 
@@ -217,7 +265,7 @@ function gc_case_study_objective_meta_box_callback($post){
         <label>Objective Image</label><br>
         <img id="gc_objective_preview" src="<?php echo esc_url($image); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
         <input type="hidden" name="gc_cs_objective_image" id="gc_cs_objective_image" value="<?php echo esc_attr($image); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_objective_image" data-preview="gc_objective_preview">Upload / Select Image</button>
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_objective_image" data-preview="gc_objective_preview">Upload / Select Image</button>
     </p>
     <?php
 }
@@ -248,10 +296,7 @@ function gc_case_study_execution_meta_box_callback($post){
     <p><label>Four Box Heading</label></p>
     <input type="text" class="widefat" name="gc_cs_four_box_heading" value="<?php echo esc_attr($four_head); ?>" />
 
-    <!-- <p><label>Four Box Items (one per line)</label></p>
-    <textarea class="widefat" name="gc_cs_four_box_items" rows="4"><?php //echo esc_textarea($four_items); ?></textarea> -->
     <?php
-    $four_items = gc_case_study_get_meta($post->ID, '_cs_four_box_items', []);
     if (!is_array($four_items)) {
         $four_items = ['', '', '', ''];
     }
@@ -295,30 +340,30 @@ function gc_case_study_outcome_meta_box_callback($post){
         <label>Video Thumbnail</label><br>
         <img id="gc_video_thumb_preview" src="<?php echo esc_url($thumb); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
         <input type="hidden" name="gc_cs_video_thumbnail" id="gc_cs_video_thumbnail" value="<?php echo esc_attr($thumb); ?>" />
-        <button class="button gc-upload-btn" data-target="gc_cs_video_thumbnail" data-preview="gc_video_thumb_preview">Upload / Select Image</button>
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_video_thumbnail" data-preview="gc_video_thumb_preview">Upload / Select Image</button>
     </p>
 
     <p><label>Video URL</label></p>
     <input type="text" class="widefat" name="gc_cs_video_url" value="<?php echo esc_attr($video); ?>" />
 
-<p>
-    <label>Large Images (Gallery for Slick Slider)</label><br>
-    <div id="gc_large_images_container">
-        <?php
-        $large_images = gc_case_study_get_meta($post->ID,'_cs_large_image');
-        if (!empty($large_images) && is_array($large_images)) {
-            foreach ($large_images as $img) {
-                echo '<div class="gc-large-image-item" style="margin-bottom:5px;">
-                        <img src="'.esc_url($img).'" style="max-width:150px; display:block; margin-bottom:2px;">
-                        <input type="hidden" name="gc_cs_large_image[]" value="'.esc_url($img).'">
-                        <button class="button gc-remove-image-btn">Remove</button>
-                      </div>';
+    <p>
+        <label>Large Images (Gallery for Slick Slider)</label><br>
+        <div id="gc_large_images_container">
+            <?php
+            $large_images = gc_case_study_get_meta($post->ID,'_cs_large_image');
+            if (!empty($large_images) && is_array($large_images)) {
+                foreach ($large_images as $img) {
+                    echo '<div class="gc-large-image-item" style="margin-bottom:5px;">
+                            <img src="'.esc_url($img).'" style="max-width:150px; display:block; margin-bottom:2px;">
+                            <input type="hidden" name="gc_cs_large_image[]" value="'.esc_url($img).'">
+                            <button type="button" class="button gc-remove-image-btn">Remove</button>
+                          </div>';
+                }
             }
-        }
-        ?>
-    </div>
-    <button class="button" id="gc_add_large_image_btn">Add Images</button>
-</p>
+            ?>
+        </div>
+        <button type="button" class="button" id="gc_add_large_image_btn">Add Images</button>
+    </p>
 
     <?php
 }
@@ -327,11 +372,21 @@ function gc_case_study_outcome_meta_box_callback($post){
  * Save Meta
  */
 function gc_case_study_save_meta($post_id){
-    if(!isset($_POST['gc_case_study_meta_nonce'])) return;
-    if(!wp_verify_nonce($_POST['gc_case_study_meta_nonce'],'gc_case_study_save_meta')) return;
-    if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-    if(isset($_POST['post_type']) && $_POST['post_type']=='case_study'){
-        if(!current_user_can('edit_post',$post_id)) return;
+    // Security checks
+    if (!isset($_POST['gc_case_study_meta_nonce'])) {
+        return;
+    }
+    
+    if (!wp_verify_nonce($_POST['gc_case_study_meta_nonce'], 'gc_case_study_save_meta')) {
+        return;
+    }
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
     }
 
     $fields = [
@@ -385,6 +440,5 @@ function gc_case_study_save_meta($post_id){
 
         update_post_meta($post_id, $meta_key, $value);
     }
-
 }
-add_action('save_post_case_study','gc_case_study_save_meta');
+add_action('save_post_case_study', 'gc_case_study_save_meta');

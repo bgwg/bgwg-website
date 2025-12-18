@@ -1,37 +1,35 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-    const videoContainer = document.getElementById("videoContainer");
-    const thumbnail = document.getElementById("thumbnail");
-    const playButton = document.getElementById("playButton");
-    const video = document.getElementById("video");
+document.addEventListener("DOMContentLoaded", function () {
+    const playBtn = document.getElementById("playButton");
+    const thumb = document.getElementById("videoThumb");
+    const iframe = document.querySelector(".iframe-video");
+    const video = document.querySelector(".html-video");
 
-    playButton.addEventListener("click", () => {
-        // Hide thumbnail and play button
-        thumbnail.style.display = "none";
-        playButton.style.display = "none";
+    if (playBtn) {
+        playBtn.addEventListener("click", function () {
 
-        // Show and play video
-        video.style.display = "block";
-        video.play();
-    });
+            playBtn.style.display = "none";
+            if (thumb) thumb.style.display = "none";
 
-    // Optional: Pause video when clicked
-    video.addEventListener("click", () => {
-        if (video.paused) {
-            video.play();
-        } else {
-            video.pause();
-        }
-    });
+            // YouTube / Vimeo
+            if (iframe) {
+                iframe.src = iframe.getAttribute("data-src");
+            }
+
+            // Self hosted
+            if (video) {
+                video.play();
+            }
+        });
+    }
 });
+
 
 jQuery(document).ready(function($){
 	$( document ).ready(function() {
 		$('[data-sidenav]').sidenav();
 	});
-    $(function(){
-        $('.selectpicker').selectpicker();
-    });
+ 
     $(window).scroll(function(){
         if ($(this).scrollTop() > 400) {
            $('.navbar-fixed-top').addClass('newBg');
@@ -131,25 +129,4 @@ jQuery(document).ready(function($){
         fade: true,
         asNavFor: '.thumb-slider'
     });
-
-    // return featuredSlider();
-    /* ==============================================
-            CUSTOM SELECT
-    ============================================== */
-    const sorting = document.querySelector('.selectpicker');
-    const commentSorting = document.querySelector('.selectpicker');
-    const sortingchoices = new Choices(sorting, {
-        placeholder: false,
-        itemSelectText: ''
-    });
-
-
-    // Trick to apply your custom classes to generated dropdown menu
-    let sortingClass = sorting.getAttribute('class');
-    window.onload= function () {
-        sorting.parentElement.setAttribute('class', sortingClass);
-    }
-
-    
-
 }(jQuery));	

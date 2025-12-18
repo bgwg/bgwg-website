@@ -212,26 +212,65 @@ if ( have_posts() ) :
 					</div>
 				</div>
 			</div>
-
-	<?php if ( $video_url && $video_thumb ) : ?>
+	
+		<?php if ( $video_url && $video_thumb ) : ?>
 		<div class="video-section testes">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="video-container" id="videoContainer">
-							<div class="video-thum">
-								<img class="thumbnails" id="thumbnail" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
-							</div>
-							<button class="play-button" id="playButton"> 
-								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/play-icon.png" alt="">
+    	<div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="video-container" id="videoContainer">
+              <div class="video-thum" id="videoThumb">
+                <img class="thumbnails" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+              </div>
+							<!-- Play Button -->
+							<button class="play-button" id="playButton">
+								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/play-icon.png" alt="Play">
 							</button>
-							<video class="video" id="video" src="<?php echo esc_url( $video_url ); ?>"></video>
-						</div> 
+
+              <?php
+                if ( preg_match( '/(youtube\.com|youtu\.be)/i', $video_url ) ) {
+										preg_match( '/(youtu\.be\/|v=)([^&]+)/', $video_url, $matches );
+										$video_id = $matches[2] ?? '';
+										if ( $video_id ) :
+                ?>
+									<iframe
+										class="video iframe-video"
+										data-src="https://www.youtube.com/embed/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
+										frameborder="0"
+										allow="autoplay; encrypted-media"
+										allowfullscreen>
+									</iframe>
+                <?php
+                endif;
+
+                } elseif ( preg_match( '/vimeo\.com/i', $video_url ) ) {
+									preg_match( '/vimeo\.com\/(\d+)/', $video_url, $matches );
+									$video_id = $matches[1] ?? '';
+									if ( $video_id ) :
+								?>
+								<iframe
+									class="video iframe-video"
+									data-src="https://player.vimeo.com/video/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
+									frameborder="0"
+									allow="autoplay; fullscreen"
+									allowfullscreen>
+								</iframe>
+									<?php
+										endif;
+									} else {
+									?>
+									<video class="video html-video" preload="metadata" controls>
+										<source src="<?php echo esc_url( $video_url ); ?>">
+									</video>
+							<?php } ?>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	<?php endif; ?>
+
+		<?php endif; ?>
+
 
 	<?php $large_images = get_post_meta(get_the_ID(), '_cs_large_image', true);
 	if (!empty($large_images) && is_array($large_images)): ?>
