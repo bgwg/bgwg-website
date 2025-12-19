@@ -87,7 +87,7 @@ class GCOurWork extends Widget_Base {
 
 							<div class="col-md-12 mb-4">
 								<div class="work-inner"
-									style="background: url('<?php echo esc_url( $card_bg_image ); ?>')">
+									style="background-image: url('<?php echo esc_url( $card_bg_image ); ?>')">
 
 									<div class="work-photo">
 										<img src="<?php echo esc_url( $card_image ); ?>"

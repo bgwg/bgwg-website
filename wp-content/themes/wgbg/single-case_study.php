@@ -32,8 +32,14 @@ if ( have_posts() ) :
 		$video_url      = get_post_meta( $post_id, '_cs_video_url', true );
 		$video_thumb    = get_post_meta( $post_id, '_cs_video_thumbnail', true );
 		$large_image    = get_post_meta( $post_id, '_cs_large_image', true );
-		// $objective_bottom = get_post_meta( $post_id, '_cs_objective_bottom', true );
 		$objective_extra_text = get_post_meta( $post_id, '_cs_objective_extra_text', true );
+		// $objective_bottom = get_post_meta( $post_id, '_cs_objective_bottom', true );
+		
+		$solution_ext_title = get_post_meta( $post_id, '_cs_solution_extended_title', true );
+		$solution_ext_text  = get_post_meta( $post_id, '_cs_solution_extended_text', true );
+		$solution_ext_img   = get_post_meta( $post_id, '_cs_solution_extended_image', true );
+		$use_extended_layout = get_post_meta( $post_id, '_cs_use_extended_layout', true );
+
 
 		$template_dir = get_template_directory_uri();
 
@@ -151,55 +157,130 @@ if ( have_posts() ) :
 					</div>
 				</div>
 			</div>
+			
 
-			<div class="our-solutions">
-				<div class="container">
-					<div class="objective-area">
-						<h3><?php echo esc_html( $exec_sub ); ?></h3>
-						<h2>Our <span>Solution</span></h2>
-						<!-- <h2><?php //echo wp_kses_post( $exec_head ); ?></h2> -->
-						<?php if ( $exec_text ) : ?>
-							<p><?php echo wp_kses_post( nl2br( $exec_text ) ); ?></p>
-						<?php endif; ?>
-					</div>
-					<div class="solution-box">
-						<?php
-						$step_index = 1;
-						foreach ( $step_items as $step ) :
-							?>
-							<div class="single-box">
-								<span><?php echo esc_html( $step_index ); ?></span>
-								<p><?php echo esc_html( $step ); ?></p>
-							</div>
-							<?php
-							$step_index++;
-						endforeach;
-						?>
-					</div>
-					<div class="objective-area">
-						<h2>How We <span>Exceeded Expectations</span></h2>
-						<!-- <h2><?php //echo wp_kses_post( $four_head ); ?></h2> -->
-					</div>
-						<?php
-						$four_boxes = get_post_meta(get_the_ID(), '_cs_four_box_items', true);
+<div class="our-solutions">
+	<div class="container">
 
-						if (!is_array($four_boxes)) {
-								$four_boxes = [];
-						}
-						?>
+		<?php
+		// SAFETY CHECKS
+		$four_boxes = get_post_meta( get_the_ID(), '_cs_four_box_items', true );
+		if ( ! is_array( $four_boxes ) ) {
+			$four_boxes = [];
+		}
 
-						<div class="four-boxs">
-								<?php foreach ($four_boxes as $four_item) : ?>
-										<?php if (!empty(trim($four_item))) : ?>
-												<div class="each-four">
-													<p><?php echo wp_kses_post($four_item); ?></p>
-												</div>
-										<?php endif; ?>
-								<?php endforeach; ?>
+		$step_items = array_filter( array_map( 'trim', explode( "\n", $steps ) ) );
+
+		$has_area_with_box = (
+			! empty( $exec_text ) ||
+			! empty( $step_items ) ||
+			! empty( $four_boxes )
+		);
+
+		$has_area_with_img_box = (
+			! empty( $solution_ext_title ) ||
+			! empty( $solution_ext_text ) ||
+			! empty( $solution_ext_img )
+		);
+		?>
+
+		<?php if ( $use_extended_layout === '1' && $has_area_with_img_box ) : ?>
+
+			<!-- EXTENDED LAYOUT -->
+			<div class="area-with-img-box">
+				<div class="objective-area">
+					<h3><?php echo esc_html( $exec_sub ); ?></h3>
+					<h2>Our <span>Solution</span></h2>
+					<?php if ( $solution_ext_title ) : ?>
+						<h4 class="extended-copy"><?php echo esc_html( $solution_ext_title ); ?></h4>
+					<?php endif; ?>
+
+					<?php if ( $solution_ext_text ) : ?>
+						<p><?php echo wp_kses_post( nl2br( $solution_ext_text ) ); ?></p>
+					<?php endif; ?>
+				</div>
+
+				<div class="our-solution-extended">
+					<?php if ( $solution_ext_img ) : ?>
+						<div class="project-photo">
+							<img src="<?php echo esc_url( $solution_ext_img ); ?>" alt="">
 						</div>
-
+					<?php endif; ?>
 				</div>
 			</div>
+
+		<?php elseif ( $has_area_with_box ) : ?>
+
+			<!-- BOX LAYOUT -->
+			<div class="area-with-box">
+				<div class="objective-area">
+					<h3><?php echo esc_html( $exec_sub ); ?></h3>
+					<h2>Our <span>Solution</span></h2>
+
+					<?php if ( $exec_text ) : ?>
+						<p><?php echo wp_kses_post( nl2br( $exec_text ) ); ?></p>
+					<?php endif; ?>
+				</div>
+
+				<div class="solution-box">
+					<?php $step_index = 1; ?>
+					<?php foreach ( $step_items as $step ) : ?>
+						<div class="single-box">
+							<span><?php echo esc_html( $step_index ); ?></span>
+							<p><?php echo esc_html( $step ); ?></p>
+						</div>
+						<?php $step_index++; ?>
+					<?php endforeach; ?>
+				</div>
+
+				<?php if ( ! empty( $four_boxes ) ) : ?>
+					<div class="objective-area">
+						<h2>How We <span>Exceeded Expectations</span></h2>
+					</div>
+
+					<div class="four-boxs">
+						<?php foreach ( $four_boxes as $four_item ) : ?>
+							<?php if ( ! empty( trim( $four_item ) ) ) : ?>
+								<div class="each-four">
+									<p><?php echo wp_kses_post( $four_item ); ?></p>
+								</div>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+			</div>
+
+		<?php elseif ( $has_area_with_img_box ) : ?>
+
+			<!-- FALLBACK EXTENDED -->
+			<div class="area-with-img-box">
+				<div class="objective-area">
+					<h3><?php echo esc_html( $exec_sub ); ?></h3>
+					<h2>Our <span>Solution</span></h2>
+				</div>
+
+				<div class="our-solution-extended">
+					<?php if ( $solution_ext_title ) : ?>
+						<h2><?php echo esc_html( $solution_ext_title ); ?></h2>
+					<?php endif; ?>
+
+					<?php if ( $solution_ext_text ) : ?>
+						<p><?php echo wp_kses_post( nl2br( $solution_ext_text ) ); ?></p>
+					<?php endif; ?>
+
+					<?php if ( $solution_ext_img ) : ?>
+						<div class="project-photo">
+							<img src="<?php echo esc_url( $solution_ext_img ); ?>" alt="">
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+
+		<?php endif; ?>
+
+	</div>
+</div>
+
 
 			<div class="the-outcome">
 				<div class="container">

@@ -29,7 +29,7 @@
                     </div>
                      
                     <div id="navbar" class="collapse navbar-collapse sidenav" data-sidenav  data-sidenav-toggle="#sidenav-toggle">
-                        <a class="sidenav-logo visible-xs" href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="logo"></a>
+                        <a class="sidenav-logo visible-xs" href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png" alt="logo"></a>
                         <?php wp_nav_menu(
                                     array(
                                         'theme_location' => 'header_menu',

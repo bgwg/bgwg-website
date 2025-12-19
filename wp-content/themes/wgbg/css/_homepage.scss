@@ -1255,6 +1255,13 @@ a {
     right: 60px;
     bottom: 0;
     width: 300px;
+    @media (max-width: 767px) {
+      position: relative;
+      right: inherit;
+      width: 100%;
+      max-width: 250px;
+      margin: auto;
+    }
     img {
       width: 100%;
     }
@@ -1263,6 +1270,10 @@ a {
     width: 40%;
     margin-left: 45px;
     padding: 20px 0;
+    @media (max-width: 767px) {
+      width: 100%;
+      margin: 0;
+    }
     h1 {
       font-size: 36px;
       font-weight: 700;
@@ -1276,12 +1287,18 @@ a {
         display: inline-block;
         line-height: 1.4;
       }
+      @media (max-width: 767px) {
+        font-size: 26px;
+      }
     }
     p {
       font-size: 20px;
       font-weight: 300;
       color: $white;
       margin: 20px 0 30px;
+      @media (max-width: 767px) {
+        font-size: 15px;
+      }
     }
     ul {
       list-style: none;
@@ -1578,6 +1595,10 @@ a {
     background-clip: text;
     color: transparent;
     margin: 0;
+    @media (max-width: 767px) {
+      line-height: 22px;
+      font-size: 20px;
+    }
   }
   h2 {
     font-size: 50px;
@@ -1593,11 +1614,19 @@ a {
       display: inline-block;
       line-height: 62px;
     }
+    @media (max-width: 767px) {
+      font-size: 28px;
+      line-height: 30px;
+      padding: 0;
+    }
   }
   p {
     font-size: 18px;
     line-height: 24px;
     font-weight: 300;
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
   }
 }
 .objective-copy {
@@ -1615,6 +1644,9 @@ a {
       min-height: 48px;
       display: flex;
       align-items: center;
+      @media (max-width: 767px) {
+        font-size: 16px;
+      }
       &:before {
         position: absolute;
         content: "";
@@ -1625,6 +1657,7 @@ a {
         background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
         border-radius: 2px;
       }
+
     }
   }
   p {
@@ -1632,6 +1665,9 @@ a {
     font-weight: 300;
     line-height: 24px;
     margin: 30px 0 0 0;
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
   }
 }
 .our-solutions {
@@ -1649,26 +1685,18 @@ a {
     height: 100%;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 92.91%, rgba(0, 0, 0, 0.2) 139.75%);
   }
+  @media (max-width: 767px) {
+    margin-bottom: 0;
+  }
+  .extended-copy {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
 }
 
-.single-box {
-  border-radius: 10px;
-  background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
-  padding: 15px;
-  min-width: 24%;
-  min-height: 330px;
-  min-height: 330px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1 1 0;
-  @media (max-width: 767px) {
-    width: 48%;
-  }
-  @media (max-width: 480px) {
-    width: 100%;
-  }
-}
+ 
 .solution-box {
   display: flex;
   align-items: center;
@@ -1683,6 +1711,21 @@ a {
   }
 
   .single-box {
+    border-radius: 10px;
+    background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
+    padding: 15px;
+    min-width: 24%;
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 0;
+    @media (max-width: 767px) {
+      min-height: 180px;
+    }
+    @media (max-width: 480px) {
+      width: 100%;
+    }
     span {
       font-size: 75px;
       line-height: 90px;
@@ -1692,6 +1735,10 @@ a {
       -webkit-text-fill-color: transparent;
       background-clip: text;
       color: transparent;
+      @media (max-width: 767px) {
+        font-size: 60px;
+        line-height: 75px;
+      }
     }
     p {
       font-size: 38px;
@@ -1702,6 +1749,10 @@ a {
       padding: 10px 0 10px;
       @media (max-width: 992px) {
         font-size: 30px;
+      }
+      @media (max-width: 767px) {
+        font-size: 24px;
+        line-height: 30px;
       }
     }
   }
@@ -1905,15 +1956,28 @@ a {
 @media (max-width: 767px) {
   .case_study-template-default {
     .work-inner-details {
-      padding-top: 2rem;
+      padding-top: 0;
+      // margin-top: -35px;
       .content-copy {
         width: 100%;
+        padding-bottom: 1rem;
+        h1 {
+          font-size: 36px;
+          span {
+             font-size: 36px;
+          }
+        }
+        p {
+          font-size: 16px;
+        }
       }
       .work-photo {
-        position: absolute;
+        position: relative;
         right: 10px;
-        bottom: -25px;
-        width: 40%;
+        bottom: inherit;
+        width: 100%;;
+        max-width: 250px;
+        margin: 0 auto 15px;
       }
     }
     .work-inner-details {

@@ -150,6 +150,7 @@ function gc_case_study_add_meta_boxes() {
         'normal',
         'default'
     );
+
 }
 add_action('add_meta_boxes', 'gc_case_study_add_meta_boxes');
 
@@ -280,7 +281,30 @@ function gc_case_study_execution_meta_box_callback($post){
     $steps    = gc_case_study_get_meta($post->ID,'_cs_steps_list');
     $four_head= gc_case_study_get_meta($post->ID,'_cs_four_box_heading');
     $four_items = gc_case_study_get_meta($post->ID,'_cs_four_box_items');
+
+    $solution_ext_title = gc_case_study_get_meta($post->ID,'_cs_solution_extended_title');
+    $solution_ext_text = gc_case_study_get_meta($post->ID,'_cs_solution_extended_text');
+    $solution_ext_img = gc_case_study_get_meta($post->ID,'_cs_solution_extended_image');
+
+    $use_extended_layout = gc_case_study_get_meta($post->ID, '_cs_use_extended_layout', '0');
+
+    
+
+
     ?>
+
+    <p style="margin-top:20px;">
+        <label>
+            <input type="checkbox" name="gc_cs_use_extended_layout" value="1"
+                <?php checked( $use_extended_layout, '1' ); ?> />
+            <strong>Use Extended Layout (Image + Text)</strong>
+        </label>
+        <br>
+        <small>
+            If checked, the extended solution layout will be used instead of the box layout.
+        </small>
+    </p>
+
     <p><label>Execution Subtitle</label></p>
     <input type="text" class="widefat" name="gc_cs_execution_subtitle" value="<?php echo esc_attr($subtitle); ?>" />
 
@@ -316,6 +340,22 @@ function gc_case_study_execution_meta_box_callback($post){
             ?></textarea>
         </p>
     <?php endfor; ?>
+    
+    <div>
+        <p><label>Our Solution third title</label></p>
+        <input type="text" class="widefat" name="gc_cs_solution_extended_title" value="<?php echo esc_attr($solution_ext_title); ?>" />
+    </div>
+    <div>
+        <p><label>Our Solution Extra text</label></p>
+        <textarea type="text" class="widefat" name="gc_cs_solution_extended_text" value="<?php echo esc_textarea($solution_ext_text); ?>"></textarea>
+    </div>
+    <div>
+        <label>Solution Big Photo</label><br>
+        <img id="solution_extended_image" src="<?php echo esc_url($solution_ext_img); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_solution_extended_image" id="gc_cs_solution_extended_image" value="<?php echo esc_attr($solution_ext_img); ?>" />
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_solution_extended_image" data-preview="solution_extended_image">Upload / Select Image</button>
+    </div>
+ 
 
     <?php
 }
@@ -388,6 +428,9 @@ function gc_case_study_save_meta($post_id){
     if (!current_user_can('edit_post', $post_id)) {
         return;
     }
+    // SAVE EXTENDED LAYOUT CHECKBOX
+    $use_extended = isset($_POST['gc_cs_use_extended_layout']) ? '1' : '0';
+    update_post_meta($post_id, '_cs_use_extended_layout', $use_extended);
 
     $fields = [
         'gc_cs_card_bg_image' => '_cs_card_bg_image',
@@ -416,6 +459,13 @@ function gc_case_study_save_meta($post_id){
         'gc_cs_video_thumbnail'   => '_cs_video_thumbnail',
         'gc_cs_large_image'       => '_cs_large_image',
         'gc_cs_objective_extra_text' => '_cs_objective_extra_text',
+
+        'gc_cs_solution_extended_title' => '_cs_solution_extended_title',
+        'gc_cs_solution_extended_text'  => '_cs_solution_extended_text',
+        'gc_cs_solution_extended_image' => '_cs_solution_extended_image',
+
+
+        
     ];
 
     foreach ($fields as $field => $meta_key) {

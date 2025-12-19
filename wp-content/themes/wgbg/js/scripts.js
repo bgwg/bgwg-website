@@ -54,6 +54,7 @@ jQuery(document).ready(function($){
         autoplay: true,
         slidesToShow: 1,
         slidesToScroll: 1,
+        arrows: false
     });
     // List slider 
     $('.featured-digital-slider').slick({
