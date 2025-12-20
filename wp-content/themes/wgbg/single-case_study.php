@@ -33,7 +33,7 @@ if ( have_posts() ) :
 		$video_thumb    = get_post_meta( $post_id, '_cs_video_thumbnail', true );
 		$large_image    = get_post_meta( $post_id, '_cs_large_image', true );
 		$objective_extra_text = get_post_meta( $post_id, '_cs_objective_extra_text', true );
-		// $objective_bottom = get_post_meta( $post_id, '_cs_objective_bottom', true );
+		// $objective_bottom = get_post_meta( $post_id, '_cs_objective_bottom', true ); _cs_four_box_heading
 		
 		$solution_ext_title = get_post_meta( $post_id, '_cs_solution_extended_title', true );
 		$solution_ext_text  = get_post_meta( $post_id, '_cs_solution_extended_text', true );
@@ -60,7 +60,7 @@ if ( have_posts() ) :
 
 		$objective_items = array_filter( array_map( 'trim', explode( "\n", (string) $objective_list ) ) );
 		$step_items      = array_filter( array_map( 'trim', explode( "\n", (string) $steps_list ) ) );
-		$four_box_items  = array_filter( array_map( 'trim', explode( "\n", (string) $four_items ) ) );
+		// $four_box_items  = array_filter( array_map( 'trim', explode( "\n", (string) $four_items ) ) );
 		?>
 
 		<div class="banner">
@@ -164,17 +164,25 @@ if ( have_posts() ) :
 
 		<?php
 		// SAFETY CHECKS
-		$four_boxes = get_post_meta( get_the_ID(), '_cs_four_box_items', true );
-		if ( ! is_array( $four_boxes ) ) {
-			$four_boxes = [];
-		}
+		// $four_boxes = get_post_meta( get_the_ID(), '_cs_four_box_items', true );
+		// if ( ! is_array( $four_boxes ) ) {
+		// 	$four_boxes = [];
+		// }
 
-		$step_items = array_filter( array_map( 'trim', explode( "\n", $steps ) ) );
+		// $step_items = array_filter( array_map( 'trim', explode( "\n", $steps ) ) );
+		$step_items = array_filter(
+			array_map( 'trim', explode( "\n", (string) $steps_list ) )
+		);
+
+		$four_box_items = array_filter(
+			array_map( 'trim', explode( "\n", (string) $four_items ) )
+		);
+
 
 		$has_area_with_box = (
 			! empty( $exec_text ) ||
 			! empty( $step_items ) ||
-			! empty( $four_boxes )
+			! empty( $four_box_items )
 		);
 
 		$has_area_with_img_box = (
@@ -233,21 +241,22 @@ if ( have_posts() ) :
 					<?php endforeach; ?>
 				</div>
 
-				<?php if ( ! empty( $four_boxes ) ) : ?>
+				<?php if ( ! empty( $four_box_items ) ) : ?>
 					<div class="objective-area">
-						<h2>How We <span>Exceeded Expectations</span></h2>
+							<h2>How We <span>Exceeded Expectations</span></h2>
 					</div>
 
 					<div class="four-boxs">
-						<?php foreach ( $four_boxes as $four_item ) : ?>
-							<?php if ( ! empty( trim( $four_item ) ) ) : ?>
-								<div class="each-four">
-									<p><?php echo wp_kses_post( $four_item ); ?></p>
-								</div>
-							<?php endif; ?>
-						<?php endforeach; ?>
+							<?php foreach ( $four_box_items as $four_item ) : ?>
+									<?php if ( ! empty( $four_item ) ) : ?>
+											<div class="each-four">
+													<p><?php echo wp_kses_post( nl2br( $four_item ) ); ?></p>
+											</div>
+									<?php endif; ?>
+							<?php endforeach; ?>
 					</div>
 				<?php endif; ?>
+
 			</div>
 
 		<?php elseif ( $has_area_with_img_box ) : ?>

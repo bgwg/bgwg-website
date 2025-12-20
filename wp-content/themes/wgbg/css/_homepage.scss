@@ -1712,6 +1712,16 @@ a {
   }
 }
 
+.project-photo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 99;
+  img {
+    width: 100%;
+  }
+}
  
 .solution-box {
   display: flex;

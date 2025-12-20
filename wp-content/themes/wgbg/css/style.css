@@ -2247,6 +2247,17 @@ a {
   margin-bottom: 20px;
 }
 
+.project-photo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 99;
+}
+.project-photo img {
+  width: 100%;
+}
+
 .solution-box {
   display: flex;
   align-items: center;

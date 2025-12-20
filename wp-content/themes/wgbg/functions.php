@@ -428,9 +428,15 @@ function gc_case_study_save_meta($post_id){
     if (!current_user_can('edit_post', $post_id)) {
         return;
     }
+    
     // SAVE EXTENDED LAYOUT CHECKBOX
     $use_extended = isset($_POST['gc_cs_use_extended_layout']) ? '1' : '0';
     update_post_meta($post_id, '_cs_use_extended_layout', $use_extended);
+
+    // FIX: Convert four box items array to newline-separated string
+    if (isset($_POST['gc_cs_four_box_items']) && is_array($_POST['gc_cs_four_box_items'])) {
+        $_POST['gc_cs_four_box_items'] = implode("\n", array_filter($_POST['gc_cs_four_box_items']));
+    }
 
     $fields = [
         'gc_cs_card_bg_image' => '_cs_card_bg_image',
