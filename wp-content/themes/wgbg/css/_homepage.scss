@@ -11,11 +11,15 @@ a {
   color: $white;
   font-size: 16px;
   font-weight: 500;
-  min-width: 200px;
+  min-width: 210px;
   border: 0px solid;
-  padding: 14px 5px 10px;
+  padding: 14px 30px 10px;
   line-height: 24px;
   border-radius: 8px; 
+  &:focus,
+  &:hover {
+    background: $primaryGradient;
+  }
 }
 .btn-info {
   background: $primaryGradient;
@@ -24,47 +28,58 @@ a {
   font-weight: 500;
   min-width: 200px;
   border: 0px solid;
-  padding: 14px 5px 10px;
+  padding: 14px 30px 10px;
   line-height: 24px;
   border-radius: 8px;
+  &:focus,
+  &:hover {
+    background: $primaryGradient;
+  }
 }
 .btn-success { 
   // background: #000;
   color: $white;
   font-size: 16px;
   font-weight: 500;
-  min-width: 200px;
+  min-width: 210px;
   border: 0px solid #FFB400;
   position: relative;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 14px 30px 10px;
   line-height: 24px;
+  background-image: url(../images/button-border.png);
+  background-size: 100% 100%;
+  background-color: transparent;
   span {
     position: relative;
     z-index: 9;
   }
-  &:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-     background: #000;
-    z-index: 3;
-    border-radius: 7px;
+  &:focus,
+  &:hover {
+    background: linear-gradient(90.85deg, #FF6F61 0%, #FFB400 100%);
   }
-  &:after {
-    position: absolute;
-    content: "";
-    top: -2px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    background: $primaryGradient;
-    z-index: 2;
-    border-radius: 7px;
-  }
+  // &:before {
+  //   position: absolute;
+  //   content: "";
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //    background: #000;
+  //   z-index: 3;
+  //   border-radius: 7px;
+  // }
+  // &:after {
+  //   position: absolute;
+  //   content: "";
+  //   top: -2px;
+  //   bottom: -1px;
+  //   left: -1px;
+  //   right: -1px;
+  //   background: $primaryGradient;
+  //   z-index: 2;
+  //   border-radius: 7px;
+  // }
 } 
 .banner {
   width: 100%;
@@ -102,6 +117,7 @@ a {
           color: $white; 
           font-size: 75px;
           margin-bottom: 0;
+          line-height: 1.2;
           @media (max-width: 767px) {
             font-size: 38px;
           }
@@ -912,6 +928,7 @@ a {
       }
     }
     .icon-copy {
+      width: calc(100% - 80px);
       h2 {
         font-size: 26px;
         color: #0d0d0d;
@@ -1129,7 +1146,6 @@ a {
       font-size: 54px;
       font-weight: 600;
       margin: 0;
-      max-width: 300px;
       margin-bottom: 80px;
       @media (max-width: 992px) {
         font-size: 50px;
