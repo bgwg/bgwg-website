@@ -1219,7 +1219,7 @@ a {
   .work-photo {
     position: absolute;
     right: 60px;
-    bottom: 0;
+    bottom: 30px;
     width: 35%;
     img {
       width: 100%;
@@ -1264,13 +1264,20 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  padding: 30px;
+  padding: 0 50px;
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
   .work-photo {
-    position: absolute;
-    right: 60px;
-    bottom: 0;
-    width: 300px;
+    // position: absolute;
+    // right: 60px;
+    // bottom: 0;
+    max-width: 300px;
+    width: 35%;
+    position: relative;
+
     @media (max-width: 767px) {
       position: relative;
       right: inherit;
@@ -1283,7 +1290,7 @@ a {
     }
   }
   .content-copy {
-    width: 40%;
+    width: 55%;
     margin-left: 45px;
     padding: 20px 0;
     @media (max-width: 767px) {
@@ -1294,22 +1301,23 @@ a {
       font-size: 36px;
       font-weight: 700;
       color: $white;
+      max-width: 450px;
       span {
         background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
-        display: inline-block;
-        line-height: 1.4;
+        padding: 15px 0;
+        line-height: 1.2;
       }
       @media (max-width: 767px) {
         font-size: 26px;
       }
     }
     p {
-      font-size: 20px;
-      font-weight: 300;
+      font-size: 18px;
+      font-weight: 200;
       color: $white;
       margin: 20px 0 30px;
       @media (max-width: 767px) {

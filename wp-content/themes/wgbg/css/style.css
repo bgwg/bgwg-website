@@ -1728,7 +1728,7 @@ a {
 .work-inner-details .work-photo {
   position: absolute;
   right: 60px;
-  bottom: 0;
+  bottom: 30px;
   width: 35%;
 }
 .work-inner-details .work-photo img {
@@ -1771,14 +1771,17 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  padding: 30px;
+  padding: 0 50px;
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
 }
 .work-inner .work-photo {
-  position: absolute;
-  right: 60px;
-  bottom: 0;
-  width: 300px;
+  max-width: 300px;
+  width: 35%;
+  position: relative;
 }
 @media (max-width: 767px) {
   .work-inner .work-photo {
@@ -1793,7 +1796,7 @@ a {
   width: 100%;
 }
 .work-inner .content-copy {
-  width: 40%;
+  width: 55%;
   margin-left: 45px;
   padding: 20px 0;
 }
@@ -1807,6 +1810,7 @@ a {
   font-size: 36px;
   font-weight: 700;
   color: #fff;
+  max-width: 450px;
 }
 .work-inner .content-copy h1 span {
   background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
@@ -1814,8 +1818,8 @@ a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  display: inline-block;
-  line-height: 1.4;
+  padding: 15px 0;
+  line-height: 1.2;
 }
 @media (max-width: 767px) {
   .work-inner .content-copy h1 {
@@ -1823,8 +1827,8 @@ a {
   }
 }
 .work-inner .content-copy p {
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 200;
   color: #fff;
   margin: 20px 0 30px;
 }
