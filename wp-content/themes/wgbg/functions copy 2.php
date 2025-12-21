@@ -272,7 +272,7 @@ function gc_case_study_objective_meta_box_callback($post){
 }
 
 /**
- * Execution Meta Box - UPDATED WITH CONDITIONAL FIELDS
+ * Execution Meta Box
  */
 function gc_case_study_execution_meta_box_callback($post){
     $subtitle = gc_case_study_get_meta($post->ID,'_cs_execution_subtitle');
@@ -287,147 +287,76 @@ function gc_case_study_execution_meta_box_callback($post){
     $solution_ext_img = gc_case_study_get_meta($post->ID,'_cs_solution_extended_image');
 
     $use_extended_layout = gc_case_study_get_meta($post->ID, '_cs_use_extended_layout', '0');
+
+    
+
+
     ?>
 
-    <style>
-        .gc-field-group {
-            background: #f9f9f9;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid #2271b1;
-        }
-        .gc-extended-fields {
-            display: none;
-            background: #e7f5ff;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid #0073aa;
-        }
-        .gc-extended-fields.active {
-            display: block;
-        }
-        .gc-box-fields {
-            display: block;
-            background: #fff8e7;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid #f0b323;
-        }
-        .gc-box-fields.hidden {
-            display: none;
-        }
-    </style>
-
-    <!-- CHECKBOX TO TOGGLE LAYOUT -->
-    <p style="margin-top:20px; padding: 10px; background: #fff; border: 1px solid #ccc;">
+    <p style="margin-top:20px;">
         <label>
-            <input type="checkbox" name="gc_cs_use_extended_layout" id="gc_cs_use_extended_layout" value="1"
+            <input type="checkbox" name="gc_cs_use_extended_layout" value="1"
                 <?php checked( $use_extended_layout, '1' ); ?> />
             <strong>Use Extended Layout (Image + Text)</strong>
         </label>
         <br>
         <small>
-            If checked, the extended solution layout will be used. Otherwise, the box layout (Steps + Four Boxes) will be displayed.
+            If checked, the extended solution layout will be used instead of the box layout.
         </small>
     </p>
 
-    <!-- ALWAYS VISIBLE FIELD -->
-    <div class="gc-field-group">
-        <p><label><strong>Execution Subtitle</strong></label></p>
-        <input type="text" class="widefat" name="gc_cs_execution_subtitle" value="<?php echo esc_attr($subtitle); ?>" />
-        <small>This appears above "Our Solution" heading</small>
+    <p><label>Execution Subtitle</label></p>
+    <input type="text" class="widefat" name="gc_cs_execution_subtitle" value="<?php echo esc_attr($subtitle); ?>" />
+
+    <p><label>Execution Heading</label></p>
+    <input type="text" class="widefat" name="gc_cs_execution_heading" value="<?php echo esc_attr($heading); ?>" />
+
+    <p><label>Execution Text</label></p>
+    <textarea class="widefat" name="gc_cs_execution_text" rows="4"><?php echo esc_textarea($text); ?></textarea>
+
+    <p><label>Steps (one per line)</label></p>
+    <textarea class="widefat" name="gc_cs_steps_list" rows="4"><?php echo esc_textarea($steps); ?></textarea>
+
+    <p><label>Four Box Heading</label></p>
+    <input type="text" class="widefat" name="gc_cs_four_box_heading" value="<?php echo esc_attr($four_head); ?>" />
+
+    <?php
+    if (!is_array($four_items)) {
+        $four_items = ['', '', '', ''];
+    }
+    ?>
+
+    <p><strong>Four Boxes Content</strong></p>
+
+    <?php for ($i = 0; $i < 4; $i++): ?>
+        <p>
+            <label>Box <?php echo $i + 1; ?></label>
+            <textarea
+                class="widefat"
+                name="gc_cs_four_box_items[]"
+                rows="3"
+                placeholder="<b>text copy</b> this is our main idea."><?php
+                    echo esc_textarea($four_items[$i] ?? '');
+            ?></textarea>
+        </p>
+    <?php endfor; ?>
+    
+    <div>
+        <p><label>Our Solution third title</label></p>
+        <input type="text" class="widefat" name="gc_cs_solution_extended_title" value="<?php echo esc_attr($solution_ext_title); ?>" />
     </div>
-
-    <!-- EXTENDED LAYOUT FIELDS - Show when checkbox is checked -->
-    <div class="gc-extended-fields <?php echo ($use_extended_layout === '1') ? 'active' : ''; ?>" id="gc_extended_fields">
-        <h3 style="margin-top: 0;">📝 Extended Layout Fields</h3>
-        
-        <div>
-            <p><label><strong>Our Solution Third Title</strong></label></p>
-            <input type="text" class="widefat" name="gc_cs_solution_extended_title" value="<?php echo esc_attr($solution_ext_title); ?>" />
-            <small>Subtitle text that appears below "Our Solution"</small>
-        </div>
-        
-        <div style="margin-top: 15px;">
-            <p><label><strong>Our Solution Extra Text</strong></label></p>
-            <textarea class="widefat" name="gc_cs_solution_extended_text" rows="5"><?php echo esc_textarea($solution_ext_text); ?></textarea>
-            <small>Main description text for the solution</small>
-        </div>
-        
-        <div style="margin-top: 15px;">
-            <p><label><strong>Solution Big Photo</strong></label></p>
-            <img id="solution_extended_image" src="<?php echo esc_url($solution_ext_img); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
-            <input type="hidden" name="gc_cs_solution_extended_image" id="gc_cs_solution_extended_image" value="<?php echo esc_attr($solution_ext_img); ?>" />
-            <button type="button" class="button gc-upload-btn" data-target="gc_cs_solution_extended_image" data-preview="solution_extended_image">Upload / Select Image</button>
-            <br><small>Large image shown in the solution section</small>
-        </div>
+    <div>
+        <p><label>Our Solution Extra text</label></p>
+        <textarea type="text" class="widefat" name="gc_cs_solution_extended_text" value="<?php echo esc_textarea($solution_ext_text); ?>"></textarea>
     </div>
-
-    <!-- BOX LAYOUT FIELDS - Show when checkbox is NOT checked -->
-    <div class="gc-box-fields <?php echo ($use_extended_layout === '1') ? 'hidden' : ''; ?>" id="gc_box_fields">
-        <h3 style="margin-top: 0;">📦 Box Layout Fields</h3>
-        
-        <div>
-            <p><label><strong>Execution Heading</strong></label></p>
-            <input type="text" class="widefat" name="gc_cs_execution_heading" value="<?php echo esc_attr($heading); ?>" />
-        </div>
-
-        <div style="margin-top: 15px;">
-            <p><label><strong>Execution Text</strong></label></p>
-            <textarea class="widefat" name="gc_cs_execution_text" rows="4"><?php echo esc_textarea($text); ?></textarea>
-        </div>
-
-        <div style="margin-top: 15px;">
-            <p><label><strong>Steps (one per line)</strong></label></p>
-            <textarea class="widefat" name="gc_cs_steps_list" rows="4"><?php echo esc_textarea($steps); ?></textarea>
-            <small>Enter each step on a new line. These will be numbered automatically.</small>
-        </div>
-
-        <div style="margin-top: 15px;">
-            <p><label><strong>Four Box Heading</strong></label></p>
-            <input type="text" class="widefat" name="gc_cs_four_box_heading" value="<?php echo esc_attr($four_head); ?>" />
-        </div>
-
-        <?php
-        if (!is_array($four_items)) {
-            // Convert string to array if needed
-            $four_items = array_filter(array_map('trim', explode("\n", (string)$four_items)));
-            // Ensure we have 4 slots
-            $four_items = array_pad($four_items, 4, '');
-        }
-        ?>
-
-        <div style="margin-top: 15px;">
-            <p><strong>Four Boxes Content</strong></p>
-            <?php for ($i = 0; $i < 4; $i++): ?>
-                <p>
-                    <label>Box <?php echo $i + 1; ?></label>
-                    <textarea
-                        class="widefat"
-                        name="gc_cs_four_box_items[]"
-                        rows="3"
-                        placeholder="Enter content for box <?php echo $i + 1; ?>"><?php
-                            echo esc_textarea($four_items[$i] ?? '');
-                    ?></textarea>
-                </p>
-            <?php endfor; ?>
-        </div>
+    <div>
+        <label>Solution Big Photo</label><br>
+        <img id="solution_extended_image" src="<?php echo esc_url($solution_ext_img); ?>" style="max-width:150px; display:block; margin-bottom:5px;" />
+        <input type="hidden" name="gc_cs_solution_extended_image" id="gc_cs_solution_extended_image" value="<?php echo esc_attr($solution_ext_img); ?>" />
+        <button type="button" class="button gc-upload-btn" data-target="gc_cs_solution_extended_image" data-preview="solution_extended_image">Upload / Select Image</button>
     </div>
+ 
 
-    <script>
-    jQuery(document).ready(function($) {
-        // Toggle fields based on checkbox state
-        $('#gc_cs_use_extended_layout').on('change', function() {
-            if ($(this).is(':checked')) {
-                $('#gc_extended_fields').addClass('active');
-                $('#gc_box_fields').addClass('hidden');
-            } else {
-                $('#gc_extended_fields').removeClass('active');
-                $('#gc_box_fields').removeClass('hidden');
-            }
-        });
-    });
-    </script>
     <?php
 }
 
@@ -536,9 +465,13 @@ function gc_case_study_save_meta($post_id){
         'gc_cs_video_thumbnail'   => '_cs_video_thumbnail',
         'gc_cs_large_image'       => '_cs_large_image',
         'gc_cs_objective_extra_text' => '_cs_objective_extra_text',
+
         'gc_cs_solution_extended_title' => '_cs_solution_extended_title',
         'gc_cs_solution_extended_text'  => '_cs_solution_extended_text',
         'gc_cs_solution_extended_image' => '_cs_solution_extended_image',
+
+
+        
     ];
 
     foreach ($fields as $field => $meta_key) {

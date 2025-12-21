@@ -635,6 +635,21 @@ a {
     }
     .img-content {
       padding-top: 20px;
+      .btn-success {
+        span {
+          background: linear-gradient(90.85deg, #FF6F61 0%, #FFB400 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+          display: inline-block;
+        }
+        &:hover {
+          span {
+            -webkit-text-fill-color: #333;
+          }
+        }
+      }
       h3 {
         background: $primaryGradient;
         -webkit-background-clip: text;
@@ -1270,6 +1285,10 @@ a {
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    padding: 20px 20px; 
+  }
   .work-photo {
     // position: absolute;
     // right: 60px;
@@ -1601,6 +1620,7 @@ a {
 
 .objective-img-box {
   width: 100%;
+  margin-top: 15px;
   img {
     width: 100%;
   }
@@ -1971,17 +1991,24 @@ a {
   a {
     font-style: normal;
     font-weight: 500;
-    font-size: 34px;
-    line-height: 1;
+    font-size: 40px;
+    line-height: 1.2;
     text-align: center;
     color: #1B1C20;
+    padding: 10px 0;
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
     span {
 
     }
     img {
-      height: 40px;
+      height: 48px;
       &.rotate-arrow {
         transform: rotate(180deg);
+      }
+      @media (max-width: 767px) {
+        height: 30px;
       }
     }
   }

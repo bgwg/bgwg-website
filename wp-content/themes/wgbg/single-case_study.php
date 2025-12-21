@@ -33,7 +33,6 @@ if ( have_posts() ) :
 		$video_thumb    = get_post_meta( $post_id, '_cs_video_thumbnail', true );
 		$large_image    = get_post_meta( $post_id, '_cs_large_image', true );
 		$objective_extra_text = get_post_meta( $post_id, '_cs_objective_extra_text', true );
-		// $objective_bottom = get_post_meta( $post_id, '_cs_objective_bottom', true ); _cs_four_box_heading
 		
 		$solution_ext_title = get_post_meta( $post_id, '_cs_solution_extended_title', true );
 		$solution_ext_text  = get_post_meta( $post_id, '_cs_solution_extended_text', true );
@@ -58,9 +57,22 @@ if ( have_posts() ) :
 			$objective_img = $template_dir . '/images/obj.png';
 		}
 
+		// Process objective list
 		$objective_items = array_filter( array_map( 'trim', explode( "\n", (string) $objective_list ) ) );
-		$step_items      = array_filter( array_map( 'trim', explode( "\n", (string) $steps_list ) ) );
-		// $four_box_items  = array_filter( array_map( 'trim', explode( "\n", (string) $four_items ) ) );
+		
+		// Process steps list
+		$step_items = array_filter( array_map( 'trim', explode( "\n", (string) $steps_list ) ) );
+		
+		// Process four box items - FIXED SECTION
+		if (is_array($four_items)) {
+			// If it's already an array (repeater field)
+			$four_box_items = array_filter($four_items);
+		} else {
+			// If it's a string, split by newlines
+			$four_box_items = array_filter(
+				array_map('trim', explode("\n", (string) $four_items))
+			);
+		}
 		?>
 
 		<div class="banner">
@@ -127,7 +139,6 @@ if ( have_posts() ) :
 
 				<div class="objective-area">
 					<h3><?php echo esc_html( $objective_sub ); ?></h3>
-					<!-- <h2><?php //echo wp_kses_post( $objective_head ); ?></h2> -->
 					<h2>A <span>New Challenge</span> For US</h2>
 					<?php if ( $objective_intro ) : ?>
 						<p><?php echo wp_kses_post( nl2br( $objective_intro ) ); ?></p>
@@ -163,22 +174,6 @@ if ( have_posts() ) :
 	<div class="container">
 
 		<?php
-		// SAFETY CHECKS
-		// $four_boxes = get_post_meta( get_the_ID(), '_cs_four_box_items', true );
-		// if ( ! is_array( $four_boxes ) ) {
-		// 	$four_boxes = [];
-		// }
-
-		// $step_items = array_filter( array_map( 'trim', explode( "\n", $steps ) ) );
-		$step_items = array_filter(
-			array_map( 'trim', explode( "\n", (string) $steps_list ) )
-		);
-
-		$four_box_items = array_filter(
-			array_map( 'trim', explode( "\n", (string) $four_items ) )
-		);
-
-
 		$has_area_with_box = (
 			! empty( $exec_text ) ||
 			! empty( $step_items ) ||
@@ -248,9 +243,19 @@ if ( have_posts() ) :
 
 					<div class="four-boxs">
 							<?php foreach ( $four_box_items as $four_item ) : ?>
-									<?php if ( ! empty( $four_item ) ) : ?>
+									<?php 
+									// Handle both array format and string format
+									if (is_array($four_item)) {
+										// If it's an array, try common key names
+										$item_text = $four_item['text'] ?? $four_item['content'] ?? $four_item['value'] ?? '';
+									} else {
+										// If it's a string, use it directly
+										$item_text = $four_item;
+									}
+									?>
+									<?php if ( ! empty( $item_text ) ) : ?>
 											<div class="each-four">
-													<p><?php echo wp_kses_post( nl2br( $four_item ) ); ?></p>
+													<p><?php echo wp_kses_post( nl2br( $item_text ) ); ?></p>
 											</div>
 									<?php endif; ?>
 							<?php endforeach; ?>
@@ -290,76 +295,76 @@ if ( have_posts() ) :
 	</div>
 </div>
 
-
-			<div class="the-outcome">
-				<div class="container">
-					<div class="objective-area">
-						<h2>The <span>Outcome</span></h2>
-						<!-- <h2><?php //echo wp_kses_post( $outcome_head ); ?></h2> -->
-						<?php if ( $outcome_text ) : ?>
-							<p><?php echo wp_kses_post( nl2br( $outcome_text ) ); ?></p>
-						<?php endif; ?>
-					</div>
-				</div>
+<?php if ( $outcome_text || ($video_url && $video_thumb) ) : ?>
+	<div class="the-outcome">
+		<div class="container">
+			<div class="objective-area">
+				<h2>The <span>Outcome</span></h2>
+				<?php if ( $outcome_text ) : ?>
+					<p><?php echo wp_kses_post( nl2br( $outcome_text ) ); ?></p>
+				<?php endif; ?>
 			</div>
-	
-		<?php if ( $video_url && $video_thumb ) : ?>
-		<div class="video-section testes">
-    	<div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="video-container" id="videoContainer">
-              <div class="video-thum" id="videoThumb">
-                <img class="thumbnails" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
-              </div>
-							<!-- Play Button -->
-							<button class="play-button" id="playButton">
-								<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/play-icon.png" alt="Play">
-							</button>
+			<?php if ( $video_url && $video_thumb ) : ?>
+			<div class="video-section testes">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="video-container" id="videoContainer">
+								<div class="video-thum" id="videoThumb">
+									<img class="thumbnails" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+								</div>
+								<!-- Play Button -->
+								<button class="play-button" id="playButton">
+									<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/play-icon.png" alt="Play">
+								</button>
 
-              <?php
-                if ( preg_match( '/(youtube\.com|youtu\.be)/i', $video_url ) ) {
-										preg_match( '/(youtu\.be\/|v=)([^&]+)/', $video_url, $matches );
-										$video_id = $matches[2] ?? '';
+								<?php
+									if ( preg_match( '/(youtube\.com|youtu\.be)/i', $video_url ) ) {
+											preg_match( '/(youtu\.be\/|v=)([^&]+)/', $video_url, $matches );
+											$video_id = $matches[2] ?? '';
+											if ( $video_id ) :
+									?>
+										<iframe
+											class="video iframe-video"
+											data-src="https://www.youtube.com/embed/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
+											frameborder="0"
+											allow="autoplay; encrypted-media"
+											allowfullscreen>
+										</iframe>
+									<?php
+									endif;
+
+									} elseif ( preg_match( '/vimeo\.com/i', $video_url ) ) {
+										preg_match( '/vimeo\.com\/(\d+)/', $video_url, $matches );
+										$video_id = $matches[1] ?? '';
 										if ( $video_id ) :
-                ?>
+									?>
 									<iframe
 										class="video iframe-video"
-										data-src="https://www.youtube.com/embed/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
+										data-src="https://player.vimeo.com/video/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
 										frameborder="0"
-										allow="autoplay; encrypted-media"
+										allow="autoplay; fullscreen"
 										allowfullscreen>
 									</iframe>
-                <?php
-                endif;
-
-                } elseif ( preg_match( '/vimeo\.com/i', $video_url ) ) {
-									preg_match( '/vimeo\.com\/(\d+)/', $video_url, $matches );
-									$video_id = $matches[1] ?? '';
-									if ( $video_id ) :
-								?>
-								<iframe
-									class="video iframe-video"
-									data-src="https://player.vimeo.com/video/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
-									frameborder="0"
-									allow="autoplay; fullscreen"
-									allowfullscreen>
-								</iframe>
-									<?php
-										endif;
-									} else {
-									?>
-									<video class="video html-video" preload="metadata" controls>
-										<source src="<?php echo esc_url( $video_url ); ?>">
-									</video>
-							<?php } ?>
+										<?php
+											endif;
+										} else {
+										?>
+										<video class="video html-video" preload="metadata" controls>
+											<source src="<?php echo esc_url( $video_url ); ?>">
+										</video>
+								<?php } ?>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+<?php endif; ?>
+		
 
 
 	<?php $large_images = get_post_meta(get_the_ID(), '_cs_large_image', true);
@@ -378,10 +383,12 @@ if ( have_posts() ) :
 	<?php endif; ?>
 
 
-<?php
-	$prev_link = get_previous_post_link( '%link', '&larr; Prev Case' );
-	$next_link = get_next_post_link( '%link', 'Next Case &rarr;' );
-	if ( $prev_link || $next_link ) :
+	<?php
+	$prev_post = get_previous_post();
+	$next_post = get_next_post();
+	$arrow_icon = get_template_directory_uri() . '/images/arrow.png';
+	
+	if ( $prev_post || $next_post ) :
 ?>
 	<section class="next-prev-arrow">
     <div class="container">
@@ -389,22 +396,20 @@ if ( have_posts() ) :
         <div class="col-sm-12 col-md-10 col-md-offset-1">
           <div class="next-prev-inner">
             <div class=" ">
-							<?php if ( $prev_link ) : ?>
-							<b><?php echo $prev_link; ?></b>
+							<?php if ( $prev_post ) : ?>
+								<a href="<?php echo get_permalink( $prev_post->ID ); ?>" class="arrow-text d-flex align-items-center">
+									<img src="<?php echo esc_url( $arrow_icon ); ?>" class="arrow-img rotate-arrow" alt="" style="margin-right: 8px;">
+									<span class="uner-line">Prev Case</span>
+								</a>
 							<?php endif; ?>
-              <!-- <a href="#" class="arrow-text d-flex align-items-center">
-                <img src="https://www.bigwigmonster.com/wp-content/themes/bigwigmonster/assets/images/arrow.svg" class="arrow-next rotate-arrow" alt="">
-                <span class="uner-line"> Prev Case</span>
-              </a> -->
             </div>
             <div class=" ">
-							<?php if ( $next_link ) : ?>
-								<b class="case-nav-next"><?php echo $next_link;?></b>
+							<?php if ( $next_post ) : ?>
+								<a href="<?php echo get_permalink( $next_post->ID ); ?>" class="arrow-text d-flex align-items-center case-nav-next">
+									<span class="uner-line">Next Case</span>
+									<img src="<?php echo esc_url( $arrow_icon ); ?>" class="arrow-img" alt="" style="margin-left: 8px;">
+								</a>
 							<?php endif; ?>
-              <!-- <a href="https://www.bigwigmonster.com/case_study/timberwolves/" class="arrow-text d-flex align-items-center">
-                <span class="uner-line"> Next Case</span>
-                <img src="https://www.bigwigmonster.com/wp-content/themes/bigwigmonster/assets/images/arrow.svg" class="arrow-next" alt="">
-              </a> -->
             </div>
           </div>
         </div>
@@ -419,8 +424,8 @@ if ( have_posts() ) :
 			<div class="container">
 				<div class="cta-footer-inner">
 					<div class="cta-content">
-						<h3>Need help with a project?<span> LET’S TALK!</span></h3>
-						<p>Every great project begins with a conversation. Share your vision with us, and together we’ll turn your ideas into something remarkable.</b></p>
+						<h3>Need help with a project?<span> LET'S TALK!</span></h3>
+						<p>Every great project begins with a conversation. Share your vision with us, and together we'll turn your ideas into something remarkable.</b></p>
 						<a href="/book-a-call/" class="btn btn-primary" style="padding-left: 15px; padding-right: 15px;">Let's Discuss Your Project</a>
 					</div>
 				</div>
