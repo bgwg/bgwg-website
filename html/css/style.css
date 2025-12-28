@@ -957,7 +957,7 @@ a {
 .experiental-engine .card-tile .card-tile-img img {
   width: 100%;
 }
-.experiental-engine .card-tile p {
+.experiental-engine .card-tile .brand-card-title {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -971,11 +971,16 @@ a {
   padding-right: 30px;
 }
 @media (max-width: 992px) {
-  .experiental-engine .card-tile p {
+  .experiental-engine .card-tile .brand-card-title {
     font-size: 18px;
     line-height: 24px;
     padding-right: 0px;
   }
+}
+.experiental-engine .card-tile .brand-card-des {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 200;
 }
 
 .brand-choose {
@@ -2227,6 +2232,84 @@ video-section .video-container {
 /* First image - tall */
 /* Fourth image - regular */
 /* Fifth image - tall */
+/* CONTENT */
+.btn-part {
+  margin-left: 20px;
+}
+
+.brand-card-title,
+.brand-card-des,
+.btn-part {
+  transition: all 0.4s ease;
+}
+
+/* DEFAULT STATE */
+.brand-card-title {
+  margin-top: 16px;
+  transform: translateY(0);
+}
+
+.brand-card-des {
+  opacity: 0;
+  transform: translateY(0px);
+  pointer-events: none;
+  position: absolute;
+  left: 20px;
+}
+
+.btn-part {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  position: absolute;
+  left: 5px;
+}
+
+/* HOVER STATE */
+.card-tile:hover:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px; /* Border thickness */
+  border-radius: 10px;
+  background: linear-gradient(95.59deg, #DC143C -31.16%, rgba(255, 46, 209, 0.5) 49.74%, rgba(0, 0, 0, 0) 130.64%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.card-tile:hover:before {
+  background: linear-gradient(0deg, rgba(13, 13, 13, 0.1), rgba(13, 13, 13, 0.95)), radial-gradient(150.5% 286.12% at -69.31% -179.53%, rgba(255, 46, 209, 0.25) 0%, rgba(220, 20, 60, 0) 100%), radial-gradient(94.06% 178.82% at 148.39% 133.06%, rgba(220, 20, 60, 0.25) 0%, rgba(255, 46, 209, 0) 100%);
+}
+
+.card-tile:hover .brand-card-title {
+  transform: translateY(-200px);
+}
+
+.card-tile:hover .brand-card-des {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-215px);
+  pointer-events: auto;
+}
+
+.card-tile:hover .btn-part {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-75px);
+  pointer-events: auto;
+}
+
+/* OPTIONAL: STAGGERED ANIMATION */
+.card-tile:hover .brand-card-des {
+  transition-delay: 0.1s;
+}
+
+.card-tile:hover .btn-part {
+  transition-delay: 0.2s;
+}
+
 .footer {
   background: url(../images/footer.png);
   background-repeat: no-repeat;
