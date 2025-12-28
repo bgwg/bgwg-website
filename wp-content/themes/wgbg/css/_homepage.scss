@@ -7,7 +7,8 @@ a {
   margin-bottom: 2rem !important; 
 }
 .btn-primary {
-  background: $primaryGradient;
+  background-color: #e11853;
+  background-image: $primaryGradient;
   color: $white;
   font-size: 16px;
   font-weight: 500;
@@ -16,9 +17,12 @@ a {
   padding: 14px 30px 10px;
   line-height: 24px;
   border-radius: 8px; 
+  transition: all ease-in-out 0.3s;
   &:focus,
   &:hover {
-    background: $primaryGradient;
+    background-image: none;
+    background-color: #e11853;
+    transition: all ease-in-out 0.3s;
   }
 }
 .btn-info {
@@ -37,7 +41,6 @@ a {
   }
 }
 .btn-success { 
-  // background: #000;
   color: $white;
   font-size: 16px;
   font-weight: 500;
@@ -57,29 +60,23 @@ a {
   &:focus,
   &:hover {
     background: linear-gradient(90.85deg, #FF6F61 0%, #FFB400 100%);
+    &.btn-grt-text {
+      span {
+        color: #fff;
+         -webkit-text-fill-color: #fff;
+      }
+    }
   }
-  // &:before {
-  //   position: absolute;
-  //   content: "";
-  //   top: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   right: 0;
-  //    background: #000;
-  //   z-index: 3;
-  //   border-radius: 7px;
-  // }
-  // &:after {
-  //   position: absolute;
-  //   content: "";
-  //   top: -2px;
-  //   bottom: -1px;
-  //   left: -1px;
-  //   right: -1px;
-  //   background: $primaryGradient;
-  //   z-index: 2;
-  //   border-radius: 7px;
-  // }
+  &.btn-grt-text {
+   span {
+     background: linear-gradient(90.85deg, #FF6F61 0%, #FFB400 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+   }
+  }
 } 
 .banner {
   width: 100%;
@@ -490,14 +487,14 @@ a {
       width: 100%;
       height: 100%;
       background: linear-gradient(180deg, rgba(4, 4, 4, 0) 0%, #040404 83.66%);
-  }
+    }
     .card-tile-img {
       width: 100%;
       img {
         width: 100%;
       }
     }
-    p {
+    .brand-card-title {
       position: absolute;
       bottom: 20px;
       left: 20px;
@@ -515,7 +512,16 @@ a {
         padding-right: 0px;
       }
     }
+    .brand-card-des {
+      color: $white;
+      font-size: 19px;
+      font-weight: 200;
+      padding: 0 10px 0 0;
+    }
   }
+}
+.btn-part {
+  margin-left: 20px;
 }
 .brand-choose {
   padding: 6rem 0;
@@ -2178,3 +2184,270 @@ a {
     }
   }
 }
+
+
+.features-slider {
+  margin-bottom: 80px;
+  .slick-prev {
+    left: 35%;
+    top: inherit;
+    bottom: -85px;
+    z-index: 99;
+    width: 45px;
+    height: 45px;
+    background: #DC143C0D;
+    border-radius: 5px;
+    &:before {
+      position: absolute;
+      content: "\f104";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color:#0D0D0D80;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .slick-next {
+    right: 35%;
+    left: inherit;
+    top: inherit;
+    bottom: -85px;
+    z-index: 99;
+    width: 45px;
+    height: 45px;
+    background: #DC143C0D;
+    border-radius: 5px;
+    &:before {
+      content: "\f105";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #0D0D0D80;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .slick-dots {
+    bottom: -72px;
+  }
+
+  li {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    a {
+      width: 45px;
+      background: #DC143C0D;
+      text-align: center;
+      height: 45px;
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      position: relative;
+      z-index: 99;
+      padding-top: 5px;
+      border-radius: 5px;
+    }
+    &.slick-active {
+      a {
+        background: linear-gradient(90.85deg, #FF6F61 0%, #FFB400 100%);
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+
+// Action details page css 
+
+.action-terms {
+  margin-top: 65px;
+}
+.row-card-inner:first-child:nth-last-child(4) ~ .row-card-inner:nth-child(n+3) {
+  flex: 1 1 calc(50% - 10px);
+}
+
+.row-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  .row-card-inner {
+    border-radius: 10px;
+    text-align: center;
+    padding: 25px;
+    flex: 1 1 calc(50% - 10px);
+    min-width: 0;
+    background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
+    &:first-child:nth-last-child(4) {
+      flex: 1 1 calc(50% - 10px);
+      & ~ .row-card-inner {
+        flex: 1 1 calc(50% - 10px);
+      } 
+    }
+    &:nth-child(n+3) {
+       flex: 1 1 calc(33.333% - 14px);
+    }
+    .card-inner-icon {
+      margin: 30px auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: $primaryGradient;
+      text-align: center;
+      line-height: 100px;
+      img {
+        width: 20px;
+      }
+    }
+    h3 {
+      font-size: 24px;
+      background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      border-radius: 10px;
+      text-align: center;
+      padding: 25px;
+      margin: 0;
+      padding: 2px 2px 10px;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #0D0D0D;
+      margin: 0;
+      padding: 0 5rem;
+    }
+  }
+}
+.why-it-works {
+  margin-top: 65px;
+}
+.work-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  .single-box {
+    padding: 20px;
+    min-width: 24%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    flex: 1 1 0;
+    box-shadow: 0px 0px 15px 0px #0000001A;
+    min-height: 300px;
+    border-radius: 12px;
+    span {
+      font-size: 75px;
+      line-height: 90px;
+      display: block;
+      background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 26px;
+      color: #0d0d0d;
+      margin: 0;
+      font-weight: 200;
+      line-height: 30px;
+      padding: 0;
+    }
+  }
+}
+
+
+/* CONTENT */
+.btn-part {
+  margin-left: 20px;
+}
+.brand-card-title,
+.brand-card-des,
+.btn-part {
+  transition: all 0.4s ease;
+}
+
+/* DEFAULT STATE */
+.brand-card-title {
+  margin-top: 16px;
+  transform: translateY(0);
+}
+
+.brand-card-des{
+  opacity: 0;
+  transform: translateY(0px);
+  pointer-events: none;
+  position: absolute;
+  left: 20px;
+}
+.btn-part {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  position: absolute;
+  left: 5px;
+}
+
+/* HOVER STATE */
+.card-tile:hover:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;               /* Border thickness */
+  border-radius: 10px;
+
+  background: linear-gradient(
+    95.59deg,
+    #DC143C -31.16%,
+    rgba(255, 46, 209, 0.5) 49.74%,
+    rgba(0, 0, 0, 0) 130.64%
+  );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+.card-tile:hover:before {
+  background: linear-gradient(0deg, rgb(13 13 13 / 10%), rgba(13, 13, 13, 0.95)), radial-gradient(150.5% 286.12% at -69.31% -179.53%, rgba(255, 46, 209, 0.25) 0%, rgba(220, 20, 60, 0) 100%), radial-gradient(94.06% 178.82% at 148.39% 133.06%, rgba(220, 20, 60, 0.25) 0%, rgba(255, 46, 209, 0) 100%)
+}
+.card-tile:hover .brand-card-title {
+  transform: translateY(-200px);
+}
+
+.card-tile:hover .brand-card-des {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-215px);
+  pointer-events: auto;
+}
+.card-tile:hover .btn-part {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-75px);
+  pointer-events: auto;
+}
+
+/* OPTIONAL: STAGGERED ANIMATION */
+.card-tile:hover .brand-card-des {
+  transition-delay: 0.1s; 
+}
+
+.card-tile:hover .btn-part {
+  transition-delay: 0.2s; 
+}
+ 

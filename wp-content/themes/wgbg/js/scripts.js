@@ -85,18 +85,21 @@ jQuery(document).ready(function($){
         speed: 300,
         autoplay: false,
         slidesToShow: 3,
+        slidesToScroll: 3,
         accessibility: true,
         variableWidth: false,
         focusOnSelect: false,
         centerMode: false,
-        customPaging: function(slick,index) {
-            return '<a>' + (index + 1) + '</a>';
+        customPaging: function (slick, index) {
+            var number = (index + 1).toString().padStart(2, '0');
+            return '<a class="item-number">' + number + '</a>';
         },
         responsive: [
             {
                 breakpoint: 991,
                 settings: {
                 slidesToShow: 2,
+                slidesToScroll: 2,
                 }
             }
         ]

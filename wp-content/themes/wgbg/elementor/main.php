@@ -59,12 +59,17 @@ class MEPPluginElementor {
 		require_once( __DIR__ . '/widget/contact-banner.php'); 
 		require_once( __DIR__ . '/widget/contact-us.php'); 
 		require_once( __DIR__ . '/widget/our-work.php'); 
+		require_once( __DIR__ . '/widget/featured-case-studies.php'); 
+		require_once( __DIR__ . '/widget/case-study-banner.php'); 
 		require_once( __DIR__ . '/widget/slider.php' );		
 		require_once( __DIR__ . '/widget/how-works.php' );	
 		require_once( __DIR__ . '/widget/fast-transfer.php' );	
 		require_once( __DIR__ . '/widget/quick.php' );	
 		require_once( __DIR__ . '/widget/faq.php' );
 		require_once( __DIR__ . '/widget/page.php' );
+		require_once( __DIR__ . '/widget/brand-activation-cards.php' );
+
+
 		
 		// About us Page Widgets
 		require_once( __DIR__ . '/widget/about-us/about-banner.php' );
@@ -106,6 +111,10 @@ class MEPPluginElementor {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCContactBanner() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCContactUs() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCOurWork() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFeaturedCaseStudies() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCFeaturedCaseStudiesBanner() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCBrandActivationCards() );
+
 
 		// Register About us Page Widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\GCAboutBanner() );
