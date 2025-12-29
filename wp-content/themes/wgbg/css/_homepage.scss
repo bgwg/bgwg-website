@@ -542,7 +542,7 @@ a {
     }
     .brand-card-des {
       color: $white;
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 200;
       padding: 0 10px 0 0;
     }
@@ -2477,13 +2477,13 @@ a {
   background: linear-gradient(0deg, rgb(13 13 13 / 10%), rgba(13, 13, 13, 0.95)), radial-gradient(150.5% 286.12% at -69.31% -179.53%, rgba(255, 46, 209, 0.25) 0%, rgba(220, 20, 60, 0) 100%), radial-gradient(94.06% 178.82% at 148.39% 133.06%, rgba(220, 20, 60, 0.25) 0%, rgba(255, 46, 209, 0) 100%)
 }
 .card-tile:hover .brand-card-title {
-  transform: translateY(-200px);
+  transform: translateY(-190px);
 }
 
 .card-tile:hover .brand-card-des {
   opacity: 1;
   visibility: visible;
-  transform: translateY(-215px);
+  transform: translateY(-200px);
   pointer-events: auto;
 }
 .card-tile:hover .btn-part {

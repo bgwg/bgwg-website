@@ -1067,7 +1067,7 @@ a {
 }
 .experiental-engine .card-tile .brand-card-des {
   color: #fff;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 200;
   padding: 0 10px 0 0;
 }
@@ -2914,13 +2914,13 @@ a {
 }
 
 .card-tile:hover .brand-card-title {
-  transform: translateY(-200px);
+  transform: translateY(-190px);
 }
 
 .card-tile:hover .brand-card-des {
   opacity: 1;
   visibility: visible;
-  transform: translateY(-215px);
+  transform: translateY(-200px);
   pointer-events: auto;
 }
 

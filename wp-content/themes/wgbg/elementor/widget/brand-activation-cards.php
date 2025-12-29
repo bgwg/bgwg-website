@@ -68,7 +68,7 @@ class GCBrandActivationCards extends Widget_Base {
 
                     <p class="brand-card-des">
                       <?php 
-                        $intro_trimmed = wp_trim_words($intro, 22); 
+                        $intro_trimmed = wp_trim_words($intro, 18); 
                         echo esc_html($intro_trimmed); 
                       ?>
                     </p>
