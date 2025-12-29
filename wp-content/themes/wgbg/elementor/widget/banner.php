@@ -129,9 +129,19 @@ class GCBanner extends Widget_Base {
             'label_block' => true, // Make the control take up the full width
         ]
     );	
+    $this->add_control(
+        'gc_vimeo_id',
+        [
+            'label' => __( 'Vimeo Video ID', 'mage-eventpress' ),
+            'type' => Controls_Manager::TEXT,
+            'default' => '703934354',
+            'placeholder' => 'Enter Vimeo Video ID',
+        ]
+    );
 
 
-        $this->end_controls_section();
+
+    $this->end_controls_section();
 	
 	}
 
@@ -146,53 +156,50 @@ class GCBanner extends Widget_Base {
         // $main_image         = $settings['main_image']['url'];
         $appstore_url       = $settings['appstore_url']['url'];
         $playstore_url      = $settings['playstore_url']['url'];
-		?>	
-        <div class="banner">
-                <div id="bannerSlider" class="banner__slider">
-                    <div class="banner__content" style="background: url(<?php echo get_template_directory_uri(); ?>/images/banner.png) center center repeat; background-size: cover;">
-                        <div class="container">
-                            <div class="row banner-row">
-                                <div class="col-sm-12 text-center">
-                                    <div class="banner__content-main">
-                                        <h1 class="banner__content-title">
-                                            <?php echo $title_1; ?>
-                                        </h1>
-                                        <h2><?php  echo $title_2; ?></h2>
-                                        <p class="banner__content-description">
-                                            <?php echo $details_text;  ?>
-                                        </p>
-                                        <p class="banner__content-description2">
-                                            <?php echo $details_text_two;  ?>
-                                        </p>
-                                        <div class="banner__content-logo">
-                                        <ul class="list-unstyled">
-                                            <li><a href="<?php echo $appstore_url; ?>" class="btn btn-primary">Start a Conversation</a></li>
-                                            <li><a href="<?php echo $playstore_url; ?>" class="btn btn-success"><span>See Our Work</span></a></li>
-                                        </ul>
-                                    </div>
-                                    </div>
-                                </div>
+        $vimeo_id = $settings['gc_vimeo_id'];
+        
+        ?>
 
+<div class="banner">
+<div id="bannerSlider" class="banner__slider">
 
-                                <!-- <div class="col-sm-12"> 
-                                    <p class="banner__content-description">
-                                        <?php //echo $details_text;  ?>
-                                    </p>
-                                    <div class="banner__content-logo">
-                                        <ul class="list-unstyled">
-                                            <li><a href="<?php //echo $appstore_url; ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/home-page/apple-store.png" alt=""> </a></li>
-                                            <li><a href="<?php //echo $playstore_url; ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/home-page/google-play.png" alt=""> </a></li>
-                                        </ul>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-sm-6">
-                                <img src="<?php //echo $main_image; ?>" alt="">
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="banner__video-wrap">
+
+<iframe
+ class="banner__video"
+ src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?background=1&autoplay=1&loop=1&muted=1&controls=0"
+ frameborder="0"
+ allow="autoplay; fullscreen"
+></iframe>
+
+<div class="banner__content">
+<div class="container">
+<div class="row banner-row">
+<div class="col-sm-12 text-center">
+
+<div class="banner__content-main">
+<h1 class="banner__content-title"><?php echo $title_1; ?></h1>
+<h2><?php echo $title_2; ?></h2>
+
+<p class="banner__content-description"><?php echo $details_text; ?></p>
+<p class="banner__content-description2"><?php echo $details_text_two; ?></p>
+
+<div class="banner__content-logo">
+<ul class="list-unstyled">
+<li><a href="<?php echo esc_url($appstore_url); ?>" class="btn btn-primary">Start a Conversation</a></li>
+<li><a href="<?php echo esc_url($playstore_url); ?>" class="btn btn-success">See Our Work</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
 		<?php
 	}
 }

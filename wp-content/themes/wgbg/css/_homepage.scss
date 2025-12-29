@@ -78,6 +78,34 @@ a {
    }
   }
 } 
+.banner__video-wrap{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+  background:#000;
+  .banner__video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .banner__content{
+    position:relative;
+    z-index:2;
+    color:#fff;
+    padding:160px 0; 
+    &:before {
+      background:rgba(0, 0, 0, 0.75);
+    }
+  }
+  .banner__content-main {
+    padding-top: 0;
+  }
+}
+
 .banner {
   width: 100%;
   &__slider {
@@ -137,7 +165,7 @@ a {
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgb(0 0 0 / 85%);
+      background: rgb(0 0 0 / 80%);
     }
     &-date {
       display: block;
