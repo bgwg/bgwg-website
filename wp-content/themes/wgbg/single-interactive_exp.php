@@ -17,6 +17,8 @@ $h3          = get_post_meta($post_id, '_exp_h3', true);
 $intro       = get_post_meta($post_id, '_exp_intro', true);
 $btn_text    = get_post_meta($post_id, '_exp_btn_text', true);
 $btn_url     = get_post_meta($post_id, '_exp_btn_url', true);
+$btn_text2   = get_post_meta($post_id, '_exp_btn_text2', true);
+$btn_url2    = get_post_meta($post_id, '_exp_btn_url2', true);
 
 /* What We Deploy Section */
 $section_title    = get_post_meta($post_id, '_exp_deploy_title', true);
@@ -45,6 +47,8 @@ if (empty($h3)) $h3 = '<span>Custom Interactive</span> Experiences';
 if (empty($intro)) $intro = 'Some ideas can\'t be templated. For those moments, we design and build custom interactive experiences that blend storytelling, technology, and emotion — crafted specifically for your brand, your audience, and your goals.';
 if (empty($btn_text)) $btn_text = 'Book a Brainstorm';
 if (empty($btn_url)) $btn_url = '/book-a-call/';
+if (empty($btn_text2)) $btn_text2 = '';
+if (empty($btn_url2)) $btn_url2 = '';
 if (empty($why_btn)) $why_btn = 'See Activations in Action';
 if (empty($cta_heading)) $cta_heading = '<span>Stay connected</span> to the Engine.';
 if (empty($cta_text)) $cta_text = 'Follow BGWG for a behind-the-scenes look at how experiences are made. <b>Reels. Stories. Insights.</b>';
@@ -75,6 +79,13 @@ if (empty($banner_bg)) {
                                             <?php echo esc_html($btn_text); ?>
                                         </a>
                                     </li>
+                                    <?php if (!empty($btn_url2)) : ?>
+                                    <li>
+                                        <a href="<?php echo esc_url($btn_url2); ?>" class="btn btn-success">
+                                            <?php echo esc_html($btn_text2); ?>
+                                        </a>
+                                    </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>

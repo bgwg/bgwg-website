@@ -111,6 +111,8 @@ function gc_exp_hero_callback($post) {
     $text = gc_exp_get_meta($post->ID,'_exp_intro');
     $btn  = gc_exp_get_meta($post->ID,'_exp_btn_text');
     $url  = gc_exp_get_meta($post->ID,'_exp_btn_url');
+    $btn2  = gc_exp_get_meta($post->ID,'_exp_btn_text2');
+    $url2  = gc_exp_get_meta($post->ID,'_exp_btn_url2');
     ?>
 
     <p><strong>Banner Background Image</strong></p>
@@ -134,6 +136,12 @@ function gc_exp_hero_callback($post) {
 
     <p><label>Button URL</label></p>
     <input type="text" class="widefat" name="exp_btn_url" value="<?php echo esc_url($url); ?>">
+
+    <p><label>Second Button Text</label></p>
+    <input type="text" class="widefat" name="exp_btn_text2" value="<?php echo esc_attr($btn2); ?>">
+
+    <p><label>Second Button URL</label></p>
+    <input type="text" class="widefat" name="exp_btn_url2" value="<?php echo esc_url($url2); ?>">
 <?php }
 
 /*--------------------------------------------------------------
@@ -344,6 +352,9 @@ function gc_exp_save($post_id) {
         'exp_intro'        => '_exp_intro',
         'exp_btn_text'     => '_exp_btn_text',
         'exp_btn_url'      => '_exp_btn_url',
+        'exp_btn_text2'     => '_exp_btn_text2',
+        'exp_btn_url2'      => '_exp_btn_url2',
+
         'exp_deploy_items' => '_exp_deploy_items',
         'exp_why_items'    => '_exp_why_items',
         'exp_why_btn'      => '_exp_why_btn',
