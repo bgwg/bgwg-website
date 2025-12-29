@@ -140,6 +140,10 @@ function gc_exp_hero_callback($post) {
 # What We Deploy (5 Cards)
 --------------------------------------------------------------*/
 function gc_exp_deploy_callback($post) {
+    /* ===== Section Header Fields ===== */
+    $section_title    = gc_exp_get_meta($post->ID, '_exp_deploy_title');
+    $section_subtitle = gc_exp_get_meta($post->ID, '_exp_deploy_subtitle');
+
 
     $items = get_post_meta($post->ID,'_exp_deploy_items',true);
     
@@ -150,6 +154,29 @@ function gc_exp_deploy_callback($post) {
     $items = array_pad($items, 5, ['icon'=>'','title'=>'','text'=>'']);
     ?>
 
+    <!-- SECTION HEADER -->
+    <div style="border:2px dashed #999;padding:12px;margin-bottom:20px;background:#fff;">
+        <h3 style="margin-top:0;">Section Header</h3>
+
+        <p>
+            <label><strong>Section Title</strong></label>
+        </p>
+        <input type="text"
+               class="widefat"
+               name="exp_deploy_title"
+               value="<?php echo esc_attr($section_title); ?>"
+               placeholder='Why it <span>works</span>'>
+
+        <p>
+            <label><strong>Section Subtitle</strong></label>
+        </p>
+        <textarea class="widefat"
+                  name="exp_deploy_subtitle"
+                  rows="3"
+                  placeholder="Simple to launch, built to engage, designed to convert."><?php
+            echo esc_textarea($section_subtitle);
+        ?></textarea>
+    </div>
     <?php for ($i=0; $i<5; $i++): 
         $icon = isset($items[$i]['icon']) ? $items[$i]['icon'] : '';
         $title = isset($items[$i]['title']) ? $items[$i]['title'] : '';
@@ -173,29 +200,85 @@ function gc_exp_deploy_callback($post) {
         </div>
     <?php endfor; ?>
 <?php }
-
 /*--------------------------------------------------------------
 # Why It Works
 --------------------------------------------------------------*/
 function gc_exp_why_callback($post) {
 
+    // Section heading + subtitle
+    $section_title_why    = get_post_meta($post->ID, '_exp_why_title', true); 
+    $section_subtitle_why = get_post_meta($post->ID, '_exp_why_subtitle', true);
+
+    // Why items
     $items = get_post_meta($post->ID,'_exp_why_items',true);
-    
     if (!is_array($items)) {
         $items = [];
     }
-    
     $items = array_pad($items, 4, '');
-    $btn = gc_exp_get_meta($post->ID,'_exp_why_btn');
+
+    // CTA button text + url
+    $btn_text = get_post_meta($post->ID,'_exp_why_btn', true);
+    $btn_url  = get_post_meta($post->ID,'_exp_why_btn_url', true);
     ?>
 
-    <?php for ($i=0; $i<4; $i++): ?>
-        <p><label>Point <?php echo $i+1; ?></label></p>
-        <input type="text" class="widefat" name="exp_why_items[]" value="<?php echo esc_attr($items[$i]); ?>" placeholder="Why it works point <?php echo $i+1; ?>">
-    <?php endfor; ?>
+    <!-- SECTION HEADER -->
+    <div style="border:1px solid #ddd;padding:12px;margin-bottom:15px;background:#f9f9f9;">
+        <h4>Section Header</h4>
 
-    <p><label>CTA Button Text</label></p>
-    <input type="text" class="widefat" name="exp_why_btn" value="<?php echo esc_attr($btn); ?>" placeholder="See Activations in Action">
+        <p><label>Section Title (H2)</label></p>
+        <input
+            type="text"
+            class="widefat"
+            name="exp_why_title"
+            value="<?php echo esc_attr($section_title_why); ?>"
+            placeholder='Why it <span>works</span>'>
+
+        <p><label>Section Subtitle</label></p>
+        <textarea
+            class="widefat"
+            name="exp_why_subtitle"
+            rows="2"
+            placeholder="Simple to launch, built to engage, designed to convert."><?php
+                echo esc_textarea($section_subtitle_why);
+            ?></textarea>
+    </div>
+
+    <!-- WHY IT WORKS POINTS -->
+    <div style="border:1px solid #ccc;padding:12px;background:#fafafa;">
+        <h4>Why It Works Points</h4>
+
+        <?php for ($i=0; $i<4; $i++): ?>
+            <p><label>Point <?php echo $i+1; ?></label></p>
+            <input
+                type="text"
+                class="widefat"
+                name="exp_why_items[]"
+                value="<?php echo esc_attr($items[$i]); ?>"
+                placeholder="Why it works point <?php echo $i+1; ?>">
+        <?php endfor; ?>
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div style="margin-top:15px;border:1px solid #e1e1e1;padding-top:12px;background:#fafafa;">
+        <h4>CTA Button</h4>
+
+        <p><label>Button Text</label></p>
+        <input
+            type="text"
+            class="widefat"
+            name="exp_why_btn"
+            value="<?php echo esc_attr($btn_text); ?>"
+            placeholder="See Activations in Action">
+
+        <p><label>Button URL</label></p>
+        <input
+            type="text"
+            class="widefat"
+            name="exp_why_btn_url"
+            value="<?php echo esc_url($btn_url); ?>"
+            placeholder="https://example.com/our-work">
+    </div>
+
 <?php }
 
 /*--------------------------------------------------------------
@@ -249,6 +332,12 @@ function gc_exp_save($post_id) {
     }
 
     $fields = [
+        'exp_deploy_title'    => '_exp_deploy_title',
+        'exp_deploy_subtitle' => '_exp_deploy_subtitle',
+        'exp_why_title'       => '_exp_why_title',
+        'exp_why_subtitle'    => '_exp_why_subtitle',
+        // 'exp_why_btn_text'     => '_exp_why_btn_text',
+
         'exp_banner_bg'    => '_exp_banner_bg',
         'exp_h1'           => '_exp_h1',
         'exp_h3'           => '_exp_h3',
@@ -258,6 +347,8 @@ function gc_exp_save($post_id) {
         'exp_deploy_items' => '_exp_deploy_items',
         'exp_why_items'    => '_exp_why_items',
         'exp_why_btn'      => '_exp_why_btn',
+        'exp_why_btn_url'  => '_exp_why_btn_url',
+
         'exp_cta_heading'  => '_exp_cta_heading',
         'exp_cta_text'     => '_exp_cta_text',
         'exp_linkedin'     => '_exp_linkedin',

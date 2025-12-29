@@ -529,6 +529,13 @@ a {
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
+  .col-md-4 {
+    transition: all 0.4s ease;
+  }
+  .col-md-6 {
+    transition: all 0.4s ease;
+  }
+
   .card-wrapper {
     margin-top: 30px;
   }
@@ -541,6 +548,14 @@ a {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: all 0.4s ease;
+     &:hover {
+      .card-desc {
+        transform: translateY(20px);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 767px) {
       margin-bottom: 15px;
     }
@@ -556,7 +571,7 @@ a {
         height: 100%;
       }
     }
-    p {
+    .card-title {
       margin: 0;
       color: $white;
       font-size: 26px;
@@ -570,6 +585,14 @@ a {
         font-size: 22px;
       line-height: 26px;
       }
+    }
+    .card-desc {
+      text-align: center;
+      font-size: 16px;
+      color: $white;
+      font-weight: 300;
+      transform: translateY(120px);
+      opacity: 0;
     }
   }
   .btn-area {

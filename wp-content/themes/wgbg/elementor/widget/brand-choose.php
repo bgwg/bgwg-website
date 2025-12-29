@@ -92,6 +92,15 @@ class GCBrandChoose extends Widget_Base {
 				'default' => __( 'Card Text', 'mage-eventpress' ),
 			]
 		);
+		$repeater->add_control(
+			'description',
+			[
+				'label'   => __( 'Description', 'mage-eventpress' ),
+				'type'    => Controls_Manager::TEXTAREA,
+				'rows'    => 4,
+				'default' => __( 'Card description text here...', 'mage-eventpress' ),
+			]
+		);
 
 		$this->add_control(
 			'cards',
@@ -164,7 +173,10 @@ class GCBrandChoose extends Widget_Base {
 									<div class="icon-box">
 										<img src="<?php echo esc_url( $card['icon_image']['url'] ); ?>" alt="">
 									</div>
-									<p><?php echo esc_html( $card['title'] ); ?></p>
+									<h4 class="card-title"><?php echo esc_html( $card['title'] ); ?></h4>
+									<p class="card-desc">
+										<?php echo esc_html( $card['description'] ); ?>
+									</p>
 								</div>
 							</div>
 						<?php endforeach; ?>

@@ -133,4 +133,29 @@ jQuery(document).ready(function($){
         fade: true,
         asNavFor: '.thumb-slider'
     });
+
+   
+    jQuery(function ($) {
+
+        var $cards = $(".brand-choose .col-md-4");
+
+        $cards.on("mouseenter", function () {
+
+            $cards.removeClass("col-md-4 col-md-6 col-md-3")
+                .addClass("col-md-3");
+
+            $(this).removeClass("col-md-3")
+                .addClass("col-md-6");
+        });
+
+        $cards.on("mouseleave", function () {
+
+            $cards.removeClass("col-md-3 col-md-6")
+                .addClass("col-md-4");
+        });
+
+    });
+
+
+
 }(jQuery));	

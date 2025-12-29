@@ -19,11 +19,17 @@ $btn_text    = get_post_meta($post_id, '_exp_btn_text', true);
 $btn_url     = get_post_meta($post_id, '_exp_btn_url', true);
 
 /* What We Deploy Section */
-$deploy_items = get_post_meta($post_id, '_exp_deploy_items', true);
+$section_title    = get_post_meta($post_id, '_exp_deploy_title', true);
+$section_subtitle = get_post_meta($post_id, '_exp_deploy_subtitle', true);
+$deploy_items     = get_post_meta($post_id, '_exp_deploy_items', true);
 
 /* Why It Works Section */
+$section_title_why    = get_post_meta($post_id, '_exp_why_title', true);
+$section_subtitle_why = get_post_meta($post_id, '_exp_why_subtitle', true);
+
 $why_items   = get_post_meta($post_id, '_exp_why_items', true);
 $why_btn     = get_post_meta($post_id, '_exp_why_btn', true);
+$why_btn_url = get_post_meta($post_id, '_exp_why_btn_url', true);
 
 /* CTA Footer Section */
 $cta_heading = get_post_meta($post_id, '_exp_cta_heading', true);
@@ -82,12 +88,28 @@ if (empty($banner_bg)) {
 <!-- What We Deploy Section -->
 <section class="action-terms">
     <div class="container">
-        <div class="section-header width-full with-black">
+        <!-- SECTION HEADER -->
+        <?php if ($section_title || $section_subtitle): ?>
+            <div class="section-header width-full with-black">
+                <div class="title">
+                    <?php if ($section_title): ?>
+                        <h2><?php echo wp_kses_post($section_title); ?></h2>
+                    <?php endif; ?>
+
+                    <?php if ($section_subtitle): ?>
+                        <p><?php echo esc_html($section_subtitle); ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
+        <!-- <div class="section-header width-full with-black">
             <div class="title">
                 <h2>What we <span>Deploy</span></h2>
                 <p>Built for speed. Designed for scale. Proven in the field.</p>
             </div>
-        </div>
+        </div> -->
         <div class="row-card">
             <?php 
             if (!empty($deploy_items) && is_array($deploy_items)): 
@@ -142,12 +164,20 @@ if (empty($banner_bg)) {
 <!-- Why It Works Section -->
 <section class="why-it-works">
     <div class="container">
-        <div class="section-header width-full with-black">
-            <div class="title">
-                <h2>Why it <span>works</span></h2>
-                <p>Simple to launch, built to engage, designed to convert.</p>
+
+        <?php if ($section_title_why || $section_subtitle_why): ?>
+            <div class="section-header width-full with-black">
+                <div class="title">
+                    <?php if ($section_title_why): ?>
+                        <h2><?php echo wp_kses_post($section_title_why); ?></h2>
+                    <?php endif; ?>
+
+                    <?php if ($section_subtitle_why): ?>
+                        <p><?php echo esc_html($section_subtitle_why); ?></p>
+                    <?php endif; ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
         <div class="work-box">
             <?php 
             if (!empty($why_items) && is_array($why_items)): 
@@ -184,7 +214,7 @@ if (empty($banner_bg)) {
         <div class="banner__content-logo">
             <ul class="list-unstyled">
                 <li>
-                    <a href="<?php echo esc_url($btn_url); ?>" class="btn btn-primary" tabindex="0">
+                    <a href="<?php echo esc_url($why_btn_url); ?>" class="btn btn-primary" tabindex="0">
                         <?php echo esc_html($why_btn); ?>
                     </a>
                 </li>

@@ -1055,6 +1055,12 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.brand-choose .col-md-4 {
+  transition: all 0.4s ease;
+}
+.brand-choose .col-md-6 {
+  transition: all 0.4s ease;
+}
 .brand-choose .card-wrapper {
   margin-top: 30px;
 }
@@ -1067,6 +1073,11 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  transition: all 0.4s ease;
+}
+.brand-choose .icon-card:hover .card-desc {
+  transform: translateY(20px);
+  opacity: 1;
 }
 @media (max-width: 767px) {
   .brand-choose .icon-card {
@@ -1087,7 +1098,7 @@ a {
   width: auto;
   height: 100%;
 }
-.brand-choose .icon-card p {
+.brand-choose .icon-card .card-title {
   margin: 0;
   color: #fff;
   font-size: 26px;
@@ -1098,11 +1109,19 @@ a {
   margin-top: 30px;
 }
 @media (max-width: 992px) {
-  .brand-choose .icon-card p {
+  .brand-choose .icon-card .card-title {
     max-width: 100%;
     font-size: 22px;
     line-height: 26px;
   }
+}
+.brand-choose .icon-card .card-desc {
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 300;
+  transform: translateY(120px);
+  opacity: 0;
 }
 .brand-choose .btn-area {
   margin-top: 40px;

@@ -37,7 +37,7 @@
                                         'menu_class' => 'nav navbar-nav navbar-right',
                                         'fallback_cb' => '',
                                         'menu_id' => 'header_menu',
-                                        // 'walker' => new wp_bootstrap_navwalker()
+                                        // 'walker' => new Bootstrap_Mega_Menu_Walker()
                                     )
                             ); ?>
                     </div><!-- /.navbar-collapse -->
