@@ -777,11 +777,20 @@ a {
       }
       .people-image {
         width: 44%;
+        overflow: hidden;
+        border-radius: 10px;
+        &:hover {
+          img {
+            transform: scale(1.15);
+            transition: all ease-in-out 0.3s;
+          }
+        }
         @media (max-width: 767px) {
           width: 100%;
         }
         img {
           width: 100%;
+          transition: all ease-in-out 0.3s;
         }
         &:nth-child(2) {
           width: 49%;
@@ -829,11 +838,20 @@ a {
       }
       .second-people-img {
         width: 48%;
+        overflow: hidden;
+        border-radius: 10px;
+        &:hover {
+          img {
+            transform: scale(1.15);
+            transition: all ease-in-out 0.3s;
+          }
+        }
         @media (max-width: 767px) {
           width: 100%;
         }
         img {
           width: 100%;
+            transition: all ease-in-out 0.3s;
         }
         &:first-child {
           margin-top: 15px;
@@ -887,7 +905,7 @@ a {
   border: 0px solid;
   border-bottom: 1px solid #0D0D0D80;
   background: transparent;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 26px;
@@ -1288,6 +1306,7 @@ a {
       label {
         color: #0D0D0D80;
         font-weight: 300;
+        font-size: 18px;
       }
       .form-control {
         line-height: 30px;

@@ -61,7 +61,7 @@ jQuery(document).ready(function($){
         dots: false,
         arrows:false,
         infinite: true,
-        speed: 300,
+        speed: 200,
         autoplay: true,
         slidesToShow: 5,
         accessibility: true,

@@ -1315,6 +1315,12 @@ a {
 }
 .the-people-content .first-row .people-image {
   width: 44%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.the-people-content .first-row .people-image:hover img {
+  transform: scale(1.15);
+  transition: all ease-in-out 0.3s;
 }
 @media (max-width: 767px) {
   .the-people-content .first-row .people-image {
@@ -1323,6 +1329,7 @@ a {
 }
 .the-people-content .first-row .people-image img {
   width: 100%;
+  transition: all ease-in-out 0.3s;
 }
 .the-people-content .first-row .people-image:nth-child(2) {
   width: 49%;
@@ -1379,6 +1386,12 @@ a {
 }
 .the-people-content .second-row .second-people-img {
   width: 48%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.the-people-content .second-row .second-people-img:hover img {
+  transform: scale(1.15);
+  transition: all ease-in-out 0.3s;
 }
 @media (max-width: 767px) {
   .the-people-content .second-row .second-people-img {
@@ -1387,6 +1400,7 @@ a {
 }
 .the-people-content .second-row .second-people-img img {
   width: 100%;
+  transition: all ease-in-out 0.3s;
 }
 .the-people-content .second-row .second-people-img:first-child {
   margin-top: 15px;
@@ -1434,7 +1448,7 @@ a {
   border: 0px solid;
   border-bottom: 1px solid rgba(13, 13, 13, 0.5019607843);
   background: transparent;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 300;
   line-height: 26px;
@@ -1805,6 +1819,7 @@ a {
 .contact-us .contact-form-inner .form-group label {
   color: rgba(13, 13, 13, 0.5019607843);
   font-weight: 300;
+  font-size: 18px;
 }
 .contact-us .contact-form-inner .form-group .form-control {
   line-height: 30px;
