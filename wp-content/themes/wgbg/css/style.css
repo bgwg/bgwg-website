@@ -1130,7 +1130,7 @@ a {
   margin: 0;
   color: #fff;
   font-size: 26px;
-  max-width: 60%;
+  max-width: 100%;
   text-align: center;
   line-height: 30px;
   font-weight: 700;
@@ -2933,7 +2933,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  padding: 3px; /* Border thickness */
+  padding: 3px;
   border-radius: 10px;
   background: linear-gradient(95.59deg, #DC143C -31.16%, rgba(255, 46, 209, 0.5) 49.74%, rgba(0, 0, 0, 0) 130.64%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -2971,6 +2971,68 @@ a {
 
 .card-tile:hover .btn-part {
   transition-delay: 0.2s;
+}
+
+.card-wrapper .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-wrapper [class*=col-] {
+  transition: all 0.45s ease;
+}
+
+.icon-card {
+  height: 100%;
+  border-radius: 20px;
+  padding: 40px 30px;
+  transition: all 0.45s ease;
+  background: linear-gradient(135deg, #ff4fd8, #d41f4a);
+  color: #fff;
+  overflow: hidden;
+}
+
+.card-wrapper [class*=col-] {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+
+.icon-card {
+  opacity: 1;
+}
+
+.card-wrapper:hover [class*=col-] {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.card-wrapper:hover .icon-card {
+  opacity: 0.35;
+  filter: grayscale(100%);
+}
+
+.card-wrapper [class*=col-]:hover {
+  flex: 0 0 50%;
+  max-width: 50%;
+  z-index: 10;
+}
+
+.card-wrapper [class*=col-]:hover .icon-card {
+  opacity: 1;
+  filter: grayscale(0);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+}
+
+.card-desc {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.card-wrapper [class*=col-]:hover .card-desc {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 15px;
 }
 
 .footer {

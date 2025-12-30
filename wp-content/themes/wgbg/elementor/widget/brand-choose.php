@@ -164,6 +164,7 @@ class GCBrandChoose extends Widget_Base {
 					</div>
 				</div>
 
+
 				<div class="card-wrapper">
 					<div class="row">
 
@@ -181,19 +182,22 @@ class GCBrandChoose extends Widget_Base {
 							</div>
 						<?php endforeach; ?>
 
-						<?php if ( ! empty( $settings['button_text'] ) ) : ?>
-							<div class="col-md-12 col-sm-12">
-								<div class="btn-area text-center">
-									<a href="<?php echo esc_url( $settings['button_url']['url'] ); ?>"
-									   class="btn btn-success">
-										<span><?php echo esc_html( $settings['button_text'] ); ?></span>
-									</a>
-								</div>
-							</div>
-						<?php endif; ?>
+		
 
 					</div>
 				</div>
+				<?php if ( ! empty( $settings['button_text'] ) ) : ?>
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="btn-area text-center">
+							<a href="<?php echo esc_url( $settings['button_url']['url'] ); ?>"
+									class="btn btn-success">
+								<span><?php echo esc_html( $settings['button_text'] ); ?></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<?php endif; ?>
 
 			</div>
 		</section>
