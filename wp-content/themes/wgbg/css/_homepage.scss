@@ -912,7 +912,7 @@ a {
   min-height: 345px;
   background-size: cover;
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(222, 222, 222, 0.50);
   .cta-content {
     width: 40%;
     @media (max-width: 992px) {
@@ -1309,18 +1309,18 @@ a {
 }
 .work-inner-details {
   position: relative;
-  padding: 30rem 0 0;
+  padding: 8rem 0 0;
   .work-photo {
     position: absolute;
     right: 60px;
-    bottom: 30px;
-    width: 35%;
+    bottom: 0px;
+    width: 30%;
     img {
       width: 100%;
     }
   }
   .content-copy {
-    width: 50%;
+    width: 45%;
     margin-left: 0; 
     padding-bottom: 12rem;
         
@@ -1330,7 +1330,7 @@ a {
       margin-bottom: 10px;
     }
     h1 {
-      font-size: 36px;
+      font-size: 45px;
       font-weight: 700;
       color: $white;
       span {
@@ -1340,8 +1340,8 @@ a {
         background-clip: text;
         color: transparent;
         line-height: 1.2;
-        font-size: 50px;
-        padding: 20px 0
+        font-size: 45px;
+        padding: 20px 0 0
       }
     }
     p {
@@ -2070,16 +2070,27 @@ a {
   a {
     font-style: normal;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 38px;
     line-height: 1.2;
     text-align: center;
     color: #1B1C20;
-    padding: 10px 0;
+    padding: 15px 0 5px;
+    text-decoration: none;
+    transition: all ease-in-out 0.3s;
+    &:hover,  &:focus {
+      background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      transition: all ease-in-out 0.3s;
+    }
     @media (max-width: 767px) {
       font-size: 20px;
     }
     span {
-
+      padding: 10px 10px 0;
+      display: inline-block;
     }
     img {
       height: 48px;

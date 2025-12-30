@@ -50,7 +50,7 @@
 }
 
 .header .newBg {
-  background: rgba(0, 0, 0, 0.81) !important;
+  background: rgba(0, 0, 0, 0.92) !important;
   box-shadow: 0 0 5px 0px rgba(50, 50, 50, 0.65);
 }
 .header .newBg.navbar {
@@ -1463,7 +1463,7 @@ a {
   min-height: 345px;
   background-size: cover;
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(222, 222, 222, 0.5);
 }
 .cta-footer-inner .cta-content {
   width: 40%;
@@ -1826,19 +1826,19 @@ a {
 
 .work-inner-details {
   position: relative;
-  padding: 30rem 0 0;
+  padding: 8rem 0 0;
 }
 .work-inner-details .work-photo {
   position: absolute;
   right: 60px;
-  bottom: 30px;
-  width: 35%;
+  bottom: 0px;
+  width: 30%;
 }
 .work-inner-details .work-photo img {
   width: 100%;
 }
 .work-inner-details .content-copy {
-  width: 50%;
+  width: 45%;
   margin-left: 0;
   padding-bottom: 12rem;
 }
@@ -1848,7 +1848,7 @@ a {
   margin-bottom: 10px;
 }
 .work-inner-details .content-copy h1 {
-  font-size: 36px;
+  font-size: 45px;
   font-weight: 700;
   color: #fff;
 }
@@ -1859,8 +1859,8 @@ a {
   background-clip: text;
   color: transparent;
   line-height: 1.2;
-  font-size: 50px;
-  padding: 20px 0;
+  font-size: 45px;
+  padding: 20px 0 0;
 }
 .work-inner-details .content-copy p {
   font-size: 20px;
@@ -2532,16 +2532,30 @@ a {
 .next-prev-inner a {
   font-style: normal;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 38px;
   line-height: 1.2;
   text-align: center;
   color: #1B1C20;
-  padding: 10px 0;
+  padding: 15px 0 5px;
+  text-decoration: none;
+  transition: all ease-in-out 0.3s;
+}
+.next-prev-inner a:hover, .next-prev-inner a:focus {
+  background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  transition: all ease-in-out 0.3s;
 }
 @media (max-width: 767px) {
   .next-prev-inner a {
     font-size: 20px;
   }
+}
+.next-prev-inner a span {
+  padding: 10px 10px 0;
+  display: inline-block;
 }
 .next-prev-inner a img {
   height: 48px;

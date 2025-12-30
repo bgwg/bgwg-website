@@ -398,7 +398,8 @@ if ( have_posts() ) :
             <div class=" ">
 							<?php if ( $prev_post ) : ?>
 								<a href="<?php echo get_permalink( $prev_post->ID ); ?>" class="arrow-text d-flex align-items-center">
-									<img src="<?php echo esc_url( $arrow_icon ); ?>" class="arrow-img rotate-arrow" alt="" style="margin-right: 8px;">
+									<i class="fa-solid fa-arrow-left-long"></i>
+									<!-- <img src="<?php //echo esc_url( $arrow_icon ); ?>" class="arrow-img rotate-arrow" alt="" style="margin-right: 8px;"> -->
 									<span class="uner-line">Prev Case</span>
 								</a>
 							<?php endif; ?>
@@ -407,7 +408,8 @@ if ( have_posts() ) :
 							<?php if ( $next_post ) : ?>
 								<a href="<?php echo get_permalink( $next_post->ID ); ?>" class="arrow-text d-flex align-items-center case-nav-next">
 									<span class="uner-line">Next Case</span>
-									<img src="<?php echo esc_url( $arrow_icon ); ?>" class="arrow-img" alt="" style="margin-left: 8px;">
+									<i class="fa-solid fa-arrow-right-long"></i>
+									<!-- <img src="<?php //echo esc_url( $arrow_icon ); ?>" class="arrow-img" alt="" style="margin-left: 8px;"> -->
 								</a>
 							<?php endif; ?>
             </div>
