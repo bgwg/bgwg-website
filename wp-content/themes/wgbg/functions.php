@@ -85,6 +85,74 @@ function gc_init() {
 
 
 /* -------------------------------------------------
+ * Footer 
+ * ------------------------------------------------- */
+function gc_register_menus() {
+    register_nav_menus([
+        'footer_menu'   => __('Footer Navigation', 'gc'),
+        'footer_license'=> __('Footer License', 'gc'),
+    ]);
+}
+add_action('after_setup_theme', 'gc_register_menus');
+
+function gc_footer_customizer($wp_customize) {
+
+    $wp_customize->add_section('gc_footer_section', [
+        'title'    => __('Footer Settings', 'gc'),
+        'priority' => 30,
+    ]);
+
+    // Footer Logo
+    $wp_customize->add_setting('gc_footer_logo');
+    $wp_customize->add_control(
+        new WP_Customize_Media_Control(
+            $wp_customize,
+            'gc_footer_logo',
+            [
+                'label'   => __('Footer Logo', 'gc'),
+                'section' => 'gc_footer_section',
+                'mime_type' => 'image',
+            ]
+        )
+    );
+
+    // Tagline
+    $wp_customize->add_setting('gc_footer_tagline', ['default' => '']);
+    $wp_customize->add_control('gc_footer_tagline', [
+        'label'   => __('Footer Tagline', 'gc'),
+        'section' => 'gc_footer_section',
+        'type'    => 'text',
+    ]);
+
+    // Address
+    $wp_customize->add_setting('gc_footer_address');
+    $wp_customize->add_control('gc_footer_address', [
+        'label'   => __('Address', 'gc'),
+        'section' => 'gc_footer_section',
+        'type'    => 'textarea',
+    ]);
+
+    // Email
+    $wp_customize->add_setting('gc_footer_email');
+    $wp_customize->add_control('gc_footer_email', [
+        'label'   => __('Email', 'gc'),
+        'section' => 'gc_footer_section',
+        'type'    => 'email',
+    ]);
+
+    // Phone
+    $wp_customize->add_setting('gc_footer_phone');
+    $wp_customize->add_control('gc_footer_phone', [
+        'label'   => __('Phone', 'gc'),
+        'section' => 'gc_footer_section',
+        'type'    => 'text',
+    ]);
+
+}
+add_action('customize_register', 'gc_footer_customizer');
+
+
+/* -------------------------------------------------
  * Custom Mega Menu Walker
  * ------------------------------------------------- */
 // class Bootstrap_Mega_Menu_Walker extends Walker_Nav_Menu {
