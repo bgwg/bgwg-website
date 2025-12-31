@@ -1,0 +1,292 @@
+/**
+ * Case Study Meta Box Styles
+ * 
+ * @package WGBG
+ * @version 2.0.0
+ */
+
+/* Meta Field Spacing */
+.gc-meta-field {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.gc-meta-field:last-child {
+    border-bottom: none;
+}
+
+.gc-meta-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.gc-meta-field .description {
+    margin-top: 5px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Image Preview Wrapper */
+.gc-image-preview-wrapper {
+    margin: 10px 0;
+}
+
+.gc-image-preview-wrapper img {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    background: #f9f9f9;
+}
+
+/* Button Spacing */
+.gc-meta-field .button {
+    margin-right: 10px;
+}
+
+/* Field Groups */
+.gc-field-group {
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #2271b1;
+    border-radius: 4px;
+}
+
+/* Layout Toggle */
+.gc-layout-toggle {
+    background: #fff;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid #2271b1;
+    border-radius: 4px;
+}
+
+.gc-layout-toggle label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.gc-layout-toggle input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Extended Fields */
+.gc-extended-fields {
+    display: none;
+    background: #e7f5ff;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 4px solid #0073aa;
+    border-radius: 4px;
+}
+
+.gc-extended-fields.active {
+    display: block;
+}
+
+.gc-extended-fields h3 {
+    margin-top: 0;
+    color: #0073aa;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 10px;
+}
+
+/* Box Fields */
+.gc-box-fields {
+    display: block;
+    background: #fff8e7;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 4px solid #f0b323;
+    border-radius: 4px;
+}
+
+.gc-box-fields.hidden {
+    display: none;
+}
+
+.gc-box-fields h3 {
+    margin-top: 0;
+    color: #f0b323;
+    border-bottom: 2px solid #f0b323;
+    padding-bottom: 10px;
+}
+
+/* Step Items */
+.gc-step-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.gc-step-item h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.gc-step-item p {
+    margin-bottom: 10px;
+}
+
+.gc-step-item p:last-child {
+    margin-bottom: 0;
+}
+
+.gc-step-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Gallery Container */
+.gc-gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.gc-gallery-item {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease;
+}
+
+.gc-gallery-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gc-gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.gc-gallery-item .button {
+    width: 100%;
+    margin: 0;
+}
+
+/* Empty Gallery State */
+.gc-gallery-container:empty::before {
+    content: "No images added yet. Click 'Add Images' to get started.";
+    display: block;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 782px) {
+    .gc-gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    
+    .gc-meta-field .button {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+/* Admin Notice Styles */
+.gc-admin-notice {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-left: 4px solid #00a0d2;
+    background: #e5f5fa;
+    border-radius: 4px;
+}
+
+.gc-admin-notice.warning {
+    border-left-color: #f0b323;
+    background: #fff8e7;
+}
+
+.gc-admin-notice.error {
+    border-left-color: #dc3232;
+    background: #fbeaea;
+}
+
+/* Improved Form Controls */
+.gc-meta-field input[type="text"],
+.gc-meta-field input[type="url"],
+.gc-meta-field textarea {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.gc-meta-field input[type="text"]:focus,
+.gc-meta-field input[type="url"]:focus,
+.gc-meta-field textarea:focus {
+    border-color: #2271b1;
+    outline: none;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* Button Styles */
+.gc-meta-field .button-primary {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+}
+
+.gc-meta-field .button-primary:hover {
+    background: #135e96;
+    border-color: #135e96;
+}
+
+.gc-remove-single-image {
+    background: #dc3232;
+    border-color: #dc3232;
+    color: #fff;
+}
+
+.gc-remove-single-image:hover {
+    background: #a02020;
+    border-color: #a02020;
+}
+
+/* Loading State */
+.gc-meta-field.loading::after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #2271b1;
+    border-radius: 50%;
+    animation: gc-spin 1s linear infinite;
+}
+
+@keyframes gc-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

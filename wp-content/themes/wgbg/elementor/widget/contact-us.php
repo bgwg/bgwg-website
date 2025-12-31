@@ -148,7 +148,7 @@ class GCContactUs extends Widget_Base {
 					<div class="email-div">
 						<h4>Contact</h4>
 						<p>Office: <?php echo esc_html( $s['office_phone'] ); ?></p>
-						<p>FAX: <?php echo esc_html( $s['fax'] ); ?></p>
+						<p>Fax: <?php echo esc_html( $s['fax'] ); ?></p>
 					</div>
 				</div>
 

@@ -61,7 +61,8 @@ jQuery(document).ready(function($){
         dots: false,
         arrows:false,
         infinite: true,
-        speed: 200,
+        speed: 300,
+        autoplaySpeed: 1000,
         autoplay: true,
         slidesToShow: 5,
         accessibility: true,
@@ -130,7 +131,9 @@ jQuery(document).ready(function($){
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        fade: true,
+        fade: false,
+        vertical: true,
+        verticalSwiping: true,
         asNavFor: '.thumb-slider'
     });
 
@@ -150,3 +153,4 @@ jQuery(document).ready(function($){
 
 
 }(jQuery));	
+

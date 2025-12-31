@@ -1708,6 +1708,23 @@ a {
     color: #171717;
     font-weight: 500;
     margin: 0;
+    a {
+      font-size: 18px;
+      text-decoration: none;
+      span {
+        padding: 10px 0;
+      }
+      &:hover {
+        transition: all ease-in-out 0.3s;
+        span, i {
+          background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+        }
+      }
+    }
   }
   &.text-right {
     @media (max-width: 767px) {
@@ -1737,6 +1754,7 @@ a {
     background-clip: text;
     color: transparent;
     margin: 0;
+    padding-top: 5px;
     @media (max-width: 767px) {
       line-height: 22px;
       font-size: 20px;
@@ -1872,6 +1890,43 @@ a {
     flex-direction: column;
     justify-content: space-between;
     flex: 1 1 0;
+    position: relative;
+    overflow: hidden;
+    &:hover {
+      .solution-box-hover {
+         transform: translateY(0);
+         transition: all ease-in-out 0.5s;
+      }
+    }
+    .solution-box-hover {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(103.8deg, rgba(220, 20, 60, 1) 1.22%, rgba(255, 46, 209, 1) 99.95%);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      transform: translateY(100%);
+       transition: all ease-in-out 0.5s;
+    // opacity: 0;
+      h3 {
+        color: #fff;
+        font-size: 30px;
+        margin: 0;
+      }
+       p {
+        font-size: 18px;
+        color: #fff;
+        font-weight: 300;
+        line-height: 1.25;
+        margin: 0;
+      }
+    }
     @media (max-width: 767px) {
       min-height: 180px;
     }
@@ -1892,7 +1947,7 @@ a {
         line-height: 75px;
       }
     }
-    p {
+    h2 {
       font-size: 38px;
       color: #0d0d0d;
       margin: 0;
@@ -1924,6 +1979,11 @@ a {
     display: flex;
     align-items: center;
     min-height: 125px;
+    transition: all ease-in-out 0.3s;
+    &:hover {
+      transition: all ease-in-out 0.3s;
+      background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
+    }
     @media (max-width: 767px) {
       width: 100%;
     }
@@ -2608,3 +2668,7 @@ a {
   opacity: 1;
   margin-top: 15px;
 }
+
+
+
+

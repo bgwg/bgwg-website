@@ -2235,6 +2235,23 @@ a {
   font-weight: 500;
   margin: 0;
 }
+.details-col .year-date a {
+  font-size: 18px;
+  text-decoration: none;
+}
+.details-col .year-date a span {
+  padding: 10px 0;
+}
+.details-col .year-date a:hover {
+  transition: all ease-in-out 0.3s;
+}
+.details-col .year-date a:hover span, .details-col .year-date a:hover i {
+  background: linear-gradient(103.8deg, #DC143C 1.22%, #FF2ED1 99.95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 @media (max-width: 767px) {
   .details-col.text-right {
     text-align: left;
@@ -2263,6 +2280,7 @@ a {
   background-clip: text;
   color: transparent;
   margin: 0;
+  padding-top: 5px;
 }
 @media (max-width: 767px) {
   .objective-area h3 {
@@ -2414,6 +2432,40 @@ a {
   flex-direction: column;
   justify-content: space-between;
   flex: 1 1 0;
+  position: relative;
+  overflow: hidden;
+}
+.solution-box .single-box:hover .solution-box-hover {
+  transform: translateY(0);
+  transition: all ease-in-out 0.5s;
+}
+.solution-box .single-box .solution-box-hover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(103.8deg, rgb(220, 20, 60) 1.22%, rgb(255, 46, 209) 99.95%);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: all ease-in-out 0.5s;
+}
+.solution-box .single-box .solution-box-hover h3 {
+  color: #fff;
+  font-size: 30px;
+  margin: 0;
+}
+.solution-box .single-box .solution-box-hover p {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 300;
+  line-height: 1.25;
+  margin: 0;
 }
 @media (max-width: 767px) {
   .solution-box .single-box {
@@ -2441,7 +2493,7 @@ a {
     line-height: 75px;
   }
 }
-.solution-box .single-box p {
+.solution-box .single-box h2 {
   font-size: 38px;
   color: #0d0d0d;
   margin: 0;
@@ -2450,12 +2502,12 @@ a {
   padding: 10px 0 10px;
 }
 @media (max-width: 992px) {
-  .solution-box .single-box p {
+  .solution-box .single-box h2 {
     font-size: 30px;
   }
 }
 @media (max-width: 767px) {
-  .solution-box .single-box p {
+  .solution-box .single-box h2 {
     font-size: 24px;
     line-height: 30px;
   }
@@ -2477,6 +2529,11 @@ a {
   display: flex;
   align-items: center;
   min-height: 125px;
+  transition: all ease-in-out 0.3s;
+}
+.four-boxs .each-four:hover {
+  transition: all ease-in-out 0.3s;
+  background: linear-gradient(103.8deg, rgba(220, 20, 60, 0.1) 1.22%, rgba(255, 46, 209, 0.1) 99.95%);
 }
 @media (max-width: 767px) {
   .four-boxs .each-four {
@@ -3063,11 +3120,11 @@ a {
   width: 150px;
 }
 .footer .footer-bottom .footer-logo p {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   padding: 30px 0 0;
-  font-size: 14px;
-  max-width: 300px;
   font-weight: 200;
+  font-size: 18px;
+  max-width: 385px;
 }
 @media (max-width: 767px) {
   .footer .footer-bottom .footer-nav {

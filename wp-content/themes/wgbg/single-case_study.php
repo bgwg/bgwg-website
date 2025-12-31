@@ -1,480 +1,563 @@
 <?php
+/**
+ * Single Case Study Template
+ * 
+ * @package WGBG
+ * @version 2.0.0
+ */
+
 get_header();
 
-if ( have_posts() ) :
-	while ( have_posts() ) :
-		the_post();
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
 
-		$post_id = get_the_ID();
+        $post_id = get_the_ID();
+        $template_dir = get_template_directory_uri();
 
-		$card_bg_image	= get_post_meta( $post_id, '_cs_card_bg_image', true );
-		$banner_image   = get_post_meta( $post_id, '_cs_banner_image', true );
-		$main_image     = get_post_meta( $post_id, '_cs_main_image', true );
-		$banner_logo    = get_post_meta( $post_id, '_cs_banner_logo', true );
-		$heading_prefix = get_post_meta( $post_id, '_cs_heading_prefix', true );
-		$heading_main   = get_post_meta( $post_id, '_cs_heading_main', true );
-		$intro_text     = get_post_meta( $post_id, '_cs_intro_text', true );
-		$year           = get_post_meta( $post_id, '_cs_year', true );
-		$technology     = get_post_meta( $post_id, '_cs_technology', true );
-		$objective_sub  = get_post_meta( $post_id, '_cs_objective_subtitle', true );
-		$objective_head = get_post_meta( $post_id, '_cs_objective_heading', true );
-		$objective_intro= get_post_meta( $post_id, '_cs_objective_intro', true );
-		$objective_list = get_post_meta( $post_id, '_cs_objective_list', true );
-		$objective_img  = get_post_meta( $post_id, '_cs_objective_image', true );
-		$exec_sub       = get_post_meta( $post_id, '_cs_execution_subtitle', true );
-		$exec_head      = get_post_meta( $post_id, '_cs_execution_heading', true );
-		$exec_text      = get_post_meta( $post_id, '_cs_execution_text', true );
-		$steps_list     = get_post_meta( $post_id, '_cs_steps_list', true );
-		$four_head      = get_post_meta( $post_id, '_cs_four_box_heading', true );
-		$four_items     = get_post_meta( $post_id, '_cs_four_box_items', true );
-		$outcome_head   = get_post_meta( $post_id, '_cs_outcome_heading', true );
-		$outcome_text   = get_post_meta( $post_id, '_cs_outcome_text', true );
-		$video_url      = get_post_meta( $post_id, '_cs_video_url', true );
-		$video_thumb    = get_post_meta( $post_id, '_cs_video_thumbnail', true );
-		$large_image    = get_post_meta( $post_id, '_cs_large_image', true );
-		$objective_extra_text = get_post_meta( $post_id, '_cs_objective_extra_text', true );
-		
-		$solution_ext_title = get_post_meta( $post_id, '_cs_solution_extended_title', true );
-		$solution_ext_text  = get_post_meta( $post_id, '_cs_solution_extended_text', true );
-		$solution_ext_img   = get_post_meta( $post_id, '_cs_solution_extended_image', true );
-		$use_extended_layout = get_post_meta( $post_id, '_cs_use_extended_layout', true );
+        // ============================================
+        // GET ALL META DATA
+        // ============================================
+        
+        // Card & Hero
+        $card_bg_image = get_post_meta($post_id, '_cs_card_bg_image', true);
+        $banner_image = get_post_meta($post_id, '_cs_banner_image', true);
+        $main_image = get_post_meta($post_id, '_cs_main_image', true);
+        $banner_logo = get_post_meta($post_id, '_cs_banner_logo', true);
+        $heading_prefix = get_post_meta($post_id, '_cs_heading_prefix', true);
+        $heading_main = get_post_meta($post_id, '_cs_heading_main', true);
+        $intro_text = get_post_meta($post_id, '_cs_intro_text', true);
+        
+        // Details
+        $year = get_post_meta($post_id, '_cs_year', true);
+        $technology = get_post_meta($post_id, '_cs_technology', true);
+        
+        // Objective
+        $objective_sub = get_post_meta($post_id, '_cs_objective_subtitle', true);
+        $objective_intro = get_post_meta($post_id, '_cs_objective_intro', true);
+        $objective_list = get_post_meta($post_id, '_cs_objective_list', true);
+        $objective_img = get_post_meta($post_id, '_cs_objective_image', true);
+        $objective_extra_text = get_post_meta($post_id, '_cs_objective_extra_text', true);
+        
+        // Execution - Common
+        $exec_sub = get_post_meta($post_id, '_cs_execution_subtitle', true);
+        $use_extended_layout = get_post_meta($post_id, '_cs_use_extended_layout', true);
+        
+        // Execution - Extended Layout
+        $solution_ext_title = get_post_meta($post_id, '_cs_solution_extended_title', true);
+        $solution_ext_text = get_post_meta($post_id, '_cs_solution_extended_text', true);
+        $solution_ext_img = get_post_meta($post_id, '_cs_solution_extended_image', true);
+        
+        // Execution - Box Layout
+        $exec_head = get_post_meta($post_id, '_cs_execution_heading', true);
+        $exec_text = get_post_meta($post_id, '_cs_execution_text', true);
+        $step_items = get_post_meta($post_id, '_cs_steps_items', true);
+        $four_head = get_post_meta($post_id, '_cs_four_box_heading', true);
+        $four_items = get_post_meta($post_id, '_cs_four_box_items', true);
+        
+        // Outcome
+        $outcome_head = get_post_meta($post_id, '_cs_outcome_heading', true);
+        $outcome_text = get_post_meta($post_id, '_cs_outcome_text', true);
+        $video_url = get_post_meta($post_id, '_cs_video_url', true);
+        $video_thumb = get_post_meta($post_id, '_cs_video_thumbnail', true);
+        $large_images = get_post_meta($post_id, '_cs_large_image', true);
 
+        // ============================================
+        // SET DEFAULT IMAGES
+        // ============================================
+        
+        if (empty($card_bg_image)) {
+            $card_bg_image = $template_dir . '/images/work-bg.png';
+        }
+        if (empty($banner_image)) {
+            $banner_image = $template_dir . '/images/details-banner.png';
+        }
+        if (empty($main_image)) {
+            $main_image = $template_dir . '/images/work1.png';
+        }
+        if (empty($objective_img)) {
+            $objective_img = $template_dir . '/images/obj.png';
+        }
 
-		$template_dir = get_template_directory_uri();
+        // ============================================
+        // PROCESS DATA
+        // ============================================
+        
+        // Process objective list (string to array)
+        $objective_items = array_filter(array_map('trim', explode("\n", (string) $objective_list)));
+        
+        // Ensure step_items is an array
+        if (!is_array($step_items)) {
+            $step_items = [];
+        }
+        
+        // Ensure four_items is an array
+        if (!is_array($four_items)) {
+            $four_items = [];
+        }
+        
+        // Ensure large_images is an array
+        if (!is_array($large_images)) {
+            $large_images = [];
+        }
 
-		if ( empty( $card_bg_image ) ) {
-			$card_bg_image = $template_dir . '/images/work-bg.png';
-		}
-		if ( empty( $banner_image ) ) {
-			$banner_image = $template_dir . '/images/details-banner.png';
-		}
+        // ============================================
+        // CHECK CONTENT AVAILABILITY
+        // ============================================
+        
+        $has_box_layout_content = (
+            !empty($exec_text) ||
+            !empty($step_items) ||
+            !empty($four_items)
+        );
 
-		if ( empty( $main_image ) ) {
-			$main_image = $template_dir . '/images/work1.png';
-		}
+        $has_extended_layout_content = (
+            !empty($solution_ext_title) ||
+            !empty($solution_ext_text) ||
+            !empty($solution_ext_img)
+        );
+        ?>
 
-		if ( empty( $objective_img ) ) {
-			$objective_img = $template_dir . '/images/obj.png';
-		}
+        <!-- ============================================ -->
+        <!-- HERO BANNER SECTION -->
+        <!-- ============================================ -->
+        <div class="banner">
+            <div id="bannerSlider" class="banner__slider">
+                <div class="banner__content" style="background: url(<?php echo esc_url($banner_image); ?>) center center repeat; background-size: cover;">
+                    <div class="container">
+                        <div class="row banner-row">
+                            <div class="col-md-12">
+                                <div class="work-inner-details">
+                                    <div class="work-photo">
+                                        <img src="<?php echo esc_url($main_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                    </div>
 
-		// Process objective list
-		$objective_items = array_filter( array_map( 'trim', explode( "\n", (string) $objective_list ) ) );
-		
-		// Process steps list
-		$step_items = array_filter( array_map( 'trim', explode( "\n", (string) $steps_list ) ) );
-		
-		// Process four box items - FIXED SECTION
-		if (is_array($four_items)) {
-			// If it's already an array (repeater field)
-			$four_box_items = array_filter($four_items);
-		} else {
-			// If it's a string, split by newlines
-			$four_box_items = array_filter(
-				array_map('trim', explode("\n", (string) $four_items))
-			);
-		}
-		?>
-
-		<div class="banner">
-			<div id="bannerSlider" class="banner__slider">
-				<div class="banner__content" style="background: url(<?php echo esc_url( $banner_image ); ?>) center center repeat; background-size: cover;">
-					<div class="container">
-						<div class="row banner-row">
-							<div class="col-md-12 ">
-								<div class="work-inner-details ">
-									<div class="work-photo">
-										<img src="<?php echo esc_url( $main_image ); ?>" alt="">
-									</div>
-
-									<div class="content-copy">
-										<div class="banner-logo">
-											<img src="<?php echo esc_url( $banner_logo ); ?>" alt="">
-										</div>
-										<h1>
-											<?php if ( $heading_prefix ) : ?>
-												<span><?php echo esc_html( $heading_prefix ); ?></span>
-											<?php endif; ?>
-											<?php echo esc_html( $heading_main ); ?>
-										</h1>
-										<?php if ( $intro_text ) : ?>
-											<p><?php echo wp_kses_post( nl2br( $intro_text ) ); ?></p>
-										<?php endif; ?>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<section class="details-content">
-			<div class="container">
-				<div class="date-year">
-					<div class="row">
-						<div class="col-lg-4 col-12">
-							<div class="details-col">
-								<p class="year-title">Year</p>
-								<h6 class="year-date"><?php echo esc_html( $year ); ?></h6>
-							</div>
-						</div>
-						<div class="col-lg-4 col-12">
-							<div class="details-col ">
-								<p class="year-title">Technology</p>
-								<h6 class="year-date"><?php echo esc_html( $technology ); ?></h6>
-							</div>
-						</div>
-						<div class="col-lg-4 col-12 ">
-							<div class="details-col text-right">
-								<p class="year-title">Have a Project?</p>
-								<h6 class="year-date">
-									<a href="/contact">Build It With Us <span>
-										<img src="https://www.bigwigmonster.com/wp-content/themes/bigwigmonster/assets/images/arrow.svg" class="arrow-img" alt="">
-									</span></a>
-								</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="objective-area">
-					<h3><?php echo esc_html( $objective_sub ); ?></h3>
-					<h2>A <span>New Challenge</span> For US</h2>
-					<?php if ( $objective_intro ) : ?>
-						<p><?php echo wp_kses_post( nl2br( $objective_intro ) ); ?></p>
-					<?php endif; ?>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="objective-copy">
-							<?php if ( ! empty( $objective_items ) ) : ?>
-								<ul>
-									<?php foreach ( $objective_items as $item ) : ?>
-										<li><?php echo esc_html( $item ); ?></li>
-									<?php endforeach; ?>
-								</ul>
-								<?php endif; ?>
-								<?php if ( ! empty( $objective_extra_text ) ) : ?>
-										<p><?php echo wp_kses_post( nl2br( $objective_extra_text ) ); ?></p>
-								<?php endif; ?>
-							<?php the_content(); ?>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="objective-img-box">
-							<img src="<?php echo esc_url( $objective_img ); ?>" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-			
-
-<div class="our-solutions">
-	<div class="container">
-
-		<?php
-		$has_area_with_box = (
-			! empty( $exec_text ) ||
-			! empty( $step_items ) ||
-			! empty( $four_box_items )
-		);
-
-		$has_area_with_img_box = (
-			! empty( $solution_ext_title ) ||
-			! empty( $solution_ext_text ) ||
-			! empty( $solution_ext_img )
-		);
-		?>
-
-		<?php if ( $use_extended_layout === '1' && $has_area_with_img_box ) : ?>
-
-			<!-- EXTENDED LAYOUT -->
-			<div class="area-with-img-box">
-				<div class="objective-area">
-					<h3><?php echo esc_html( $exec_sub ); ?></h3>
-					<h2>Our <span>Solution</span></h2>
-					<?php if ( $solution_ext_title ) : ?>
-						<h4 class="extended-copy"><?php echo esc_html( $solution_ext_title ); ?></h4>
-					<?php endif; ?>
-
-					<?php if ( $solution_ext_text ) : ?>
-						<p><?php echo wp_kses_post( nl2br( $solution_ext_text ) ); ?></p>
-					<?php endif; ?>
-				</div>
-
-				<div class="our-solution-extended">
-					<?php if ( $solution_ext_img ) : ?>
-						<div class="project-photo">
-							<img src="<?php echo esc_url( $solution_ext_img ); ?>" alt="">
-						</div>
-					<?php endif; ?>
-				</div>
-			</div>
-
-		<?php elseif ( $has_area_with_box ) : ?>
-
-			<!-- BOX LAYOUT -->
-			<div class="area-with-box">
-				<div class="objective-area">
-					<h3><?php echo esc_html( $exec_sub ); ?></h3>
-					<h2>Our <span>Solution</span></h2>
-
-					<?php if ( $exec_text ) : ?>
-						<p><?php echo wp_kses_post( nl2br( $exec_text ) ); ?></p>
-					<?php endif; ?>
-				</div>
-
-				<div class="solution-box">
-					<?php $step_index = 1; ?>
-					<?php foreach ( $step_items as $step ) : ?>
-						<div class="single-box">
-							<span><?php echo esc_html( $step_index ); ?></span>
-							<p><?php echo esc_html( $step ); ?></p>
-						</div>
-						<?php $step_index++; ?>
-					<?php endforeach; ?>
-				</div>
-
-				<?php if ( ! empty( $four_box_items ) ) : ?>
-					<div class="objective-area">
-							<h2>How We <span>Exceeded Expectations</span></h2>
-					</div>
-
-					<div class="four-boxs">
-							<?php foreach ( $four_box_items as $four_item ) : ?>
-									<?php 
-									// Handle both array format and string format
-									if (is_array($four_item)) {
-										// If it's an array, try common key names
-										$item_text = $four_item['text'] ?? $four_item['content'] ?? $four_item['value'] ?? '';
-									} else {
-										// If it's a string, use it directly
-										$item_text = $four_item;
-									}
-									?>
-									<?php if ( ! empty( $item_text ) ) : ?>
-											<div class="each-four">
-													<p><?php echo wp_kses_post( nl2br( $item_text ) ); ?></p>
-											</div>
-									<?php endif; ?>
-							<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-
-			</div>
-
-		<?php elseif ( $has_area_with_img_box ) : ?>
-
-			<!-- FALLBACK EXTENDED -->
-			<div class="area-with-img-box">
-				<div class="objective-area">
-					<h3><?php echo esc_html( $exec_sub ); ?></h3>
-					<h2>Our <span>Solution</span></h2>
-				</div>
-
-				<div class="our-solution-extended">
-					<?php if ( $solution_ext_title ) : ?>
-						<h2><?php echo esc_html( $solution_ext_title ); ?></h2>
-					<?php endif; ?>
-
-					<?php if ( $solution_ext_text ) : ?>
-						<p><?php echo wp_kses_post( nl2br( $solution_ext_text ) ); ?></p>
-					<?php endif; ?>
-
-					<?php if ( $solution_ext_img ) : ?>
-						<div class="project-photo">
-							<img src="<?php echo esc_url( $solution_ext_img ); ?>" alt="">
-						</div>
-					<?php endif; ?>
-				</div>
-			</div>
-
-		<?php endif; ?>
-
-	</div>
-</div>
-
-<?php if ( $outcome_text || ($video_url && $video_thumb) ) : ?>
-	<div class="the-outcome">
-		<div class="container">
-			<div class="objective-area">
-				<h2>The <span>Outcome</span></h2>
-				<?php if ( $outcome_text ) : ?>
-					<p><?php echo wp_kses_post( nl2br( $outcome_text ) ); ?></p>
-				<?php endif; ?>
-			</div>
-			<?php if ( $video_url && $video_thumb ) : ?>
-			<div class="video-section testes">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="video-container" id="videoContainer">
-								<div class="video-thum" id="videoThumb">
-									<img class="thumbnails" src="<?php echo esc_url( $video_thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
-								</div>
-								<!-- Play Button -->
-								<button class="play-button" id="playButton">
-									<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/play-icon.png" alt="Play">
-								</button>
-
-								<?php
-									if ( preg_match( '/(youtube\.com|youtu\.be)/i', $video_url ) ) {
-											preg_match( '/(youtu\.be\/|v=)([^&]+)/', $video_url, $matches );
-											$video_id = $matches[2] ?? '';
-											if ( $video_id ) :
-									?>
-										<iframe
-											class="video iframe-video"
-											data-src="https://www.youtube.com/embed/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
-											frameborder="0"
-											allow="autoplay; encrypted-media"
-											allowfullscreen>
-										</iframe>
-									<?php
-									endif;
-
-									} elseif ( preg_match( '/vimeo\.com/i', $video_url ) ) {
-										preg_match( '/vimeo\.com\/(\d+)/', $video_url, $matches );
-										$video_id = $matches[1] ?? '';
-										if ( $video_id ) :
-									?>
-									<iframe
-										class="video iframe-video"
-										data-src="https://player.vimeo.com/video/<?php echo esc_attr( $video_id ); ?>?autoplay=1"
-										frameborder="0"
-										allow="autoplay; fullscreen"
-										allowfullscreen>
-									</iframe>
-										<?php
-											endif;
-										} else {
-										?>
-										<video class="video html-video" preload="metadata" controls>
-											<source src="<?php echo esc_url( $video_url ); ?>">
-										</video>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<?php endif; ?>
-		</div>
-	</div>
-<?php endif; ?>
-		
-
-
-	<?php $large_images = get_post_meta(get_the_ID(), '_cs_large_image', true);
-	if (!empty($large_images) && is_array($large_images)): ?>
-		<section class="gallary-photo">
-			<div id="gallarySlider" class="gallary-slider">
-				<?php foreach ($large_images as $img): ?>
-					<div class="gallary-slider">
-						<div class="each-gallry">
-							<img src="<?php echo esc_url($img); ?>" alt="">
-						</div>
-					</div>
-				<?php endforeach; ?> 
-			</div>
-		</section> 
-	<?php endif; ?>
-
-
-	<?php
-	$prev_post = get_previous_post();
-	$next_post = get_next_post();
-	$arrow_icon = get_template_directory_uri() . '/images/arrow.png';
-	
-	if ( $prev_post || $next_post ) :
-?>
-	<section class="next-prev-arrow">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-          <div class="next-prev-inner">
-            <div class=" ">
-							<?php if ( $prev_post ) : ?>
-								<a href="<?php echo get_permalink( $prev_post->ID ); ?>" class="arrow-text d-flex align-items-center">
-									<i class="fa-solid fa-arrow-left-long"></i>
-									<!-- <img src="<?php //echo esc_url( $arrow_icon ); ?>" class="arrow-img rotate-arrow" alt="" style="margin-right: 8px;"> -->
-									<span class="uner-line">Prev Case</span>
-								</a>
-							<?php endif; ?>
+                                    <div class="content-copy">
+                                        <?php if ($banner_logo) : ?>
+                                            <div class="banner-logo">
+                                                <img src="<?php echo esc_url($banner_logo); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <h1>
+                                            <?php if ($heading_prefix) : ?>
+                                                <span><?php echo esc_html($heading_prefix); ?></span>
+                                            <?php endif; ?>
+                                            <?php echo esc_html($heading_main ? $heading_main : get_the_title()); ?>
+                                        </h1>
+                                        
+                                        <?php if ($intro_text) : ?>
+                                            <p><?php echo wp_kses_post(nl2br($intro_text)); ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class=" ">
-							<?php if ( $next_post ) : ?>
-								<a href="<?php echo get_permalink( $next_post->ID ); ?>" class="arrow-text d-flex align-items-center case-nav-next">
-									<span class="uner-line">Next Case</span>
-									<i class="fa-solid fa-arrow-right-long"></i>
-									<!-- <img src="<?php //echo esc_url( $arrow_icon ); ?>" class="arrow-img" alt="" style="margin-left: 8px;"> -->
-								</a>
-							<?php endif; ?>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-	<?php	endif; ?>
 
-		</section>
+        <!-- ============================================ -->
+        <!-- DETAILS SECTION -->
+        <!-- ============================================ -->
+        <section class="details-content">
+            <div class="container">
+                <div class="date-year">
+                    <div class="row">
+                        <div class="col-lg-4 col-12">
+                            <div class="details-col">
+                                <p class="year-title"><?php _e('Year', 'wgbg'); ?></p>
+                                <h6 class="year-date"><?php echo esc_html($year ? $year : date('Y')); ?></h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="details-col">
+                                <p class="year-title"><?php _e('Technology', 'wgbg'); ?></p>
+                                <h6 class="year-date"><?php echo esc_html($technology ? $technology : 'Custom Development'); ?></h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="details-col text-right">
+                                <p class="year-title"><?php _e('Have a Project?', 'wgbg'); ?></p>
+                                <h6 class="year-date">
+                                    <a href="/contact">
+                                        <span><?php _e('Build It With Us', 'wgbg'); ?></span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-		<div class="cta-footer">
-			<div class="container">
-				<div class="cta-footer-inner">
-					<div class="cta-content">
-						<h3>Need help with a project?<span> LET'S TALK!</span></h3>
-						<p>Every great project begins with a conversation. Share your vision with us, and together we'll turn your ideas into something remarkable.</b></p>
-						<a href="/book-a-call/" class="btn btn-primary" style="padding-left: 15px; padding-right: 15px;">Let's Discuss Your Project</a>
-					</div>
-				</div>
-			</div>
-		</div>
+                <!-- ============================================ -->
+                <!-- OBJECTIVE SECTION -->
+                <!-- ============================================ -->
+                <div class="objective-area">
+                    <?php if ($objective_sub) : ?>
+                        <h3><?php echo esc_html($objective_sub); ?></h3>
+                    <?php endif; ?>
+                    <h2><?php _e('A', 'wgbg'); ?> <span><?php _e('New Challenge', 'wgbg'); ?></span> <?php _e('For US', 'wgbg'); ?></h2>
+                    <?php if ($objective_intro) : ?>
+                        <p><?php echo wp_kses_post(nl2br($objective_intro)); ?></p>
+                    <?php endif; ?>
+                </div>
 
-		<?php
-	endwhile;
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="objective-copy">
+                            <?php if (!empty($objective_items)) : ?>
+                                <ul>
+                                    <?php foreach ($objective_items as $item) : ?>
+                                        <li><?php echo esc_html($item); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                            
+                            <?php if ($objective_extra_text) : ?>
+                                <p><?php echo wp_kses_post(nl2br($objective_extra_text)); ?></p>
+                            <?php endif; ?>
+                            
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="objective-img-box">
+                            <img src="<?php echo esc_url($objective_img); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- EXECUTION SECTION (CONDITIONAL LAYOUT) -->
+            <!-- ============================================ -->
+            <div class="our-solutions">
+                <div class="container">
+
+                    <?php if ($use_extended_layout === '1' && $has_extended_layout_content) : ?>
+                        
+                        <!-- ============================================ -->
+                        <!-- EXTENDED LAYOUT -->
+                        <!-- ============================================ -->
+                        <div class="area-with-img-box">
+                            <div class="objective-area">
+                                <?php if ($exec_sub) : ?>
+                                    <h3><?php echo esc_html($exec_sub); ?></h3>
+                                <?php endif; ?>
+                                <h2><?php _e('Our', 'wgbg'); ?> <span><?php _e('Solution', 'wgbg'); ?></span></h2>
+                                
+                                <?php if ($solution_ext_title) : ?>
+                                    <h4 class="extended-copy"><?php echo esc_html($solution_ext_title); ?></h4>
+                                <?php endif; ?>
+
+                                <?php if ($solution_ext_text) : ?>
+                                    <p><?php echo wp_kses_post(nl2br($solution_ext_text)); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <?php if ($solution_ext_img) : ?>
+                                <div class="our-solution-extended">
+                                    <div class="project-photo">
+                                        <img src="<?php echo esc_url($solution_ext_img); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                    <?php elseif ($has_box_layout_content) : ?>
+                        
+                        <!-- ============================================ -->
+                        <!-- BOX LAYOUT -->
+                        <!-- ============================================ -->
+                        <div class="area-with-box">
+                            <div class="objective-area">
+                                <?php if ($exec_sub) : ?>
+                                    <h3><?php echo esc_html($exec_sub); ?></h3>
+                                <?php endif; ?>
+                                <h2><?php _e('Our', 'wgbg'); ?> <span><?php _e('Solution', 'wgbg'); ?></span></h2>
+
+                                <?php if ($exec_text) : ?>
+                                    <p><?php echo wp_kses_post(nl2br($exec_text)); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <!-- SOLUTION STEPS -->
+                            <?php if (!empty($step_items)) : ?>
+                                <div class="solution-box">
+                                    <?php 
+                                    $step_index = 1;
+                                    foreach ($step_items as $step) :
+                                        $title = isset($step['title']) ? trim($step['title']) : '';
+                                        $desc = isset($step['desc']) ? trim($step['desc']) : '';
+
+                                        // Skip if no title
+                                        if (empty($title)) {
+                                            continue;
+                                        }
+                                    ?>
+                                        <div class="single-box">
+                                            <span><?php echo esc_html($step_index); ?></span>
+                                            <h2><?php echo esc_html($title); ?></h2>
+                                            
+                                            <div class="solution-box-hover">
+                                                <h3><?php echo esc_html($title); ?></h3>
+                                                <?php if (!empty($desc)) : ?>
+                                                    <p><?php echo wp_kses_post($desc); ?></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    <?php 
+                                        $step_index++;
+                                    endforeach; 
+                                    ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <!-- FOUR BOXES -->
+                            <?php if (!empty($four_items)) : ?>
+                                <div class="objective-area">
+                                    <h2>
+                                        <?php echo $four_head ? esc_html($four_head) : __('How We', 'wgbg'); ?> 
+                                        <span><?php _e('Exceeded Expectations', 'wgbg'); ?></span>
+                                    </h2>
+                                </div>
+
+                                <div class="four-boxs">
+                                    <?php foreach ($four_items as $four_item) : ?>
+                                        <?php if (!empty($four_item)) : ?>
+                                            <div class="each-four">
+                                                <p><?php echo wp_kses_post(nl2br($four_item)); ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
+
+                    <?php endif; ?>
+
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- OUTCOME SECTION -->
+            <!-- ============================================ -->
+            <?php if ($outcome_text || ($video_url && $video_thumb)) : ?>
+                <div class="the-outcome">
+                    <div class="container">
+                        <div class="objective-area">
+                            <h2><?php _e('The', 'wgbg'); ?> <span><?php _e('Outcome', 'wgbg'); ?></span></h2>
+                            <?php if ($outcome_text) : ?>
+                                <p><?php echo wp_kses_post(nl2br($outcome_text)); ?></p>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- VIDEO PLAYER -->
+                        <?php if ($video_url && $video_thumb) : ?>
+                            <div class="video-section">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="video-container" id="videoContainer">
+                                                <div class="video-thum" id="videoThumb">
+                                                    <img class="thumbnails" src="<?php echo esc_url($video_thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                                </div>
+                                                
+                                                <!-- Play Button -->
+                                                <button class="play-button" id="playButton">
+                                                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/play-icon.png" alt="<?php _e('Play', 'wgbg'); ?>">
+                                                </button>
+
+                                                <?php
+                                                // YouTube Video
+                                                if (preg_match('/(youtube\.com|youtu\.be)/i', $video_url)) {
+                                                    preg_match('/(youtu\.be\/|v=|embed\/)([^&\?]+)/', $video_url, $matches);
+                                                    $video_id = $matches[2] ?? '';
+                                                    if ($video_id) :
+                                                ?>
+                                                    <iframe
+                                                        class="video iframe-video"
+                                                        data-src="https://www.youtube.com/embed/<?php echo esc_attr($video_id); ?>?autoplay=1"
+                                                        frameborder="0"
+                                                        allow="autoplay; encrypted-media"
+                                                        allowfullscreen>
+                                                    </iframe>
+                                                <?php
+                                                    endif;
+                                                // Vimeo Video
+                                                } elseif (preg_match('/vimeo\.com/i', $video_url)) {
+                                                    preg_match('/vimeo\.com\/(\d+)/', $video_url, $matches);
+                                                    $video_id = $matches[1] ?? '';
+                                                    if ($video_id) :
+                                                ?>
+                                                    <iframe
+                                                        class="video iframe-video"
+                                                        data-src="https://player.vimeo.com/video/<?php echo esc_attr($video_id); ?>?autoplay=1"
+                                                        frameborder="0"
+                                                        allow="autoplay; fullscreen"
+                                                        allowfullscreen>
+                                                    </iframe>
+                                                <?php
+                                                    endif;
+                                                // Direct Video File
+                                                } else {
+                                                ?>
+                                                    <video class="video html-video" preload="metadata" controls>
+                                                        <source src="<?php echo esc_url($video_url); ?>">
+                                                        <?php _e('Your browser does not support the video tag.', 'wgbg'); ?>
+                                                    </video>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <!-- ============================================ -->
+            <!-- IMAGE GALLERY SLIDER -->
+            <!-- ============================================ -->
+            <?php if (!empty($large_images)) : ?>
+                <section class="gallary-photo">
+                    <div id="gallarySlider" class="gallary-slider">
+                        <?php foreach ($large_images as $img) : ?>
+                            <div class="gallary-slide">
+                                <div class="each-gallry">
+                                    <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            <!-- ============================================ -->
+            <!-- PREV/NEXT NAVIGATION -->
+            <!-- ============================================ -->
+            <?php
+            $prev_post = get_previous_post();
+            $next_post = get_next_post();
+            
+            if ($prev_post || $next_post) :
+            ?>
+                <section class="next-prev-arrow">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                <div class="next-prev-inner">
+                                    <div class="prev-case">
+                                        <?php if ($prev_post) : ?>
+                                            <a href="<?php echo get_permalink($prev_post->ID); ?>" class="arrow-text d-flex align-items-center">
+                                                <i class="fa-solid fa-arrow-left-long"></i>
+                                                <span class="uner-line"><?php _e('Prev Case', 'wgbg'); ?></span>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="next-case">
+                                        <?php if ($next_post) : ?>
+                                            <a href="<?php echo get_permalink($next_post->ID); ?>" class="arrow-text d-flex align-items-center case-nav-next">
+                                                <span class="uner-line"><?php _e('Next Case', 'wgbg'); ?></span>
+                                                <i class="fa-solid fa-arrow-right-long"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+        </section>
+
+        <!-- ============================================ -->
+        <!-- CTA FOOTER -->
+        <!-- ============================================ -->
+        <div class="cta-footer">
+            <div class="container">
+                <div class="cta-footer-inner">
+                    <div class="cta-content">
+                        <h3><?php _e('Need help with a project?', 'wgbg'); ?> <span><?php _e("LET'S TALK!", 'wgbg'); ?></span></h3>
+                        <p><?php _e('Every great project begins with a conversation. Share your vision with us, and together we\'ll turn your ideas into something remarkable.', 'wgbg'); ?></p>
+                        <a href="/book-a-call/" class="btn btn-primary" style="padding-left: 15px; padding-right: 15px;">
+                            <?php _e("Let's Discuss Your Project", 'wgbg'); ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+    endwhile;
 endif;
 ?>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-	var link = document.querySelector('.case-video-link');
-	if (link) {
-		link.addEventListener('click', function (e) {
-			e.preventDefault();
-			var url = this.getAttribute('data-video-url');
-			var embedContainer = document.querySelector('.case-video-embed');
-			if (!url || !embedContainer) return;
-			// If already loaded, do nothing
-			if (embedContainer.dataset.loaded === '1') return;
-			var iframe = document.createElement('iframe');
-			iframe.src = url;
-			iframe.width = '100%';
-			iframe.height = '450';
-			iframe.frameBorder = '0';
-			iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-			iframe.allowFullscreen = true;
-			embedContainer.innerHTML = '';
-			embedContainer.appendChild(iframe);
-			embedContainer.dataset.loaded = '1';
-		});
-	}
 
-	// Init Slick slider for large image gallery if available
-	if (window.jQuery && jQuery.fn.slick) {
-		jQuery('.case-large-slider').slick({
-			arrows: false,
-			dots: true,
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			adaptiveHeight: true,
-		});
-	}
+<!-- ============================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ============================================
+    // VIDEO PLAYER FUNCTIONALITY
+    // ============================================
+    const playButton = document.getElementById('playButton');
+    const videoThumb = document.getElementById('videoThumb');
+    const videoContainer = document.getElementById('videoContainer');
+
+    if (playButton && videoContainer) {
+        playButton.addEventListener('click', function() {
+            const iframe = videoContainer.querySelector('.iframe-video');
+            const htmlVideo = videoContainer.querySelector('.html-video');
+
+            if (iframe) {
+                // Load iframe source and start autoplay
+                iframe.src = iframe.getAttribute('data-src');
+                videoThumb.style.display = 'none';
+                playButton.style.display = 'none';
+                iframe.style.display = 'block';
+            } else if (htmlVideo) {
+                // Play HTML5 video
+                htmlVideo.play();
+                videoThumb.style.display = 'none';
+                playButton.style.display = 'none';
+                htmlVideo.style.display = 'block';
+            }
+        });
+    }
+
+    // ============================================
+    // SLICK SLIDER FOR GALLERY
+    // ============================================
+    // if (window.jQuery && jQuery.fn.slick) {
+    //     jQuery('#gallarySlider').slick({
+    //         arrows: true,
+    //         dots: true,
+    //         infinite: true,
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1,
+    //         adaptiveHeight: true,
+    //         autoplay: false,
+    //         prevArrow: '<button type="button" class="slick-prev"><i class="fa-solid fa-chevron-left"></i></button>',
+    //         nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
+    //         responsive: [
+    //             {
+    //                 breakpoint: 768,
+    //                 settings: {
+    //                     arrows: false,
+    //                     dots: true
+    //                 }
+    //             }
+    //         ]
+    //     });
+    // }
 });
 </script>
-<?php
 
+<?php
 get_footer();
