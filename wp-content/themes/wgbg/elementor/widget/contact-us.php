@@ -142,7 +142,9 @@ class GCContactUs extends Widget_Base {
 
 					<div class="email-div">
 						<h4>Location</h4>
-						<p><?php echo esc_html( $s['location'] ); ?></p>
+						<!-- <p><?php //echo esc_html( $s['location'] ); ?></p> -->
+						<p><?php echo wp_kses_post( nl2br( $s['location'] ) ); ?></p>
+
 					</div>
 
 					<div class="email-div">

@@ -208,7 +208,7 @@ class GCEngineMotion extends Widget_Base {
 											<?php endif; ?>
 
 											<?php if ( ! empty( $slide['button_text'] ) ) : ?>
-												<a href="<?php echo esc_url( $slide['button_url']['url'] ); ?>" class="btn btn-success">
+												<a href="<?php echo esc_url( $slide['button_url']['url'] ); ?>" class="btn btn-success" target="_blank">
 													<span><?php echo esc_html( $slide['button_text'] ); ?></span>
 												</a>
 											<?php endif; ?>
