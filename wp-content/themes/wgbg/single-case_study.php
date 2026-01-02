@@ -198,7 +198,7 @@ if (have_posts()) :
                     <?php if ($objective_sub) : ?>
                         <h3><?php echo esc_html($objective_sub); ?></h3>
                     <?php endif; ?>
-                    <h2><?php _e('A', 'wgbg'); ?> <span><?php _e('New Challenge', 'wgbg'); ?></span> <?php _e('For US', 'wgbg'); ?></h2>
+                    <h2><?php _e('A', 'wgbg'); ?> <span><?php _e('New Challenge', 'wgbg'); ?></span> <?php _e('For Us', 'wgbg'); ?></h2>
                     <?php if ($objective_intro) : ?>
                         <p><?php echo wp_kses_post(nl2br($objective_intro)); ?></p>
                     <?php endif; ?>

@@ -292,7 +292,7 @@ if (empty($banner_bg)) {
                     ?>
                     <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
                     <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li><a href="#" aria-label="Viemo"><i class="fa-brands fa-viemo"></i></a></li>
                     <li><a href="#" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></li>
                     <?php endif; ?>
                 </ul>
