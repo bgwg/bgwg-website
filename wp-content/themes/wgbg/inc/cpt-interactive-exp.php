@@ -113,6 +113,8 @@ function gc_exp_hero_callback($post) {
     $url  = gc_exp_get_meta($post->ID,'_exp_btn_url');
     $btn2  = gc_exp_get_meta($post->ID,'_exp_btn_text2');
     $url2  = gc_exp_get_meta($post->ID,'_exp_btn_url2');
+
+    $shorttext = gc_exp_get_meta($post->ID,'_exp_shorttext');
     ?>
 
     <p><strong>Banner Background Image</strong></p>
@@ -123,8 +125,10 @@ function gc_exp_hero_callback($post) {
     <p><label>Heading (H1)</label></p>
     <input type="text" class="widefat" name="exp_h1" value="<?php echo esc_attr($h1); ?>">
 
-    <p><label>Sub Heading (H3)</label></p>
+    <p><label>Card Short Description</label></p>
+    <textarea class="widefat" name="exp_shorttext" rows="4"><?php echo esc_textarea($shorttext); ?></textarea>
 
+    <p><label>Sub Heading (H3)</label></p>
     <textarea class="widefat" name="exp_h3" rows="3" placeholder="<span>type highlighted text</span> other test"><?php echo esc_textarea($h3); ?></textarea>
     <!-- <input type="text" class="widefat" name="exp_h3" value="<?php //echo esc_attr($h3); ?>"> -->
 
@@ -314,11 +318,11 @@ function gc_exp_cta_callback($post) {
     <p><label>Instagram URL</label></p>
     <input type="text" class="widefat" name="exp_instagram" value="<?php echo esc_url($instagram); ?>" placeholder="https://instagram.com/...">
 
-    <p><label>YouTube URL</label></p>
-    <input type="text" class="widefat" name="exp_youtube" value="<?php echo esc_url($youtube); ?>" placeholder="https://youtube.com/...">
+    <p><label>Vimeo URL</label></p>
+    <input type="text" class="widefat" name="exp_youtube" value="<?php echo esc_url($youtube); ?>" placeholder="https://vimeo.com/...">
 
-    <p><label>Email</label></p>
-    <input type="text" class="widefat" name="exp_email" value="<?php echo esc_attr($email); ?>" placeholder="contact@example.com">
+    <p><label>Twitter URL</label></p>
+    <input type="text" class="widefat" name="exp_email" value="<?php echo esc_attr($email); ?>" placeholder="x.com/...">
 <?php }
 
 /*--------------------------------------------------------------
@@ -350,6 +354,8 @@ function gc_exp_save($post_id) {
         'exp_h1'           => '_exp_h1',
         'exp_h3'           => '_exp_h3',
         'exp_intro'        => '_exp_intro',
+        'exp_shorttext'    => '_exp_shorttext',
+
         'exp_btn_text'     => '_exp_btn_text',
         'exp_btn_url'      => '_exp_btn_url',
         'exp_btn_text2'     => '_exp_btn_text2',

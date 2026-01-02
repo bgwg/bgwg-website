@@ -161,43 +161,37 @@ class GCBanner extends Widget_Base {
         ?>
 
 <div class="banner">
-<div id="bannerSlider" class="banner__slider">
+    <div id="bannerSlider" class="banner__slider">
+        <div class="banner__video-wrap">
+            <iframe
+            class="banner__video"
+            src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?background=1&autoplay=1&loop=1&muted=1&controls=0"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            ></iframe>
 
-<div class="banner__video-wrap">
-
-<iframe
- class="banner__video"
- src="https://player.vimeo.com/video/<?php echo esc_attr($vimeo_id); ?>?background=1&autoplay=1&loop=1&muted=1&controls=0"
- frameborder="0"
- allow="autoplay; fullscreen"
-></iframe>
-
-<div class="banner__content">
-<div class="container">
-<div class="row banner-row">
-<div class="col-sm-12 text-center">
-
-<div class="banner__content-main">
-<h1 class="banner__content-title"><?php echo $title_1; ?></h1>
-<h2><?php echo $title_2; ?></h2>
-
-<p class="banner__content-description"><?php echo $details_text; ?></p>
-<p class="banner__content-description2"><?php echo $details_text_two; ?></p>
-
-<div class="banner__content-logo">
-<ul class="list-unstyled">
-<li><a href="<?php echo esc_url($appstore_url); ?>" class="btn btn-primary">Start a Conversation</a></li>
-<li><a href="<?php echo esc_url($playstore_url); ?>" class="btn btn-success">See Our Work</a></li>
-</ul>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
+            <div class="banner__content">
+                <div class="container">
+                    <div class="row banner-row video-bg-content">
+                        <div class="col-sm-12 text-center">
+                            <div class="banner__content-main">
+                                <h1 class="banner__content-title"><?php echo $title_1; ?></h1>
+                                <h2><?php echo $title_2; ?></h2>
+                                <p class="banner__content-description"><?php echo $details_text; ?></p>
+                                <p class="banner__content-description2"><?php echo $details_text_two; ?></p>
+                                <div class="banner__content-logo">
+                                    <ul class="list-unstyled">
+                                        <li><a href="<?php echo esc_url($appstore_url); ?>" class="btn btn-primary">Start a Conversation</a></li>
+                                        <li><a href="<?php echo esc_url($playstore_url); ?>" class="btn btn-success">See Our Work</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 		<?php

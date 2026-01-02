@@ -182,7 +182,7 @@ if (have_posts()) :
                                 <p class="year-title"><?php _e('Have a Project?', 'wgbg'); ?></p>
                                 <h6 class="year-date">
                                     <a href="/contact">
-                                        <span><?php _e('Build It With Us', 'wgbg'); ?></span>
+                                        <span><?php _e('Build it with us', 'wgbg'); ?></span>
                                         <i class="fa-solid fa-arrow-right-long"></i>
                                     </a>
                                 </h6>

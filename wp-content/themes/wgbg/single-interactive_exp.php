@@ -273,7 +273,7 @@ if (empty($banner_bg)) {
                     <?php if (!empty($youtube)): ?>
                     <li>
                         <a href="<?php echo esc_url($youtube); ?>" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                            <i class="fa-brands fa-youtube"></i>
+                            <i class="fa-brands fa-vimeo"></i>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -281,7 +281,7 @@ if (empty($banner_bg)) {
                     <?php if (!empty($email)): ?>
                     <li>
                         <a href="mailto:<?php echo esc_attr($email); ?>" aria-label="Email">
-                            <i class="fa-regular fa-envelope"></i>
+                            <i class="fa-brands fa-twitter"></i>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -292,8 +292,8 @@ if (empty($banner_bg)) {
                     ?>
                     <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
                     <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" aria-label="Viemo"><i class="fa-brands fa-viemo"></i></a></li>
-                    <li><a href="#" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></li>
+                    <li><a href="#" aria-label="Vimeo"><i class="fa-brands fa-vimeo"></i></a></li>
+                    <li><a href="#" aria-label="Email"><i class="fa-brands fa-twitter"></i></a></li>
                     <?php endif; ?>
                 </ul>
             </div>

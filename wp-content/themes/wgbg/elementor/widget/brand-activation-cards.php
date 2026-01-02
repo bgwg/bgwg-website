@@ -47,6 +47,7 @@ class GCBrandActivationCards extends Widget_Base {
             $post_id = get_the_ID();
             $img     = get_the_post_thumbnail_url($post_id, 'medium');
             $intro   = get_post_meta($post_id, '_exp_intro', true);
+            $shorttext   = get_post_meta($post_id, '_exp_shorttext', true);
 
             // Determine column class for layout
             if ($count <= 2) {
@@ -68,8 +69,8 @@ class GCBrandActivationCards extends Widget_Base {
 
                     <p class="brand-card-des">
                       <?php 
-                        $intro_trimmed = wp_trim_words($intro, 18); 
-                        echo esc_html($intro_trimmed); 
+                        // $intro_trimmed = wp_trim_words($intro, 18); 
+                        echo esc_html($shorttext); 
                       ?>
                     </p>
 

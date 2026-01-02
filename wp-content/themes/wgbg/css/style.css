@@ -624,6 +624,12 @@ a {
 .banner__video-wrap .banner__content:before {
   background: rgba(0, 0, 0, 0.75);
 }
+.banner__video-wrap {
+  background-image: url(../images/banner-fall-back.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .banner {
   width: 100%;
 }
@@ -648,6 +654,11 @@ a {
   padding: 0;
   margin: 0;
   font-size: 24px;
+}
+@media (max-width: 767px) {
+  .banner__content-main.subpages h1 {
+    font-size: 16px;
+  }
 }
 .banner__content-main.subpages h2 {
   margin: 0;
@@ -761,7 +772,7 @@ a {
   line-height: 34px;
   color: #fff;
   max-width: 65%;
-  margin: 40px auto 50px;
+  margin: 10px auto 50px;
 }
 @media (max-width: 1100px) {
   .banner__content-description {
@@ -834,30 +845,39 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100vh;
+  height: 800px;
 }
 @media (max-width: 1100px) {
-  .banner__content .banner-row {
-    height: 750px;
-  }
-}
-@media (max-width: 800px) {
   .banner__content .banner-row {
     height: 650px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   .banner__content .banner-row {
-    height: 315px;
+    height: 600px;
   }
 }
 @media (max-width: 767px) {
   .banner__content .banner-row {
-    flex-direction: column-reverse;
+    height: 420px;
   }
-  .banner__content .banner-row .col-sm-6 > img {
-    width: 75%;
-    margin: auto;
+}
+.banner__content .banner-row.video-bg-content {
+  height: 100vh;
+}
+@media (max-width: 1100px) {
+  .banner__content .banner-row.video-bg-content {
+    height: 750px;
+  }
+}
+@media (max-width: 800px) {
+  .banner__content .banner-row.video-bg-content {
+    height: 650px;
+  }
+}
+@media (max-width: 767px) {
+  .banner__content .banner-row.video-bg-content {
+    height: 322px;
   }
 }
 @media (max-width: 992px) {
@@ -868,7 +888,6 @@ a {
 @media (max-width: 767px) {
   .banner__content {
     min-height: inherit;
-    padding-bottom: 25px;
   }
 }
 .banner .slick-dots {
@@ -1112,6 +1131,7 @@ a {
   font-size: 30px;
   line-height: 32px;
   padding-right: 30px;
+  padding-top: 6px;
 }
 @media (max-width: 992px) {
   .experiental-engine .card-tile .brand-card-title {
